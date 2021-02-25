@@ -9,4 +9,8 @@ class User < ApplicationRecord
   has_many :rehearsals, inverse_of: 'organiser'
   has_many :requests
   has_many :roles, through: :requests
+
+  validates :email, :password, :username, presence: true
+
+  validates :username, length: { in: 6..20 }
 end
