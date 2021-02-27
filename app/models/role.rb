@@ -1,13 +1,12 @@
 class Role < ApplicationRecord
   belongs_to :rehearsal
   belongs_to :instrument
+  belongs_to :user, optional: true
   has_many :requests, dependent: :destroy
 
-  # use on rehearsal show page to show confirmed attendees
-  scope :filled, -> { joins(:requests).merge(Request.confirmed) }
+  scope :filled, -> { where.not(user_id: nil) }
 
-  # use on rehearsal show page to display unfilled Roles
-  scope :vacant, -> { where.not(id: self.joins(:requests).merge(Request.confirmed)) }
+  scope :vacant, -> { where(user_id: nil) }
 
-  scope :space_for, ->(instrument_arr) { where(instrument_id: [instrument_arr]).vacant }
+  scope :vacancy_for, ->(instrument_arr) { where(instrument_id: [instrument_arr]).vacant }
 end

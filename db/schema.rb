@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_190004) do
+ActiveRecord::Schema.define(version: 2021_02_27_110637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2021_02_25_190004) do
   create_table "requests", force: :cascade do |t|
     t.bigint "role_id", null: false
     t.bigint "user_id", null: false
-    t.boolean "confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["role_id"], name: "index_requests_on_role_id"
@@ -47,8 +46,10 @@ ActiveRecord::Schema.define(version: 2021_02_25_190004) do
     t.bigint "instrument_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["instrument_id"], name: "index_roles_on_instrument_id"
     t.index ["rehearsal_id"], name: "index_roles_on_rehearsal_id"
+    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_190004) do
   add_foreign_key "requests", "users"
   add_foreign_key "roles", "instruments"
   add_foreign_key "roles", "rehearsals"
+  add_foreign_key "roles", "users"
   add_foreign_key "skills", "instruments"
   add_foreign_key "skills", "users"
 end

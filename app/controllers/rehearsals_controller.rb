@@ -1,8 +1,10 @@
 class RehearsalsController < ApplicationController
   before_action :set_rehearsal, only: [:show, :edit, :update, :destroy]
-
   def index
-    @rehearsals = Rehearsal.all
+    @my_upcoming_rehearsals = current_user.upcoming_rehearsals
+
+    instrument_array = current_user.instruments.pluck(:id)
+    @suggested_rehearsals = Rehearsal.upcoming.has_space_for(instrument_array) - @my_upcoming_rehearsals
   end
 
   def show

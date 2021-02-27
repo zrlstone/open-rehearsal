@@ -8,9 +8,13 @@ class User < ApplicationRecord
   has_many :instruments, through: :skills
   has_many :rehearsals, inverse_of: 'organiser', dependent: :destroy
   has_many :requests, dependent: :destroy
-  has_many :roles, through: :requests
+  has_many :roles
 
   validates :email, :password, :username, presence: true
 
   validates :username, length: { in: 6..20 }
+
+  def upcoming_rehearsals
+    Rehearsal.joins(:roles).upcoming.where(roles: { user_id: self.id })
+  end
 end
