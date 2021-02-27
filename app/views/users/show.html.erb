@@ -1,0 +1,19 @@
+<div class="user-profile">
+  <div class="profile row">
+    <div class="col-md-4 avatar">
+      <div class="wrapper">
+        <%= image_tag "blank_avatar.jpg", alt: "alttext" %>
+      </div>
+    </div>
+    <div class="col-md-8 basic-info">
+      <div class="user-wrapper">
+        <h2 class="username"><%= @user.username %></h2>
+        <% if @user == current_user %>
+          <a class="edit-profile" href="#">
+            <div class="btn btn-primary">Edit Profile</div>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
