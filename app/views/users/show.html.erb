@@ -9,9 +9,7 @@
       <div class="user-wrapper">
         <h2 class="username"><%= @user.username %></h2>
         <% if @user == current_user %>
-          <a class="edit-profile" href="#">
-            <div class="btn btn-primary">Edit Profile</div>
-          </a>
+          <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
         <% end %>
       </div>
     </div>

@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   resources :requests, only: [:index, :destroy]
   resources :skills, only: [:new, :create]
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show]
 
 end

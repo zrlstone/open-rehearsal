@@ -2,15 +2,23 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <h2><%= @rehearsal.title %></h2>
-      
-      <p><strong>
-        <% if (@rehearsal.user_id == current_user.id) %>
-          You are the organiser
+
+      <div class="d-flex">
+        <% if @organiser.avatar.attached? %>
+          <%= cl_image_tag @organiser.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max", crop: "thumb" }, alt: "alttext", class: "avatar" %>
         <% else %>
-          Organised by <%= @rehearsal.organiser.username %>
+          <%= image_tag "blank_avatar.jpg", class: "avatar" %>
         <% end %>
-      </strong></p>
-      
+        <p><strong>
+          <% if (@rehearsal.user_id == current_user.id) %>
+            You are the organiser
+          <% else %>
+            Organised by <%= @rehearsal.organiser.username %>
+          <% end %>
+        </strong></p>
+      </div>
+    
+    
       <p><%= @rehearsal.address %></p>
       <p><%= @rehearsal.description %></p>
       <p><%= @rehearsal.date_time.strftime("%A %d %B %H:%M") %></p>
