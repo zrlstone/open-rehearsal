@@ -1,13 +1,30 @@
 <div class="container pt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col-8">
-      <h2>Rehearsals</h2>
-      <ul>
-        <% @rehearsals.each do |rehearsal| %>
-          <li><%= link_to rehearsal.title, rehearsal_path(rehearsal) %></li>
-        <% end %>
-      </ul>
-      <%= link_to "Create new rehearsal", new_rehearsal_path %>
+
+      <h2>My upcoming rehearsals</h2>
+      <% if @my_upcoming_rehearsals.empty? %>
+        <p>You have no upcoming rehearsals.</p>
+      <% else %>
+        <ul>
+          <% @my_upcoming_rehearsals.each do |rehearsal| %>
+            <li><%= link_to rehearsal.title, rehearsal_path(rehearsal) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <h2>Suggested rehearsals</h2>
+      <% if @suggested_rehearsals.empty? %>
+        <p>There are no suggested rehearsals for you.</p>
+      <% else %>
+        <ul>
+          <% @suggested_rehearsals.each do |rehearsal| %>
+            <li><%= link_to rehearsal.title, rehearsal_path(rehearsal) %></li>
+          <% end %>
+        </ul>
+        <%= link_to "Create new rehearsal", new_rehearsal_path %>
+      <% end %>
+
     </div>
   </div>
 </div>
