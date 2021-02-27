@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :requests, dependent: :destroy
   has_many :roles, through: :requests
 
-  validates :email, :password, :username, presence: true
+  validates :username, presence: true
+  validates_uniqueness_of :username
 
   validates :username, length: { in: 6..20 }
 end
