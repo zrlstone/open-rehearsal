@@ -2,13 +2,33 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <h2><%= @rehearsal.title %></h2>
+      <p>Organised by <%= @rehearsal.organiser.username %></p>
       <p><%= @rehearsal.address %></p>
       <p><%= @rehearsal.description %></p>
-      <p><%= @rehearsal.date_time %></p>
+      <p><%= @rehearsal.date_time.strftime("%A %d %B %H:%M") %></p>
+
+
+      <h3>Attendees</h3>
+      <% @filled.each do |role| %>
+        <p><%= role.instrument.name %>: <%= role.user.username %></p>
+      <% end %>
+
+      <% if @spaces.length.positive? %>
+        <h3>Spaces</h3>
+        <% @spaces.each do |role| %>
+          <div class="d-flex">
+            <p><%= role.instrument.name %></p>
+            <% if current_user.instruments.include?(role.instrument) && !@rehearsal.attendees.include?(current_user) %>
+              <%= link_to "Request to join", '#' %>
+            <% end %>
+          </div>
+
+        <% end %>
+      <% end %>
 
       <%= link_to "Back", rehearsals_path %> |
       <%= link_to "Edit", edit_rehearsal_path(@rehearsal) %> |
-      <%= link_to "Cancel rehearsal", 
+      <%= link_to "Cancel rehearsal",
                   rehearsal_path(@rehearsal),
                   method: :delete,
                   data: { confirm: "Are you sure you want to cancel this rehearsal?" } %>
