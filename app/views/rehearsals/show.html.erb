@@ -1,0 +1,17 @@
+<div class="container pt-5 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <h2><%= @rehearsal.title %></h2>
+      <p><%= @rehearsal.address %></p>
+      <p><%= @rehearsal.description %></p>
+      <p><%= @rehearsal.date_time %></p>
+
+      <%= link_to "Back", rehearsals_path %> |
+      <%= link_to "Edit", edit_rehearsal_path(@rehearsal) %> |
+      <%= link_to "Cancel rehearsal", 
+                  rehearsal_path(@rehearsal),
+                  method: :delete,
+                  data: { confirm: "Are you sure you want to cancel this rehearsal?" } %>
+    </div>
+  </div>
+</div>
