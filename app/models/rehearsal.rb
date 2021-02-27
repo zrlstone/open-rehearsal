@@ -2,6 +2,7 @@ class Rehearsal < ApplicationRecord
   belongs_to :organiser, class_name: 'User', foreign_key: 'user_id'
   has_many :roles, dependent: :destroy
   has_many :requests, through: :roles
+  has_many :attendees, through: :roles, source: :user
 
   validates :date_time, :address, :title, presence: true
 
@@ -11,7 +12,10 @@ class Rehearsal < ApplicationRecord
 
   # Pass this scope an ARRAY of instrument IDs and it returns all the rehearsals which
   # have a vacancy for one of those instruments. Use on index page.
-  scope :has_space_for, ->(instrument_arr) { joins(:roles).merge(Role.space_for(instrument_arr)).merge(Role.vacant) }
+  scope :has_space_for, ->(instrument_arr) { joins(:roles).merge(Role.vacancy_for(instrument_arr)) }
+
+  scope :upcoming, -> { where("date_time > ?", DateTime.now) }
+  scope :past, -> { where("date_time < ?", DateTime.now) }
 
   private
 
