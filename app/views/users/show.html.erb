@@ -2,7 +2,11 @@
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
-        <%= image_tag "blank_avatar.jpg", alt: "alttext" %>
+        <% if @user.avatar.attached? %>
+          <%= cl_image_tag @user.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max" }, alt: "alttext", class: "avatar-large" %>
+        <% else %>
+          <%= image_tag "blank_avatar.jpg", class: "avatar-large" %>
+        <% end %>
       </div>
     </div>
     <div class="col-md-8 basic-info">
