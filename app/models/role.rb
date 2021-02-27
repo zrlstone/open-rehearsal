@@ -1,7 +1,7 @@
 class Role < ApplicationRecord
   belongs_to :rehearsal
   belongs_to :instrument
-  has_many :requests
+  has_many :requests, dependent: :destroy
 
   # use on rehearsal show page to show confirmed attendees
   scope :filled, -> { joins(:requests).merge(Request.confirmed) }

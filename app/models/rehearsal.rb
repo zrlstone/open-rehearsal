@@ -1,11 +1,11 @@
 class Rehearsal < ApplicationRecord
   belongs_to :organiser, class_name: 'User', foreign_key: 'user_id'
-  has_many :roles
+  has_many :roles, dependent: :destroy
   has_many :requests, through: :roles
 
   validates :date_time, :address, :title, presence: true
 
-  validates :title, length: { maximum: 25, too_long: "25 characters is the maximum allowed" }
+  validates :title, length: { maximum: 30, too_long: "30 characters is the maximum allowed" }
 
   validate :start_in_future
 
