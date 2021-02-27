@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :requests, only: [:edit, :update, :index]
+  resources :roles, only: [:edit, :update]
+  resources :requests, only: [:index, :destroy]
   resources :skills, only: [:new, :create]
 
   resources :users, only: [:show, :edit, :update]
