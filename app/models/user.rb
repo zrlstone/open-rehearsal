@@ -4,9 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :skills
+  has_many :skills, dependent: :destroy
   has_many :instruments, through: :skills
-  has_many :rehearsals, inverse_of: 'organiser'
-  has_many :requests
+  has_many :rehearsals, inverse_of: 'organiser', dependent: :destroy
+  has_many :requests, dependent: :destroy
   has_many :roles, through: :requests
+
+  validates :email, :password, :username, presence: true
+
+  validates :username, length: { in: 6..20 }
 end
