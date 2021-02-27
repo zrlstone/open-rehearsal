@@ -8,6 +8,8 @@ class RehearsalsController < ApplicationController
   end
 
   def show
+    @spaces = @rehearsal.roles.vacant
+    @filled = @rehearsal.roles.filled
   end
 
   def new
