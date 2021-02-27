@@ -9,11 +9,22 @@
       <div class="user-wrapper">
         <h2 class="username"><%= @user.username %></h2>
         <% if @user == current_user %>
-          <a class="edit-profile" href="#">
-            <div class="btn btn-primary">Edit Profile</div>
+          <a class="edit-profile" href="<%= edit_user_registration_path %>">
+            <button>Edit Profile</button>
           </a>
         <% end %>
       </div>
+      <ul class="posts">
+        <li><span><%= @user.rehearsals.count %></span> rehearsals</li>
+        <li><span>195</span> followers</li>
+        <li><span>345</span> following</li>
+      </ul>
     </div>
+  </div>
+
+  <div class="instruments">
+    <% @user.instruments.each do |instrument| %>
+      <li><%= instrument.name %></li>
+     <% end %>
   </div>
 </div>
