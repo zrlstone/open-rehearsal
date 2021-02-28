@@ -1,30 +1,35 @@
-<div class="user-profile">
+<div class="container user-profile mt-3 mb-3">
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
         <%= image_tag "blank_avatar.jpg", alt: "alttext" %>
-      </div>
-    </div>
-    <div class="col-md-8 basic-info">
-      <div class="user-wrapper">
-        <h2 class="username"><%= @user.username %></h2>
         <% if @user == current_user %>
           <a class="edit-profile" href="<%= edit_user_registration_path %>">
             <button>Edit Profile</button>
           </a>
         <% end %>
       </div>
-      <ul class="posts">
-        <li><span><%= @user.rehearsals.count %></span> rehearsals</li>
-        <li><span>195</span> followers</li>
-        <li><span>345</span> following</li>
-      </ul>
     </div>
-  </div>
+    <div class="col-md-8 basic-info">
+      <div class="user-wrapper">
+        <h2 class="username"><%= @user.username %></h2>
+      </div>
+      <div class="user-bio">
+        <p><%= @user.bio %></p>
+      </div>
+      <ul class="posts">
+        <li><span><%= @user.rehearsals.count %></span> upcoming rehearsals</li>
+          <% @user.rehearsals.each do |rehearsal| %>
+            <li><%= rehearsal.title %></li>
+          <% end %>
+        <li><span><%= @user.instruments.count %></span> instruments played</li>
+          <% @user.instruments.each do |instrument| %>
+            <li><%= instrument.name %></li>
+          <% end %>
+      </ul>
+      <div class="instruments">
 
-  <div class="instruments">
-    <% @user.instruments.each do |instrument| %>
-      <li><%= instrument.name %></li>
-     <% end %>
+      </div>
+    </div>
   </div>
 </div>
