@@ -20,4 +20,8 @@ class User < ApplicationRecord
   def upcoming_rehearsals
     Rehearsal.joins(:roles).upcoming.where(roles: { user_id: self.id })
   end
+
+  def past_rehearsals
+    Rehearsal.joins(:roles).past.where(roles: { user_id: self.id })
+  end
 end
