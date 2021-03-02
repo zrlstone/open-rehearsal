@@ -2,16 +2,58 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <h2><%= @rehearsal.title %></h2>
+
+      <div class="d-flex">
+        <% if @organiser.avatar.attached? %>
+          <%= cl_image_tag @organiser.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max", crop: "thumb" }, alt: "alttext", class: "avatar" %>
+        <% else %>
+          <%= image_tag "blank_avatar.jpg", class: "avatar" %>
+        <% end %>
+        <p><strong>
+          <% if (@rehearsal.user_id == current_user.id) %>
+            You are the organiser
+          <% else %>
+            Organised by <%= link_to "#{@organiser.username}", user_path(@organiser) %>
+          <% end %>
+        </strong></p>
+      </div>
+
+
       <p><%= @rehearsal.address %></p>
       <p><%= @rehearsal.description %></p>
-      <p><%= @rehearsal.date_time %></p>
+      <p><%= @rehearsal.date_time.strftime("%A %d %B %H:%M") %></p>
 
-      <%= link_to "Back", rehearsals_path %> |
-      <%= link_to "Edit", edit_rehearsal_path(@rehearsal) %> |
-      <%= link_to "Cancel rehearsal", 
-                  rehearsal_path(@rehearsal),
-                  method: :delete,
-                  data: { confirm: "Are you sure you want to cancel this rehearsal?" } %>
+      <h3>Attendees</h3>
+      <% @filled.each do |role| %>
+        <p>
+          <%= role.instrument.name %>: <%= role.user.username %>
+          <% if (@rehearsal.user_id == current_user.id) %>
+            <strong>(you)</strong>
+          <% end %>
+        </p>
+      <% end %>
+
+      <% if @spaces.length.positive? %>
+        <h3>Spaces</h3>
+        <% @spaces.each do |role| %>
+          <div class="d-flex">
+            <p><%= role.instrument.name %></p>
+            <% if current_user.instruments.include?(role.instrument) && !@rehearsal.attendees.include?(current_user) %>
+              <%= link_to "Request to join", '#' %>
+            <% end %>
+          </div>
+
+        <% end %>
+      <% end %>
+
+      <%= link_to "Back", rehearsals_path %>
+      <% if (@rehearsal.user_id == current_user.id) %>
+        | <%= link_to "Edit", edit_rehearsal_path(@rehearsal) %> |
+        <%= link_to "Cancel rehearsal",
+                    rehearsal_path(@rehearsal),
+                    method: :delete,
+                    data: { confirm: "Are you sure you want to cancel this rehearsal?" } %>
+      <% end %>
     </div>
   </div>
 </div>

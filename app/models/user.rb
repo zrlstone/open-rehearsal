@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :requests, dependent: :destroy
   has_many :roles
 
+  has_one_attached :avatar
+
   validates :username, presence: true
   validates_uniqueness_of :username
 
@@ -17,5 +19,9 @@ class User < ApplicationRecord
 
   def upcoming_rehearsals
     Rehearsal.joins(:roles).upcoming.where(roles: { user_id: self.id })
+  end
+
+  def past_rehearsals
+    Rehearsal.joins(:roles).past.where(roles: { user_id: self.id })
   end
 end
