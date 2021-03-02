@@ -45,6 +45,7 @@ zak = User.create(
 puts 'Adding instruments 🎵🎶 ...'
 
 acoustic_guitar = Instrument.create(name: 'acoustic guitar')
+acoustic_guitar.photo.attach(io: URI.open('app/assets/images/acoustic_guitar.svg'), filename: 'acoustic_guitar.svg', content_type: 'image/svg')
 electic_guitar = Instrument.create(name: 'electric guitar')
 bass_guitar = Instrument.create(name: 'bass guitar')
 violin = Instrument.create(name: 'violin')
@@ -56,6 +57,7 @@ mandolin = Instrument.create(name: 'mandolin')
 ukulele = Instrument.create(name: 'ukulele')
 harp = Instrument.create(name: 'harp')
 piano = Instrument.create(name: 'piano')
+piano.photo.attach(io: URI.open('app/assets/images/piano.svg'), filename: 'piano.svg', content_type: 'image/svg')
 keyboard = Instrument.create(name: 'keyboard')
 flute = Instrument.create(name: 'flute')
 clarinet = Instrument.create(name: 'clarinet')
@@ -69,6 +71,10 @@ saxophone = Instrument.create(name: 'saxophone')
 drum_kit = Instrument.create(name: 'drum kit')
 bongo_drums = Instrument.create(name: 'bongo drums')
 vocals = Instrument.create(name: 'vocals')
+
+puts 'Tuning strings'
+puts 'Replacing reeds'
+puts 'do, re, mi, fa, sol, la, and si'
 
 puts 'Adding skills to users ...'
 
@@ -90,14 +96,15 @@ dan.skills.create(instrument: acoustic_guitar)
 dan.skills.create(instrument: saxophone)
 dan.skills.create(instrument: piano)
 
-puts 'Creating rehearsals ...'
+
+puts 'Opening rehearsals ...'
 
 march_first = DateTime.new(2021, 03, 01, 20)
 apr_first = DateTime.new(2021, 04, 01, 19)
 may_first = DateTime.new(2021, 05, 01, 20, 30)
 june_first = DateTime.new(2021, 06, 01, 20)
 
-dans_rehearsal = Rehearsal.create!(organiser: dan, address: 'Royal Festival Hall, London', title: 'Symphony in B Minor', description: 'More players needed!', date_time: march_first)
+dans_rehearsal = Rehearsal.create!(organiser: dan, address: 'Royal Festival Hall, London', title: 'Symphony in B Minor', description: 'More players needed!', date_time: apr_first)
 Role.create(rehearsal: dans_rehearsal, instrument: saxophone, user: dan)
 Role.create(rehearsal: dans_rehearsal, instrument: violin)
 Role.create(rehearsal: dans_rehearsal, instrument: harp)
