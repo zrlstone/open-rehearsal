@@ -17,9 +17,7 @@ class Rehearsal < ApplicationRecord
   scope :upcoming, -> { where("date_time > ?", DateTime.now) }
   scope :past, -> { where("date_time < ?", DateTime.now) }
 
-
   # Adding search function to the model
-
   include PgSearch::Model
   pg_search_scope :search_by_title_and_address,
     against: [:title, :description, :address],
