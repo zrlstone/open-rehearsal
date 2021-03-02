@@ -17,19 +17,17 @@
       <div class="user-bio">
         <p><%= @user.bio %></p>
       </div>
-      <ul class="posts">
-        <li><span><%= @user.rehearsals.count %></span> upcoming rehearsals</li>
+      <ul class="user-details">
+        <li><span><%= @user.rehearsals.count %></span> upcoming rehearsals:</li>
           <% @user.rehearsals.each do |rehearsal| %>
-            <li><%= rehearsal.title %></li>
+            <li class="list">- <%= rehearsal.title %></li>
           <% end %>
-        <li><span><%= @user.instruments.count %></span> instruments played</li>
+        <hr>
+        <li>Plays <span><%= @user.instruments.count %></span> instruments:</li>
           <% @user.instruments.each do |instrument| %>
-            <li><%= instrument.name %></li>
+            <li class="list">- <%= instrument.name %></li>
           <% end %>
       </ul>
-      <div class="instruments">
-
-      </div>
     </div>
   </div>
 </div>

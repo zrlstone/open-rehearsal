@@ -48,16 +48,19 @@
   .user-bio {
     display: flex;
   }
-  ul.posts{
+  ul.user-details{
     padding-left: 0;
     > li{
       list-style-type: none;
-      padding-right: 40px;
+      padding-right: 0px;
       font-size: 15px;
       span{
         color: #262626;
         font-weight: 600;
       }
+    }
+    > li.list{
+      padding-left: 20px;
     }
   }
   .name{
@@ -66,9 +69,3 @@
   }
 }
 
-.instruments {
-  margin: auto;
-  > li {
-    list-style-type: none;
-  }
-}
