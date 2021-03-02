@@ -5,16 +5,17 @@
         <% if @user.avatar.attached? %>
           <%= cl_image_tag @user.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max" }, alt: "alttext", class: "avatar-large" %>
         <% else %>
-          <%= image_tag "blank_avatar.jpg", class: "avatar-large" %>
+          <%= image_tag "blank_avatar.jpg" %>
+        <% end %>
+        <br>
+        <% if @user == current_user %>
+          <%= link_to 'Edit Profile', edit_user_registration_path, class: "button" %>
         <% end %>
       </div>
     </div>
     <div class="col-md-8 basic-info">
       <div class="user-wrapper">
         <h2 class="username"><%= @user.username %></h2>
-        <% if @user == current_user %>
-          <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
-        <% end %>
       </div>
       <div class="user-bio">
         <p><%= @user.bio %></p>
