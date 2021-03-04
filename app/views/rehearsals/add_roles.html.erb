@@ -4,9 +4,12 @@
 
       <h1>Choose instruments</h1>
 
-      <div>
+      <div class="cards-container">
         <% @instruments.each do |instrument| %>
-          <%= link_to "#{instrument.name}", build_role_rehearsal_path(instrument: instrument), method: :post %>
+            <div class="instrument-clickable">
+              <i><%= cl_image_tag instrument.photo.key %></i>
+              <%= link_to "#{instrument.name.titleize}", build_role_rehearsal_path(instrument: instrument), method: :post %>
+            </div>
         <% end %>
       </div>
 

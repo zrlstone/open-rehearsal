@@ -1,0 +1,16 @@
+<div class="container cards-container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 text-center">
+      <h3>Select your instrument:</h3>
+
+      <div class="d-flex flex-wrap justify-content-center pt-4">
+        <% @instruments.each do |instrument| %>
+          <div class="instrument-clickable">
+            <i><%= instrument.photo %></i>
+            <small><%= instrument.name %></small>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
