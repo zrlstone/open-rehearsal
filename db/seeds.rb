@@ -121,7 +121,6 @@ dan.skills.create(instrument: piano)
 
 puts 'Opening rehearsals ...'
 
-march_first = DateTime.new(2021, 03, 01, 20)
 apr_first = DateTime.new(2021, 04, 01, 19)
 may_first = DateTime.new(2021, 05, 01, 20, 30)
 june_first = DateTime.new(2021, 06, 01, 20)
