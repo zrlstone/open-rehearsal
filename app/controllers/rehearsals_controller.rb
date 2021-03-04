@@ -6,6 +6,9 @@ class RehearsalsController < ApplicationController
 
     instrument_array = current_user.instruments.pluck(:id)
     @suggested_rehearsals = Rehearsal.upcoming.has_space_for(instrument_array).uniq - @my_upcoming_rehearsals
+    if params[:query].present?
+      @suggested_rehearsals = Rehearsal.search_by_title_and_address(params[:query]).upcoming.has_space_for(instrument_array).uniq - @my_upcoming_rehearsals
+    end
   end
 
   def show

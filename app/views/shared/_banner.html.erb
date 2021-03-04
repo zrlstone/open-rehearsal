@@ -3,6 +3,8 @@
     <% if user_signed_in? %>
       <h1>Welcome, <%= current_user.username %>!</h1>
       <p>What are you up to today?</p>
+      <%= render "shared/search" %>
+      <br>
       <%= link_to "Explore rehearsals", rehearsals_path, class: "btn btn-primary" %>
       <%= link_to "Create a rehearsal", new_rehearsal_path, class: "btn btn-primary" %>
     <% else %>
