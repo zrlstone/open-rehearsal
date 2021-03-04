@@ -1,8 +1,8 @@
-<%= form_tag rehearsals_path, method: :get, class: "form-inline" do %>
+<%= form_tag rehearsals_path, method: :get, class: "form-inline mb-4" do %>
     <%= text_field_tag :query,
     params[:query],
     class: "form-control search-input",
     placeholder: "Search address, rehearsal name..."
     %>
-    <%= submit_tag "Search", class: "btn btn-success" %>
+    <%= submit_tag "Search", class: "btn btn-search" %>
 <% end %>
