@@ -1,0 +1,5 @@
+<%= simple_form_for [@rehearsal, @role] do |f| %>
+  <%= f.association :instrument, collection: @instruments, as: :radio_buttons %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Next" %>
+<% end %>
