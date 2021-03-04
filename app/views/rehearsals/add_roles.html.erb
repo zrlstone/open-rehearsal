@@ -13,21 +13,24 @@
         <% end %>
       </div>
 
+      <hr>
+
       <div>
         <h3 id="rehearsal-lineup">Lineup</h3>
-        <ul>
-          <% @rehearsal.roles.each do |role| %>
-            <li>
-              <%= role.instrument.name %>
-              <% if role.user == current_user %>
-                <span>(you!)</span>
-                <%= link_to 'change', edit_role_path(role) %>
-              <% else %>
-                <%= link_to 'remove', role_path(role), method: :delete %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+          <div class="cards-container">
+            <% @rehearsal.roles.each do |role| %>
+              <div class="instrument-clickable">
+                <i><%= cl_image_tag role.instrument.photo.key %></i>
+                <p><%= role.instrument.name.titleize %></p>
+                <% if role.user == current_user %>
+                  <span>(you!)</span>
+                  <%= link_to 'change', edit_role_path(role) %>
+                <% else %>
+                  <%= link_to 'remove', role_path(role), method: :delete %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
       </div>
 
       <%= link_to 'Done', rehearsal_path(@rehearsal) %> |

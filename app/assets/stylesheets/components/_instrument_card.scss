@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-.instrument-clickable {
+.cards-container .instrument-clickable {
   padding: 10px;
   width: 80px;
   border: 1px solid #dedede;
@@ -18,12 +18,12 @@
 }
 
 .instrument-clickable i {
-  font-size: 24px;
   margin-bottom: 10px;
+  justify-content-center: center;
 }
 
 .instrument-clickable:hover i {
-  color: #52ACF4;
+  fill: #52ACF4;
   border-color: #52ACF4;
 }
 
@@ -33,5 +33,14 @@
 }
 
 .instrument-clickable.active i {
+  color: #52ACF4;
+}
+
+.instrument-clickable a {
+  font-size: 12px;
+}
+
+.instrument-clickable p {
+  font-size: 12px;
   color: #52ACF4;
 }
