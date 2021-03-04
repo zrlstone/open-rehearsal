@@ -1,14 +1,12 @@
 class RehearsalsController < ApplicationController
   before_action :set_rehearsal, only: [:show, :edit, :update, :destroy]
   def index
-    if params[:query].present?
-      @suggested_rehearsals = Rehearsal.search_by_title_and_address(params[:query])
-      @my_upcoming_rehearsals = current_user.upcoming_rehearsals
-    else
-      @my_upcoming_rehearsals = current_user.upcoming_rehearsals
+    @my_upcoming_rehearsals = current_user.upcoming_rehearsals
 
-      instrument_array = current_user.instruments.pluck(:id)
-      @suggested_rehearsals = Rehearsal.upcoming.has_space_for(instrument_array).uniq - @my_upcoming_rehearsals
+    instrument_array = current_user.instruments.pluck(:id)
+    @suggested_rehearsals = Rehearsal.upcoming.has_space_for(instrument_array).uniq - @my_upcoming_rehearsals
+    if params[:query].present?
+      @suggested_rehearsals = Rehearsal.search_by_title_and_address(params[:query]).upcoming.has_space_for(instrument_array).uniq - @my_upcoming_rehearsals
     end
   end
 
