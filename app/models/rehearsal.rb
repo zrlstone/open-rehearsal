@@ -21,7 +21,7 @@ class Rehearsal < ApplicationRecord
 
   def start_in_future
     if date_time < DateTime.now
-      errors.add(:start_date_time, "Your rehearsal cannot take place in the past!")
+      errors.add(:date_time, "Your rehearsal cannot take place in the past!")
     end
   end
 end

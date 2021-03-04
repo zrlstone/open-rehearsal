@@ -1,5 +1,6 @@
 class RehearsalsController < ApplicationController
-  before_action :set_rehearsal, only: [:show, :edit, :update, :destroy]
+  before_action :set_rehearsal, only: [:show, :edit, :update, :destroy, :add_roles, :build_role]
+
   def index
     @my_upcoming_rehearsals = current_user.upcoming_rehearsals
 
@@ -20,10 +21,24 @@ class RehearsalsController < ApplicationController
   def create
     @rehearsal = Rehearsal.new(rehearsal_params)
     @rehearsal.organiser = current_user
-    if @rehearsal.save!
-      redirect_to rehearsal_path(@rehearsal)
+
+    if @rehearsal.save
+      redirect_to new_rehearsal_role_path(@rehearsal)
     else
       render :new
+    end
+  end
+
+  def add_roles
+    @instruments = Instrument.all
+  end
+
+  def build_role
+    @role = Role.new
+    @role.instrument_id = params[:instrument]
+    @role.rehearsal = @rehearsal
+    if @role.save
+      redirect_to add_roles_rehearsal_path(@rehearsal, anchor: "rehearsal-lineup")
     end
   end
 
@@ -31,7 +46,7 @@ class RehearsalsController < ApplicationController
 
   def update
     if @rehearsal.update(rehearsal_params)
-      redirect_to rehearsal_path(@rehearsal)
+      redirect_to add_roles_rehearsal_path(@rehearsal)
     else
       render :edit
     end
