@@ -1,9 +1,36 @@
 <div class="container pt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col-8">
-      <h2>Edit your rehearsal</h2>
-      <%= render "form", rehearsal: @rehearsal %>
-      <%= link_to "Back", rehearsal_path(@rehearsal) %>
+      <h2>Edit rehearsal details</h2>
+      <%#= render "form", rehearsal: @rehearsal %>
+      <%= simple_form_for(@rehearsal) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :address %>
+        <%= f.input :description %>
+        <%= f.input :date_time %>
+
+
+        <div class="mt-5">
+          <h3>Current lineup<%= link_to "Edit", add_roles_rehearsal_path(@rehearsal) %></h3>
+
+          <ul>
+            <% @rehearsal.roles.each do |role| %>
+              <li>
+                <%= role.instrument.name %>
+                <% if role.user == current_user %>
+                  <span>(you!)</span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+
+        </div>
+        <div class="text-center mt-5">
+          <%= f.submit "Save changes" %>
+        </div>
+      <% end %>
+
+      <%= link_to "cancel", rehearsal_path(@rehearsal) %>
     </div>
   </div>
 </div>
