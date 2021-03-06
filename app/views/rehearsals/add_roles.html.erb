@@ -1,10 +1,8 @@
 <div class="container pt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col-8">
-
-      <h1>Choose instruments</h1>
-
       <div class="cards-container">
+        <h1>Choose instruments</h1>
         <% @instruments.each do |instrument| %>
             <div class="instrument-clickable">
               <i><%= cl_image_tag instrument.photo.key %></i>
@@ -12,30 +10,23 @@
             </div>
         <% end %>
       </div>
-
-      <hr>
-
-      <div>
-        <h3 id="rehearsal-lineup">Lineup</h3>
-          <div class="cards-container">
-            <% @rehearsal.roles.each do |role| %>
-              <div class="instrument-clickable">
-                <i><%= cl_image_tag role.instrument.photo.key %></i>
-                <p><%= role.instrument.name.titleize %></p>
-                <% if role.user == current_user %>
-                  <span>(you!)</span>
-                  <%= link_to 'change', edit_role_path(role) %>
-                <% else %>
-                  <%= link_to 'remove', role_path(role), method: :delete %>
-                <% end %>
-              </div>
+      <div class="lineup-container">
+        <h1>Lineup</h1>
+        <% @rehearsal.roles.each do |role| %>
+          <div class="instrument-clickable">
+            <i><%= cl_image_tag role.instrument.photo.key %></i>
+            <p><%= role.instrument.name.titleize %></p>
+            <% if role.user == current_user %>
+              <span>(you!)</span>
+              <%= link_to 'change', edit_role_path(role) %>
+            <% else %>
+              <%= link_to 'remove', role_path(role), method: :delete %>
             <% end %>
           </div>
+        <% end %>
       </div>
-
-      <%= link_to 'Done', rehearsal_path(@rehearsal) %> |
-      <%= link_to 'cancel', rehearsal_path(@rehearsal), method: :delete %>
-
     </div>
+    <%= link_to 'Done', rehearsal_path(@rehearsal) %> |
+    <%= link_to 'cancel', rehearsal_path(@rehearsal), method: :delete %>
   </div>
 </div>

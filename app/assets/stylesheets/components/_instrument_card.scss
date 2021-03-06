@@ -1,14 +1,33 @@
-.cards-container {
-  display: flex;
-  flex-flow: wrap;
-  justify-content: center;
+
+.container {
+  max-width: 100%;
 }
 
-.cards-container .instrument-clickable {
+.cards-container {
+  width: 50%;
+  float: left;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: normal;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.lineup-container {
+  width: 50%;
+  float: right;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: normal;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.instrument-clickable {
   padding: 10px;
   width: 80px;
+  height: 150px;
   border: 1px solid #dedede;
-  color: #a0a0a0;
   margin-right: 10px;
   margin-bottom: 10px;
   text-align: center;
