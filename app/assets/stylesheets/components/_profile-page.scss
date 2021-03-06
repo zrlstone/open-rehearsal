@@ -1,3 +1,12 @@
+.profile {
+  margin: auto;
+  min-height: 400px;
+  max-width: 80%;
+  display: flex;
+  background: white;
+  border-radius: 8px;
+}
+
 .profile .avatar {
   .wrapper {
     width: 140px;
@@ -11,60 +20,37 @@
     object-fit: cover;
     margin-bottom: 16px;
   }
-
-  .wrapper .button {
-    background-color: transparent;
-    border-radius: 5px;
-    border: 1px solid #dbdbdb;
-    color: #262626;
-    font-size: 14px;
-    margin-left: 24px;
-    margin-top: 20px;
-    padding: 4px 10px;
-    font-weight: 500;
-    position: center;
+  .wrapper .profile-username {
+    display: flex;
+    justify-content: center;
+  }
+  .wrapper .user-bio {
+    display: flex;
+    text-align: center;
+  }
+  .wrapper .profile-button-container {
+    display: flex;
+    justify-content: center;
   }
 }
 
-.user-profile {
+.profile-list-title {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.profile-list {
+  list-style-type: none;
+  padding-left: 16px;
+}
+
+.profile-rehearsals {
+  margin-top: 40px;
+}
+
+.profile-instruments-container {
+  padding-top: 8px;
+  padding-left: 20px;
   display: flex;
-  background: white;
-  border-radius: 8px;
-  height: 400px;
-  margin: auto;
+  justify-content: flex-start;
 }
-
-.profile .basic-info{
-  padding: 40px 0;
-  .user-wrapper{
-    display: flex;
-  }
-  .username{
-    font-size: 30px;
-    line-height: 40px;
-    font-weight: 200;
-  }
-  .user-bio {
-    display: flex;
-  }
-  ul.user-details{
-    padding-left: 0;
-    > li{
-      list-style-type: none;
-      padding-right: 0px;
-      font-size: 15px;
-      span{
-        color: #262626;
-        font-weight: 600;
-      }
-    }
-    > li.list{
-      padding-left: 20px;
-    }
-  }
-  .name{
-    font-size: 15px;
-    font-weight: 600;
-  }
-}
-

@@ -1,5 +1,5 @@
-<div class="container user-profile mt-3 mb-3">
-  <div class="profile row">
+<div class="container pt-5 pb-5">
+  <div class="row profile">
     <div class="col-md-4 avatar">
       <div class="wrapper">
         <% if @user.avatar.attached? %>
@@ -8,28 +8,31 @@
           <%= image_tag "blank_avatar.jpg" %>
         <% end %>
         <br>
-        <% if @user == current_user %>
-          <%= link_to 'Edit Profile', edit_user_registration_path, class: "button" %>
-        <% end %>
+        <h2 class="profile-username"><%= @user.username %></h2>
+        <p class="user-bio"><%= @user.bio %></p>
+        <div class="profile-button-container">
+          <% if @user == current_user %>
+            <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-openrehearsal" %>
+          <% end %>
+        </div>
       </div>
     </div>
-    <div class="col-md-8 basic-info">
-      <div class="user-wrapper">
-        <h2 class="username"><%= @user.username %></h2>
-      </div>
-      <div class="user-bio">
-        <p><%= @user.bio %></p>
-      </div>
-      <ul class="user-details">
-        <li><span><%= @user.rehearsals.count %></span> upcoming rehearsals:</li>
-          <% @user.rehearsals.each do |rehearsal| %>
-            <li class="list">- <%= rehearsal.title %></li>
-          <% end %>
+    <div class="col-md-8 profile-rehearsals">
+      <ul>
+        <li class="profile-list-title"><h4>Plays <%= @user.instruments.count %> instruments:</h4></li>
+          <div class="profile-instruments-container">
+            <% @user.instruments.each do |instrument| %>
+              <div class="instrument-clickable">
+                <i><%= cl_image_tag instrument.photo.key %></i>
+                <p><%= instrument.name.titleize %></p>
+              </div>
+            <% end %>
+          </div>
         <hr>
-        <li>Plays <span><%= @user.instruments.count %></span> instruments:</li>
-          <% @user.instruments.each do |instrument| %>
-            <li class="list">- <%= instrument.name %></li>
-          <% end %>
+        <li class="profile-list-title"><h4>Has <%= @user.rehearsals.count %> upcoming rehearsals:</h4></li>
+          <% @user.rehearsals.each do |rehearsal| %>
+            <li class="profile-list"><%= link_to rehearsal.title, rehearsal_path(rehearsal) %> | <%= rehearsal.address %> | <%= rehearsal.date_time.strftime("%A %d %B %H:%M") %></li>
+        <% end %>
       </ul>
     </div>
   </div>
