@@ -12,10 +12,15 @@ Rails.application.routes.draw do
   end
 
   resources :roles, only: [:edit, :update, :destroy] do
+    member do
+      patch :accept_request
+    end
     resources :requests, only: [:create]
   end
 
   resources :requests, only: [:index, :destroy]
+
   resources :skills, only: [:create, :destroy]
+
   resources :users, only: [:show]
 end
