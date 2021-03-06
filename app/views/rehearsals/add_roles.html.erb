@@ -2,31 +2,56 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <div class="cards-container">
-        <h1>Choose instruments</h1>
+        <div class="container title">
+          <h3>Choose instruments</h3>
+        </div>
         <% @instruments.each do |instrument| %>
+          <%= link_to build_role_rehearsal_path(instrument: instrument), method: :post do %>
             <div class="instrument-clickable">
               <i><%= cl_image_tag instrument.photo.key %></i>
-              <%= link_to "#{instrument.name.titleize}", build_role_rehearsal_path(instrument: instrument), method: :post %>
+              <p><%= instrument.name.titleize %></p>
             </div>
+          <% end %>
         <% end %>
       </div>
       <div class="lineup-container">
-        <h1>Lineup</h1>
+        <div class="container title">
+          <h3>Lineup</h3>
+        </div>
         <% @rehearsal.roles.each do |role| %>
           <div class="instrument-clickable">
             <i><%= cl_image_tag role.instrument.photo.key %></i>
             <p><%= role.instrument.name.titleize %></p>
             <% if role.user == current_user %>
-              <span>(you!)</span>
-              <%= link_to 'change', edit_role_path(role) %>
+              <p class="role-user">You!</p>
+              <p><%= link_to 'change', edit_role_path(role) %></p>
             <% else %>
-              <%= link_to 'remove', role_path(role), method: :delete %>
+              <p><%= link_to 'remove', role_path(role), method: :delete %></p>
             <% end %>
           </div>
         <% end %>
+        <br>
+        <div class="container">
+          <%= link_to 'Done', rehearsal_path(@rehearsal) %> |
+          <%= link_to 'cancel', rehearsal_path(@rehearsal), method: :delete %>
+        </div>
       </div>
     </div>
-    <%= link_to 'Done', rehearsal_path(@rehearsal) %> |
-    <%= link_to 'cancel', rehearsal_path(@rehearsal), method: :delete %>
   </div>
 </div>
+
+<%= javascript_tag do %>
+
+  const instruments = document.querySelectorAll('.instrument-clickable');
+
+  const toggleActiveClass = (event) => {
+    event.currentTarget.classList.toggle('active');
+  };
+
+  const toggleActiveOnClick = (instrument) => {
+    instrument.addEventListener('click', toggleActiveClass);
+  };
+
+  instruments.forEach(toggleActiveOnClick);
+
+<% end %>
