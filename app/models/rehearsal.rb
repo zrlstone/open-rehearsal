@@ -4,6 +4,8 @@ class Rehearsal < ApplicationRecord
   has_many :requests, through: :roles
   has_many :attendees, through: :roles, source: :user
 
+  accepts_nested_attributes_for :roles
+
   validates :date_time, :address, :title, presence: true
 
   validates :title, length: { maximum: 30, too_long: "30 characters is the maximum allowed" }
@@ -16,6 +18,10 @@ class Rehearsal < ApplicationRecord
 
   scope :upcoming, -> { where("date_time > ?", DateTime.now) }
   scope :past, -> { where("date_time < ?", DateTime.now) }
+
+  def organiser_role
+    roles.where(user: organiser).first
+  end
 
   # Adding search function to the model
   include PgSearch::Model

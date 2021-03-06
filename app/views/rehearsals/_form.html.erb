@@ -1,7 +1,79 @@
-<%= simple_form_for(rehearsal) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :address %>
-  <%= f.input :description %>
-  <%= f.input :date_time %>
-  <%= f.submit "Next" %>
+<%#= simple_form_for(rehearsal) do |f| %>
+  <%#= f.input :title %>
+  <%#= f.input :address %>
+  <%#= f.input :description %>
+  <%#= f.input :date_time %>
+  <%#= f.simple_fields_for :roles do |r| %>
+    <%#= r.association :instrument, collection: @instruments, as: :radio_buttons %>
+    <%#= r.hidden_field :user_id, value: current_user.id %>
+  <%# end %>
+  <%#= f.submit "Next" %>
+<%# end %>
+<div class="step-container d-flex justify-content-center">
+  <p id="step-number">STEP 1 OF 6</p>
+</div>
+
+
+<%= simple_form_for(@rehearsal) do |f| %>
+
+  <div class="form-step">
+    <div class="step-title">
+      <h1>Choose a title for your rehearsal</h1>
+    </div>
+    <%= f.input :title, label: false, placeholder: 'e.g. Composer name, genre, piece' %>
+    <div class="form-buttons d-flex justify-content-end">
+      <button class="next btn btn-outline-secondary" type="button">Next</button>
+    </div>
+
+  </div>
+  <div class="form-step d-none">
+    <div class="step-title">
+      <h1>Where will the rehearsal take place?</h1>
+    </div>
+    <%= f.input :address, label: false, placeholder: 'Enter address...' %>
+    <div class="form-buttons d-flex justify-content-between">
+      <button class="back btn btn-outline-secondary" type="button">Back</button>
+      <button class="next btn btn-outline-secondary" type="button">Next</button>
+    </div>
+  </div>
+
+  <div class="form-step d-none">
+    <div class="step-title">
+      <h1>Write a description of your rehearsal</h1>
+    </div>
+    <%= f.input :description, label: false, placeholder: 'Tell other players what your rehearsal is all about!' %>
+    <div class="form-buttons d-flex justify-content-between">
+      <button class="back btn btn-outline-secondary" type="button">Back</button>
+      <button class="next btn btn-outline-secondary" type="button">Next</button>
+    </div>
+  </div>
+
+  <div class="form-step d-none">
+    <div class="step-title">
+      <h1>Choose a date and time...</h1>
+    </div>
+    <%= f.input :date_time, label: false %>
+    <div class="form-buttons d-flex justify-content-between">
+      <button class="back btn btn-outline-secondary" type="button">Back</button>
+      <button class="next btn btn-outline-secondary" type="button">Next</button>
+    </div>
+  </div>
+
+  <div class="form-step d-none">
+    <div class="step-title">
+      <h1>What will you be playing?</h1>
+    </div>
+    <%= f.simple_fields_for :roles do |r| %>
+      <%= r.association :instrument, collection: @instruments, as: :radio_buttons, label: 'Select instrument:' %>
+      <%= r.hidden_field :user_id, value: current_user.id %>
+    <% end %>
+      <div class="form-buttons d-flex justify-content-between">
+        <button class="back btn btn-outline-secondary" type="button">Back</button>
+        <%= f.submit "Next", class: "btn btn-outline-secondary" %>
+      </div>
+  </div>
+
 <% end %>
+
+
+

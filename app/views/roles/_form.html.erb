@@ -1,5 +1,8 @@
-<%= simple_form_for [@rehearsal, @role] do |f| %>
+<%= simple_form_for @role do |f| %>
   <%= f.association :instrument, collection: @instruments, as: :radio_buttons %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "Next" %>
+  <div class="d-flex justify-content-end">
+    <%#= link_to "Back", edit_rehearsal_path(@rehearsal), class: "btn btn-outline-secondary" %>
+    <%= f.submit "Edit lineup", class: "btn btn-outline-secondary" %>
+  </div>
 <% end %>

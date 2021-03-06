@@ -3,6 +3,7 @@
     <div class="col-8">
 
       <h1>Choose instruments</h1>
+      <p>Step 6 of 6</p>
 
       <div>
         <% @instruments.each do |instrument| %>
@@ -26,9 +27,14 @@
           <% end %>
         </ul>
       </div>
+      <%#= link_to 'Back', edit_rehearsal_path(@rehearsal), class: "btn btn-outline-secondary" %>
 
-      <%= link_to 'Done', rehearsal_path(@rehearsal) %> |
-      <%= link_to 'cancel', rehearsal_path(@rehearsal), method: :delete %>
+
+
+      <div class="d-flex justify-content-center">
+        <%= link_to 'FINISHED!', rehearsal_path(@rehearsal), class: "btn btn-openrehearsal" %>
+      </div>
+      <%#= link_to 'cancel', rehearsal_path(@rehearsal), method: :delete, data: { confirm: 'Are you sure you want to cancel this rehearsal?'} %>
 
     </div>
   </div>
