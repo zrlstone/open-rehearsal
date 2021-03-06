@@ -9,12 +9,25 @@ class RehearsalsController < ApplicationController
     if params[:query].present?
       @suggested_rehearsals = Rehearsal.search_by_title_and_address(params[:query]).upcoming.has_space_for(instrument_array).uniq - @my_upcoming_rehearsals
     end
+
+    @markers = @suggested_rehearsals.geocoded.map do |rehearsal|
+      {
+        lat: rehearsal.latitude,
+        lng: rehearsal.longitude
+      }
+    end
   end
 
   def show
     @organiser = @rehearsal.organiser
     @spaces = @rehearsal.roles.vacant
     @filled = @rehearsal.roles.filled
+
+    @marker =
+      [{
+        lat: @rehearsal.latitude,
+        lng: @rehearsal.longitude
+      }]
   end
 
   def new

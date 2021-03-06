@@ -22,6 +22,11 @@
             <li><%= link_to rehearsal.title, rehearsal_path(rehearsal) %></li>
           <% end %>
         </ul>
+        <div id="map"
+          style="width: 100%; height: 100vh"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
         <%= link_to "Create new rehearsal", new_rehearsal_path %>
       <% end %>
 

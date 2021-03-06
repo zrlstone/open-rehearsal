@@ -1,4 +1,7 @@
 class Rehearsal < ApplicationRecord
+  # Add geocoding functionality to model
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
   belongs_to :organiser, class_name: 'User', foreign_key: 'user_id'
   has_many :roles, dependent: :destroy
   has_many :requests, through: :roles
