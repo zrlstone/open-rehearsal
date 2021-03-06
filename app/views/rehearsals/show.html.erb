@@ -39,7 +39,7 @@
           <div class="d-flex">
             <p><%= role.instrument.name %></p>
             <% if current_user.instruments.include?(role.instrument) && !@rehearsal.attendees.include?(current_user) %>
-              <%= link_to "Request to join", '#' %>
+              <%= link_to "Request to join", role_requests_path(role), method: :post%>
             <% end %>
           </div>
 

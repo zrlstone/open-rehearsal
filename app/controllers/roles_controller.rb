@@ -34,6 +34,15 @@ class RolesController < ApplicationController
     end
   end
 
+  def accept_request
+    @request = Request.find(params[:id])
+    role = @request.role
+    user = @request.user
+    role.update(user: user)
+
+    redirect_to requests_path
+  end
+
   def destroy
     @rehearsal = @role.rehearsal
     @role.destroy
