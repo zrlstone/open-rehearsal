@@ -1,8 +1,55 @@
 .form-box {
-  height: 800px;
+  // height: 800px;
   width: 400px;
   background-color: white;
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 20px;
 }
+
+.user-list {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  .skill-item {
+    border: 3px solid transparent;
+    background-color: rgb(229,230,232);
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    &:hover {
+    border: 3px solid black;
+    }
+  }
+}
+
+.skill-list .skill-item:hover {
+  a {
+    display: inline;
+  }
+}
+
+.instrument-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  p {
+    margin-bottom: 0;
+    color: $light-blue;
+  }
+}
+
+.skill-list .skill-item {
+  margin-bottom: 8px;
+  width: 50%;
+  a {
+    display: none;
+    color: grey;
+  }
+}
+
