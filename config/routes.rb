@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get :add_roles
       post :build_role
     end
-    resources :roles, only: [:new, :create] # or - simple form hidden fields for create. Won't need nesting.
+    # resources :roles, only: [:new, :create] # or - simple form hidden fields for create. Won't need nesting.
   end
 
   resources :roles, only: [:edit, :update, :destroy] do
@@ -20,8 +20,7 @@ Rails.application.routes.draw do
 
   resources :requests, only: [:index, :destroy]
 
+  resources :skills, only: [:create, :destroy]
 
-
-  resources :skills, only: [:create]
   resources :users, only: [:show]
 end

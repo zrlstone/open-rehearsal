@@ -7,8 +7,8 @@
           <h1>Welcome, <%= current_user.username %>!</h1>
           <p>What are you up to today?</p>
           <%= render "shared/search" %>
-          <%= link_to "Explore rehearsals", rehearsals_path, class: "btn btn-openrehearsal" %>
-          <%= link_to "Create a rehearsal", new_rehearsal_path, class: "btn btn-openrehearsal" %>
+          <%= link_to "Explore rehearsals", rehearsals_path, class: "btn btn-openrehearsal mb-3 mr-2" %>
+          <%= link_to "Create a rehearsal", new_rehearsal_path, class: "btn btn-openrehearsal mb-3 mr-2" %>
         <% else %>
           <h1>Grab your instrument and join a rehearsal</h1>
           <p>Find fellow musicians to rehearse with or start your own rehearsal</p>

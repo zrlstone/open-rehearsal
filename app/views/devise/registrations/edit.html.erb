@@ -1,8 +1,8 @@
 <div class="container pt-5">
   <div class="row justify-content-center">
     <div class="form-box col-6">
-      <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+      <!-- <h2>Edit <%#= resource_name.to_s.humanize %></h2>-->
+      <h2>General</h2>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
 
@@ -28,15 +28,53 @@
                       placeholder: "we need your current password to confirm your changes",
                       required: true,
                       input_html: { autocomplete: "current-password" } %>
-        </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Update", class: "btn btn-primary" %>
-          <%= link_to "Back", :back, class: "btn btn-primary" %>
-        </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Update", class: "btn btn-search" %>
+
+          </div>
       <% end %>
-      <hr>
 
+
+
+
+          <div class="mt-5" id="user-skills">
+
+            <h2>Your instruments</h2>
+
+            <ul class="user-list skill-list">
+              <% current_user.skills.each do |skill| %>
+                <li>
+                  <div class="skill-item">
+                    <%= skill.instrument.name %>
+                    <%= link_to skill_path(skill), remote: true, method: :delete do %>
+                      <i class="fas fa-times"></i>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="mt-5">
+            <h2>Add instruments</h2>
+            <ul class="user-list instrument-list">
+              <% Instrument.all.each do |instrument| %>
+                <% if !current_user.instruments.include?(instrument) %>
+                  <li>
+                    <%= link_to skills_path(instrument: instrument), method: :post, remote: true do %>
+                      <div class="skill-item">
+                        <%= instrument.name %>
+                        <p>add!</p>
+                      </div>
+                    <% end %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <hr>
+      <%= link_to "Back", :back, class: "btn btn-primary" %>
       <p><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
 
     </div>

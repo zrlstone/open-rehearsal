@@ -1,27 +1,28 @@
 class RolesController < ApplicationController
   before_action :set_role, only: [:edit, :update, :destroy]
-  before_action :find_rehearsal, only: [:new, :create]
+  # before_action :find_rehearsal, only: [:new, :create]
 
-  def new
-    # only used for organiser role
-    @role = Role.new
-    @instruments = current_user.instruments
-  end
+  # def new
+  #   # only used for organiser role
+  #   @role = Role.new
+  #   @instruments = current_user.instruments
+  # end
 
-  def create
-    # only used for organiser role
-    @role = Role.new(role_params)
-    @role.rehearsal = @rehearsal
-    if @role.save
-      redirect_to add_roles_rehearsal_path(@rehearsal)
-    else
-      render :new
-    end
-  end
+  # def create
+  #   # only used for organiser role
+  #   @role = Role.new(role_params)
+  #   @role.rehearsal = @rehearsal
+  #   if @role.save
+  #     redirect_to add_roles_rehearsal_path(@rehearsal)
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def edit
     # only used for organiser role
     @instruments = current_user.instruments
+    @rehearsal = @role.rehearsal
   end
 
   def update

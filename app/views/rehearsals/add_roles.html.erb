@@ -1,35 +1,62 @@
 <div class="container pt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col-8">
-
-      <h1>Choose instruments</h1>
-
-      <div>
+      <div class="cards-container">
+        <div class="container title">
+          <h3>Choose instruments</h3>
+          <p>Step 6 of 6</p>
+        </div>
         <% @instruments.each do |instrument| %>
-          <%= link_to "#{instrument.name}", build_role_rehearsal_path(instrument: instrument), method: :post %>
+          <%= link_to build_role_rehearsal_path(instrument: instrument), method: :post do %>
+            <div class="instrument-clickable">
+              <i><%= cl_image_tag instrument.photo.key %></i>
+              <p><%= instrument.name.titleize %></p>
+            </div>
+          <% end %>
         <% end %>
       </div>
 
-      <div>
-        <h3 id="rehearsal-lineup">Lineup</h3>
-        <ul>
-          <% @rehearsal.roles.each do |role| %>
-            <li>
-              <%= role.instrument.name %>
-              <% if role.user == current_user %>
-                <span>(you!)</span>
-                <%= link_to 'change', edit_role_path(role) %>
-              <% else %>
-                <%= link_to 'remove', role_path(role), method: :delete %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+      <div class="lineup-container">
+        <div class="container lineup-title">
+          <h3>Lineup</h3>
+        </div>
+        <% @rehearsal.roles.each do |role| %>
+          <div class="instrument-clickable">
+            <i><%= cl_image_tag role.instrument.photo.key %></i>
+            <p><%= role.instrument.name.titleize %></p>
+            <% if role.user == current_user %>
+              <p class="role-user">🎵</p>
+              <p><%= link_to 'change', edit_role_path(role) %></p>
+            <% else %>
+              <p><%= link_to 'remove', role_path(role), method: :delete %></p>
+            <% end %>
+          </div>
+        <% end %>
       </div>
+      <%#= link_to 'Back', edit_rehearsal_path(@rehearsal), class: "btn btn-outline-secondary" %>
 
-      <%= link_to 'Done', rehearsal_path(@rehearsal) %> |
-      <%= link_to 'cancel', rehearsal_path(@rehearsal), method: :delete %>
 
+      <%#= link_to 'cancel', rehearsal_path(@rehearsal), method: :delete, data: { confirm: 'Are you sure you want to cancel this rehearsal?'} %>
+
+      <div class="button-container">
+        <%= link_to 'FINISHED!', rehearsal_path(@rehearsal), class: "btn btn-openrehearsal" %>
+      </div>
     </div>
   </div>
 </div>
+
+<%= javascript_tag do %>
+
+  const instruments = document.querySelectorAll('.instrument-clickable');
+
+  const toggleActiveClass = (event) => {
+    event.currentTarget.classList.toggle('active');
+  };
+
+  const toggleActiveOnClick = (instrument) => {
+    instrument.addEventListener('click', toggleActiveClass);
+  };
+
+  instruments.forEach(toggleActiveOnClick);
+
+<% end %>

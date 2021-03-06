@@ -19,14 +19,16 @@ class RehearsalsController < ApplicationController
 
   def new
     @rehearsal = Rehearsal.new
+    @instruments = current_user.instruments
+    @rehearsal.roles.build
   end
 
   def create
     @rehearsal = Rehearsal.new(rehearsal_params)
     @rehearsal.organiser = current_user
-
     if @rehearsal.save
-      redirect_to new_rehearsal_role_path(@rehearsal)
+      # redirect_to new_rehearsal_role_path(@rehearsal)
+      redirect_to add_roles_rehearsal_path(@rehearsal)
     else
       render :new
     end
@@ -45,11 +47,13 @@ class RehearsalsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @instruments = current_user.instruments
+  end
 
   def update
     if @rehearsal.update(rehearsal_params)
-      redirect_to add_roles_rehearsal_path(@rehearsal)
+      redirect_to rehearsal_path(@rehearsal)
     else
       render :edit
     end
@@ -63,7 +67,12 @@ class RehearsalsController < ApplicationController
   private
 
   def rehearsal_params
-    params.require(:rehearsal).permit(:date_time, :address, :title, :description)
+    params.require(:rehearsal)
+          .permit(:date_time,
+                  :address,
+                  :title,
+                  :description,
+                  roles_attributes: [:id, :rehearsal_id, :instrument_id, :user_id])
   end
 
   def set_rehearsal
