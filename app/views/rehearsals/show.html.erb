@@ -27,7 +27,7 @@
       <% @filled.each do |role| %>
         <p>
           <%= role.instrument.name %>: <%= role.user.username %>
-          <% if (@rehearsal.user_id == current_user.id) %>
+          <% if (role.user_id == current_user.id) %>
             <strong>(you)</strong>
           <% end %>
         </p>
