@@ -25,7 +25,7 @@
             <i><%= cl_image_tag role.instrument.photo.key %></i>
             <p><%= role.instrument.name.titleize %></p>
             <% if role.user == current_user %>
-              <p class="role-user">⭐️</p>
+              <p class="role-user">🎵</p>
               <p><%= link_to 'change', edit_role_path(role) %></p>
             <% else %>
               <p><%= link_to 'remove', role_path(role), method: :delete %></p>
