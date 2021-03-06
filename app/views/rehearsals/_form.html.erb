@@ -52,7 +52,10 @@
     <div class="step-title">
       <h1>Choose a date and time...</h1>
     </div>
-    <%= f.input :date_time, label: false %>
+
+      <%= f.input :date_time, as: :string, label: false, placeholder: 'Enter date', input_html: { class: "datetime-input" } %>
+
+
     <div class="form-buttons d-flex justify-content-between">
       <button class="back btn btn-outline-secondary" type="button">Back</button>
       <button class="next btn btn-outline-secondary" type="button">Next</button>
