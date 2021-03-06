@@ -1,0 +1,40 @@
+.card-rehearsal {
+  padding: 16px;
+  background: white;
+  border-radius: 6px;
+  margin: 15px 0;
+
+  /*
+  border-color: rgba(0,0,0,1);
+  border-width: 2px;
+  border-style: solid;
+  */
+
+  h3 {
+    font-family: "Poppins", "Helvetica", "sans-serif";
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+
+    a {
+      color: $light-blue;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+
+.card-rehearsal-top, .card-rehearsal-footer {
+  display: flex;
+}
+
+.card-rehearsal-footer {
+  align-items: flex-end;
+}
+
+.card-rehearsal-top-left, .card-rehearsal-footer-left {
+  width: 120px;
+}
