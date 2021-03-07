@@ -35,9 +35,12 @@ import "../plugins/init_flatpickr";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
   flatpickr('.datetime-input', {
                                 enableTime: true,
-                                minDate: Date.now(),
+                                minDate: tomorrow,
                                 altInput: true,
                                 altFormat: "F j, Y H:i",
                                 minTime: "09:00",
