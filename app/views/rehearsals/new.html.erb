@@ -12,6 +12,13 @@
 <%= javascript_tag do %>
 
   {
+    const form = document.getElementById('new_rehearsal');
+    form.addEventListener('keydown', (event) => {
+      if (event.keyCode == 13) {
+        event.preventDefault();
+      }
+    });
+
     let stepIndex = 0;
     const steps = document.querySelectorAll('.form-step');
     const stepNumber = document.getElementById('step-number');
