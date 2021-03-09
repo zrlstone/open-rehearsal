@@ -19,7 +19,12 @@
     </div>
     <div class="col-md-8 profile-rehearsals">
       <ul>
-        <li class="profile-list-title"><h4>Plays <%= @user.instruments.count %> instruments:</h4></li>
+        <li class="profile-list-title">
+          <h4>
+            <% if @user == current_user %>You play <% else %>Plays <% end %>
+            <%= @user.instruments.count %> instruments:
+          </h4>
+        </li>
           <div class="profile-instruments-container">
             <% @user.instruments.each do |instrument| %>
               <div class="instrument-clickable">
@@ -29,7 +34,12 @@
             <% end %>
           </div>
         <hr>
-        <li class="profile-list-title"><h4>Has <%= @user.rehearsals.count %> upcoming rehearsals:</h4></li>
+        <li class="profile-list-title">
+          <h4>
+            <% if @user == current_user %>You have <% else %>Has <% end %>
+            <%= @user.rehearsals.count %> upcoming <%= "rehearsal".pluralize(@user.rehearsals.count) %>:
+          </h4>
+        </li>
           <% @user.rehearsals.each do |rehearsal| %>
             <li class="profile-list"><%= link_to rehearsal.title, rehearsal_path(rehearsal) %> | <%= rehearsal.address %> | <%= rehearsal.date_time.strftime("%A %d %B %H:%M") %></li>
         <% end %>
