@@ -42,12 +42,22 @@
 
     const incrementStep = () => {
       let currentStep = steps[stepIndex];
-      currentStep.classList.add("d-none");
-      stepIndex++;
-      let nextStep = steps[stepIndex];
-      nextStep.classList.remove("d-none");
-      stepNumber.innerText = `STEP ${stepIndex + 1} OF 6`;
-      setProgress();
+      const requiredInput = currentStep.querySelector('input.required[type="text"]');
+      if ( requiredInput && requiredInput.value === "") {
+        requiredInput.classList.add("yellow");
+        requiredInput.addEventListener('input', (event) => {
+          if (event.currentTarget.value !== "") {
+            event.currentTarget.classList.remove("yellow");
+          }
+        })
+      } else {
+        currentStep.classList.add("d-none");
+        stepIndex++;
+        let nextStep = steps[stepIndex];
+        nextStep.classList.remove("d-none");
+        stepNumber.innerText = `STEP ${stepIndex + 1} OF 6`;
+        setProgress();
+      }
     }
 
     const backStep = () => {
