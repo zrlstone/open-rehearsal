@@ -8,7 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 //= require flatpickr
-require("flatpickr/dist/themes/confetti.css");
 
 
 

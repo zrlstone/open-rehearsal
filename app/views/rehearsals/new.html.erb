@@ -1,3 +1,7 @@
+<%= content_for(:navbar_class, "navbar-home") %>
+
+<div class="create-banner"></div>
+
 <div class="progress-outer">
   <div id="progress-inner"></div>
 </div>
@@ -5,10 +9,7 @@
 <div class="container pt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col-8">
-    <!--   <h2>Create a new rehearsal</h2> -->
       <%= render "form", rehearsal: @rehearsal %>
-
-      <%= link_to  "Cancel", rehearsals_path %>
     </div>
   </div>
 </div>

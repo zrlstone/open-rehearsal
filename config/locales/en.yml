@@ -31,3 +31,13 @@
 
 en:
   hello: "Hello world"
+
+  requests_from_others:
+    zero: "There are no musicians wanting to join your rehearsals."
+    one: "There is 1 musician wanting to join your rehearsal:"
+    other: "There are %{count} musicians wanting to join your rehearsal:"
+
+  my_requests:
+    zero: "You haven't requested to join any rehearsals."
+    one: "You've requested to join 1 rehearsal:"
+    other: "You've requested to join the following:"
