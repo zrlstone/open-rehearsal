@@ -1,3 +1,7 @@
+<div class="progress-outer">
+  <div id="progress-inner"></div>
+</div>
+
 <div class="container pt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col-8">
@@ -34,6 +38,7 @@
       backButton.addEventListener('click', () => backStep());
     }
 
+    const progressBar = document.getElementById('progress-inner');
 
     const incrementStep = () => {
       let currentStep = steps[stepIndex];
@@ -42,6 +47,7 @@
       let nextStep = steps[stepIndex];
       nextStep.classList.remove("d-none");
       stepNumber.innerText = `STEP ${stepIndex + 1} OF 6`;
+      setProgress();
     }
 
     const backStep = () => {
@@ -51,6 +57,11 @@
       let prevStep = steps[stepIndex];
       prevStep.classList.remove("d-none");
       stepNumber.innerText = `STEP ${stepIndex + 1} OF 6`;
+      setProgress();
+    }
+
+    const setProgress = () => {
+      progressBar.style.width = `${(stepIndex + 1) * 16.7}%`;
     }
   }
 
