@@ -1,35 +1,40 @@
-<div class="container mt-5">
-  <h1>My Requests</h1>
-  <h3>There are <%= @incoming_requests.count %> <%= "musician".pluralize(@incoming_requests.count) %> wanting to join your rehearsal</h3>
-
-  <div class="my-5">
-    <div class="row justify-content-center">
-      <div class="col-8">
-          <% @incoming_requests.each do |request| %>
-              <%= render "shared/requests_card" %>
-              <%= link_to request.role.rehearsal.title, rehearsal_path(request.role.rehearsal) %>
-              <%= request.role.instrument.name %>
-              <%= request.user.id %>
-              <%= link_to "Confirm", accept_request_role_path(request), method: :patch %>
-          <% end %>
-      </div>
-    </div>
-  </div>
-
-
-  <h3>You've requested to join the following:</h3>
-  <div class="my-5">
-    <div class="row justify-content-center">
-      <div class="col-8">
-        <ul>
-          <% @current_user_requests.each do |request| %>
-            <li>
-              <%= link_to request.role.rehearsal.title, rehearsal_path(request.role.rehearsal) %>
-              <%= request.role.instrument.name %> |
-              <%= request.user == request.role.user ? 'Confirmed' : 'Pending' %>
-            </li>
-          <% end %>
-        </ul>
+<div class="container mt-5 p-5">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <h1>My Requests</h1>
+      <h3>There are <%= @incoming_requests.count %> <%= "musician".pluralize(@incoming_requests.count) %> wanting to join your rehearsal</h3>
+      <% if @incoming_requests.count.zero? %>
+        <div class="col-4">
+          <div class="request-card" style="opacity: 0.6">
+            <div class="request-content">
+              <p> Check back later!</p>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="row">
+              <% @incoming_requests.each do |request| %>
+                <div class="col-4">
+                  <%= render "shared/requests_card", request: request %>
+                </div>
+              <% end %>
+        </div>
+      <% end %>
+      <h3>You've requested to join the following:</h3>
+      <div class="my-5">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <ul>
+              <% @current_user_requests.each do |request| %>
+                <li>
+                  <%= link_to request.role.rehearsal.title, rehearsal_path(request.role.rehearsal) %>
+                  <%= request.role.instrument.name %> |
+                  <%= request.user == request.role.user ? 'Confirmed' : 'Pending' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>

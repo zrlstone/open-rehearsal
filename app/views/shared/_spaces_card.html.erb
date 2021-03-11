@@ -23,9 +23,9 @@
   <div class="spaces-actions">
     <% if role.user  %>
       <% if role.rehearsal.organiser.avatar.attached? %>
-        <%= cl_image_tag role.rehearsal.organiser.avatar.key, transformation: {gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-large" %>
+        <%= cl_image_tag role.rehearsal.organiser.avatar.key, transformation: {gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar" %>
       <% else %>
-        <%= image_tag "blank_avatar.jpg", class: "avatar-large" %>
+        <%= image_tag "blank_avatar.jpg", class: "avatar" %>
       <% end %>
     <% elsif @roles_requested_by_user.include?(role) %>
         <small>Pending confirmation</small>

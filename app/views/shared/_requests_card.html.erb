@@ -1,15 +1,16 @@
 <div class="request-card">
-  <div class="avatar-large">
-    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-  </div>
+  <% if request.user.avatar.attached? %>
+    <%= link_to (cl_image_tag request.user.avatar.key, transformation: {gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-large"), user_path(request.user) %>
+  <% else %>
+      <%= link_to (image_tag "blank_avatar.jpg", class: "avatar-large"), user_path(request.user) %>
+  <% end %>
 
   <div class="request-content">
-    <p>Zak Stone</p>
-    <p><small>Mandolin</small></p>
+    <p><%= link_to request.user.username, user_path(request.user) %></p>
+    <p><small><%= request.role.instrument.name %></small></p>
   </div>
 
   <div class="request-action">
-    <%= link_to "View Profile", "#", class:"btn", method: :post, remote: true%>
-    <%= link_to "Confirm", "#", class:"btn btn-request", method: :post, remote: true%>
+    <%= link_to "Confirm", accept_request_role_path(request), method: :patch, class:"btn btn-request"%>
   </div>
 </div>
