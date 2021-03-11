@@ -1,0 +1,43 @@
+.mapboxgl-popup {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.mapboxgl-popup-content {
+  font-family: 'Open Sans', sans-serif;
+  padding: 14px;
+  border-radius: 14px;
+}
+
+.mapboxgl-popup-content > a > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.mapboxgl-popup-content h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  padding-top: 6px;
+}
+
+.mapboxgl-popup-content h3 {
+  font-size: 14px;
+  font-weight: lighter;
+  color: gray;
+  margin: 0;
+  padding-top: 3px;
+}
+
+.mapboxgl-popup-content p {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  text-align: right;
+}
+
+.photo-map {
+  border-radius: 4px;
+}

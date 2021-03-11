@@ -19,6 +19,10 @@ class Rehearsal < ApplicationRecord
   scope :upcoming, -> { where("date_time > ?", DateTime.now) }
   scope :past, -> { where("date_time < ?", DateTime.now) }
 
+  # Add geocoding functionality to model
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   def organiser_role
     roles.where(user: organiser).first
   end

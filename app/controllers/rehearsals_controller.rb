@@ -9,6 +9,17 @@ class RehearsalsController < ApplicationController
     if params[:query].present?
       @suggested_rehearsals = Rehearsal.search_by_title_and_address(params[:query]).upcoming.has_space_for(instrument_array).uniq - @my_upcoming_rehearsals
     end
+
+    @markers = @suggested_rehearsals.map do |rehearsal|
+      if rehearsal.geocoded?
+        {
+          lat: rehearsal.latitude,
+          lng: rehearsal.longitude,
+          # infoWindow: render_to_string(partial: "info_window", locals: { rehearsal: rehearsal }),
+          image_url: helpers.asset_url('music-icon3.png')
+        }
+      end
+    end
   end
 
   def show
@@ -16,6 +27,14 @@ class RehearsalsController < ApplicationController
     @spaces = @rehearsal.roles.vacant
     @filled = @rehearsal.roles.filled
     @roles_requested_by_user = current_user.requests.map { |request| request.role }
+
+    @marker =
+      [{
+        lat: @rehearsal.latitude,
+        lng: @rehearsal.longitude,
+        # infoWindow: render_to_string(partial: "info_window", locals: { rehearsal: @rehearsal }),
+        image_url: helpers.asset_url('music-icon3.png')
+      }]
   end
 
   def new

@@ -26,7 +26,10 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import { initMapbox } from '../plugins/init_mapbox';
+// import { initAutocomplete } from '../plugins/auto_complete';
 import "../plugins/init_flatpickr";
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -34,6 +37,9 @@ import "../plugins/init_flatpickr";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
+  initMapbox();
+  // initAutocomplete();
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);

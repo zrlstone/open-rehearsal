@@ -30,12 +30,23 @@
     <% if @suggested_rehearsals.empty? %>
       <div class="col">
         <p>There are no suggested rehearsals for you.</p>
+
+      <% else %>
+        <ul>
+          <% @suggested_rehearsals.each do |rehearsal| %>
+            <li><%= link_to rehearsal.title, rehearsal_path(rehearsal) %></li>
+          <% end %>
+        </ul>
+        
+        <%= link_to "Create new rehearsal", new_rehearsal_path %>
+
       </div>
     <% else %>
       <% @suggested_rehearsals.each do |rehearsal| %>
         <div class="col-12 col-md-6">
           <%= render "shared/card_rehearsal", rehearsal: rehearsal %>
         </div>
+
       <% end %>
     <% end %>
   </div>
@@ -43,6 +54,11 @@
   <div class="row justify-content-center">
     <div class="col">
       <div class="mt-5 mb-5">
+        <div id="map"
+          style="width: 100%; height: 100vh"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
         <%= link_to "CREATE REHEARSAL", new_rehearsal_path, class: "btn btn-openrehearsal" %>
       </div>
     </div>
