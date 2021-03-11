@@ -4,14 +4,14 @@ class RequestsController < ApplicationController
     @rehearsal = Rehearsal.all
     @incoming_requests = Request.joins(role: :rehearsal).where( roles: { user_id: nil }, rehearsals: { user_id: current_user.id } )
     @test = @incoming_requests
-
   end
 
   def create
     @request = Request.new
     @request.user = current_user
     @role = Role.find(params[:role_id])
+    @rehearsal = @role.rehearsal
     @request.role = @role
-    @request.save
+    redirect_to rehearsal_path(@rehearsal) if @request.save
   end
 end

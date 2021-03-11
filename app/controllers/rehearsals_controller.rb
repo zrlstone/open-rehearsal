@@ -15,6 +15,7 @@ class RehearsalsController < ApplicationController
     @organiser = @rehearsal.organiser
     @spaces = @rehearsal.roles.vacant
     @filled = @rehearsal.roles.filled
+    @roles_requested_by_user = current_user.requests.map { |request| request.role }
   end
 
   def new
