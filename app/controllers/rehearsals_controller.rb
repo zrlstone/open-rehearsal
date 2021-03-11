@@ -26,6 +26,7 @@ class RehearsalsController < ApplicationController
     @organiser = @rehearsal.organiser
     @spaces = @rehearsal.roles.vacant
     @filled = @rehearsal.roles.filled
+    @roles_requested_by_user = current_user.requests.map { |request| request.role }
 
     @marker =
       [{
@@ -49,7 +50,8 @@ class RehearsalsController < ApplicationController
       # redirect_to new_rehearsal_role_path(@rehearsal)
       redirect_to add_roles_rehearsal_path(@rehearsal)
     else
-      render :new
+      @instruments = current_user.instruments
+      render :new, instruments: @instruments
     end
   end
 

@@ -1,0 +1,23 @@
+<div class="card-rehearsal">
+  <div class="card-rehearsal-top">
+    <div class="card-rehearsal-top-left">
+      <p><%= rehearsal.date_time.strftime("%d %B %H:%M") %></p>
+    </div>
+    <div class="card-rehearsal-top-right">
+      <h3><%= link_to rehearsal.title, rehearsal_path(rehearsal) %></h3>
+      <p><%= rehearsal.address %></p>
+    </div>
+  </div>
+  <div class="card-rehearsal-footer">
+    <div class="card-rehearsal-footer-left">
+      <% if rehearsal.organiser.avatar.attached? %>
+        <%= cl_image_tag rehearsal.organiser.avatar.key, transformation: {width: 30, height: 30, gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-rehearsal-card" %>
+      <% else %>
+        <%= image_tag "blank_avatar.jpg", class: "avatar-rehearsal-card" %>
+      <% end %>
+    </div>
+    <div class="card-rehearsal-footer-right">
+      [instrument icons]
+    </div>
+  </div>
+</div>

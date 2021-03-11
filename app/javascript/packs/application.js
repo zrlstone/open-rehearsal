@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+//= require flatpickr
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -26,6 +28,8 @@ require("channels")
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 // import { initAutocomplete } from '../plugins/auto_complete';
+import "../plugins/init_flatpickr";
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -33,6 +37,22 @@ import { initMapbox } from '../plugins/init_mapbox';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
   initMapbox();
   // initAutocomplete();
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  flatpickr('.datetime-input', {
+                                enableTime: true,
+                                minDate: tomorrow,
+                                defaultDate: tomorrow,
+                                time_24hr: true,
+                                minuteIncrement: 1,
+                                inline: true,
+                                altInput: true,
+                                altFormat: "J F Y, H:i",
+                                minTime: "09:00",
+                                maxTime: "22:30" });
 });
+

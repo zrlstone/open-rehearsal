@@ -1,13 +1,24 @@
-<div class="container pt-5 pb-5">
+<%= content_for(:navbar_class, "navbar-home") %>
+
+<div class="create-banner"></div>
+
+<div class="progress-outer finished"></div>
+
+<div class="container wide pt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col-8">
+      <div class="step-container d-flex justify-content-center">
+        <p>STEP 6 OF 6</p>
+      </div>
+      <div class="step-title mb-5">
+        <h1>Choose your lineup</h1>
+      </div>
       <div class="cards-container">
-        <div class="container title">
-          <h3>Choose instruments</h3>
-          <p>Step 6 of 6</p>
+        <div class="container wide title">
+          <h4>Click to select</h4>
         </div>
         <% @instruments.each do |instrument| %>
-          <%= link_to build_role_rehearsal_path(instrument: instrument), method: :post do %>
+          <%= link_to build_role_rehearsal_path(instrument: instrument), method: :post, remote: true do %>
             <div class="instrument-clickable">
               <i><%= cl_image_tag instrument.photo.key %></i>
               <p><%= instrument.name.titleize %></p>
@@ -17,8 +28,8 @@
       </div>
 
       <div class="lineup-container">
-        <div class="container lineup-title">
-          <h3>Lineup</h3>
+        <div class="container wide lineup-title">
+          <h4 id="rehearsal-lineup">Lineup</h4>
         </div>
         <% @rehearsal.roles.each do |role| %>
           <div class="instrument-clickable">
@@ -28,7 +39,7 @@
               <p class="role-user">🎵</p>
               <p><%= link_to 'change', edit_role_path(role) %></p>
             <% else %>
-              <p><%= link_to 'remove', role_path(role), method: :delete %></p>
+              <p><%= link_to 'remove', role_path(role), method: :delete, remote: true %></p>
             <% end %>
           </div>
         <% end %>

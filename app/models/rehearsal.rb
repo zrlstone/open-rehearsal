@@ -10,7 +10,7 @@ class Rehearsal < ApplicationRecord
 
   validates :title, length: { maximum: 30, too_long: "30 characters is the maximum allowed" }
 
-  validate :start_in_future
+  # validate :start_in_future # TODO: Uncomment when have done JS validations in create form
 
   # Pass this scope an ARRAY of instrument IDs and it returns all the rehearsals which
   # have a vacancy for one of those instruments. Use on index page.
@@ -37,9 +37,9 @@ class Rehearsal < ApplicationRecord
 
   private
 
-  def start_in_future
-    if date_time < DateTime.now
-      errors.add(:date_time, "Your rehearsal cannot take place in the past!")
-    end
-  end
+  # def start_in_future # TODO: Uncomment when have done JS validations in create form
+  #   if date_time < DateTime.now
+  #     errors.add(:date_time, "Your rehearsal cannot take place in the past!")
+  #   end
+  # end
 end

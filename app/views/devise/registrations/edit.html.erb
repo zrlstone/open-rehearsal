@@ -46,7 +46,11 @@
               <% current_user.skills.each do |skill| %>
                 <li>
                   <div class="skill-item">
-                    <%= skill.instrument.name %>
+                    <div>
+                      <%= cl_image_tag skill.instrument.photo.key, class: "mini-icon mr-2" %>
+                      <%= skill.instrument.name %>
+                    </div>
+
                     <%= link_to skill_path(skill), remote: true, method: :delete do %>
                       <i class="fas fa-times"></i>
                     <% end %>
@@ -63,7 +67,10 @@
                   <li>
                     <%= link_to skills_path(instrument: instrument), method: :post, remote: true do %>
                       <div class="skill-item">
-                        <%= instrument.name %>
+                        <div>
+                          <%= cl_image_tag instrument.photo.key, class: "mini-icon mr-2" %>
+                          <%= instrument.name %>
+                        </div>
                         <p>add!</p>
                       </div>
                     <% end %>

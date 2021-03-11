@@ -1,10 +1,15 @@
+<%= content_for(:navbar_class, "navbar-home") %>
+
+<div class="create-banner"></div>
+
+<div class="progress-outer">
+  <div id="progress-inner"></div>
+</div>
+
 <div class="container pt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col-8">
-    <!--   <h2>Create a new rehearsal</h2> -->
       <%= render "form", rehearsal: @rehearsal %>
-
-      <%= link_to  "Cancel", rehearsals_path %>
     </div>
   </div>
 </div>
@@ -12,6 +17,13 @@
 <%= javascript_tag do %>
 
   {
+    const form = document.getElementById('new_rehearsal');
+    form.addEventListener('keydown', (event) => {
+      if (event.keyCode == 13) {
+        event.preventDefault();
+      }
+    });
+
     let stepIndex = 0;
     const steps = document.querySelectorAll('.form-step');
     const stepNumber = document.getElementById('step-number');
@@ -27,14 +39,26 @@
       backButton.addEventListener('click', () => backStep());
     }
 
+    const progressBar = document.getElementById('progress-inner');
 
     const incrementStep = () => {
       let currentStep = steps[stepIndex];
-      currentStep.classList.add("d-none");
-      stepIndex++;
-      let nextStep = steps[stepIndex];
-      nextStep.classList.remove("d-none");
-      stepNumber.innerText = `STEP ${stepIndex + 1} OF 6`;
+      const requiredInput = currentStep.querySelector('input.required[type="text"]');
+      if ( requiredInput && requiredInput.value === "") {
+        requiredInput.classList.add("yellow");
+        requiredInput.addEventListener('input', (event) => {
+          if (event.currentTarget.value !== "") {
+            event.currentTarget.classList.remove("yellow");
+          }
+        })
+      } else {
+        currentStep.classList.add("d-none");
+        stepIndex++;
+        let nextStep = steps[stepIndex];
+        nextStep.classList.remove("d-none");
+        stepNumber.innerText = `STEP ${stepIndex + 1} OF 6`;
+        setProgress();
+      }
     }
 
     const backStep = () => {
@@ -44,6 +68,11 @@
       let prevStep = steps[stepIndex];
       prevStep.classList.remove("d-none");
       stepNumber.innerText = `STEP ${stepIndex + 1} OF 6`;
+      setProgress();
+    }
+
+    const setProgress = () => {
+      progressBar.style.width = `${(stepIndex + 1) * 16.7}%`;
     }
   }
 

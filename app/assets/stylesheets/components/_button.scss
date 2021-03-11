@@ -6,3 +6,18 @@
   padding: 2px 16px;
   box-shadow: 3px 5px 0px black;
 }
+
+.btn-request {
+  background-color: $yellow;
+
+  border-radius: 6px;
+  padding: 2px 16px;
+  transition: all 200ms ease-in-out;
+  &:hover {
+    background-color: #FFC800;
+    color: $gray;
+
+
+
+  }
+}
