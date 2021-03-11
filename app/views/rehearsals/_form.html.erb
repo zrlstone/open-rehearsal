@@ -52,10 +52,9 @@
     <div class="step-title">
       <h1>Choose a date and time...</h1>
     </div>
-
+    <div class="d-flex justify-content-center">
       <%= f.input :date_time, as: :string, label: false, placeholder: 'Enter date', input_html: { class: "datetime-input" } %>
-
-
+    </div>
     <div class="form-buttons d-flex justify-content-between">
       <button class="back btn btn-outline-secondary" type="button">Back</button>
       <button class="next btn btn-outline-secondary" type="button">Next</button>
@@ -67,7 +66,7 @@
       <h1>What will you be playing?</h1>
     </div>
     <%= f.simple_fields_for :roles do |r| %>
-      <%= r.association :instrument, collection: @instruments, as: :radio_buttons, label: 'Select instrument:' %>
+      <%= r.association :instrument, collection: @instruments, as: :radio_buttons, label: 'Select instrument:', checked: @instruments.first.id %>
       <%= r.hidden_field :user_id, value: current_user.id %>
     <% end %>
       <div class="form-buttons d-flex justify-content-between">

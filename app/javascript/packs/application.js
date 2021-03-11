@@ -8,7 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 //= require flatpickr
-require("flatpickr/dist/themes/confetti.css");
 
 
 
@@ -35,11 +34,18 @@ import "../plugins/init_flatpickr";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
   flatpickr('.datetime-input', {
                                 enableTime: true,
-                                minDate: Date.now(),
+                                minDate: tomorrow,
+                                defaultDate: tomorrow,
+                                time_24hr: true,
+                                minuteIncrement: 1,
+                                inline: true,
                                 altInput: true,
-                                altFormat: "F j, Y H:i",
+                                altFormat: "J F Y, H:i",
                                 minTime: "09:00",
                                 maxTime: "22:30" });
 });

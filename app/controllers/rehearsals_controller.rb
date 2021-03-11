@@ -31,7 +31,8 @@ class RehearsalsController < ApplicationController
       # redirect_to new_rehearsal_role_path(@rehearsal)
       redirect_to add_roles_rehearsal_path(@rehearsal)
     else
-      render :new
+      @instruments = current_user.instruments
+      render :new, instruments: @instruments
     end
   end
 

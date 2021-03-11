@@ -15,4 +15,12 @@
   width: 180px;
 }
 
+.exit-link {
+  color: gray;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+}
+
 
