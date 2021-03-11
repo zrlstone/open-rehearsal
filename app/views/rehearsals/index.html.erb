@@ -30,16 +30,6 @@
     <% if @suggested_rehearsals.empty? %>
       <div class="col">
         <p>There are no suggested rehearsals for you.</p>
-
-      <% else %>
-        <ul>
-          <% @suggested_rehearsals.each do |rehearsal| %>
-            <li><%= link_to rehearsal.title, rehearsal_path(rehearsal) %></li>
-          <% end %>
-        </ul>
-        
-        <%= link_to "Create new rehearsal", new_rehearsal_path %>
-
       </div>
     <% else %>
       <% @suggested_rehearsals.each do |rehearsal| %>
