@@ -1,7 +1,4 @@
 class Rehearsal < ApplicationRecord
-  # Add geocoding functionality to model
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
   belongs_to :organiser, class_name: 'User', foreign_key: 'user_id'
   has_many :roles, dependent: :destroy
   has_many :requests, through: :roles
@@ -21,6 +18,10 @@ class Rehearsal < ApplicationRecord
 
   scope :upcoming, -> { where("date_time > ?", DateTime.now) }
   scope :past, -> { where("date_time < ?", DateTime.now) }
+
+  # Add geocoding functionality to model
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   def organiser_role
     roles.where(user: organiser).first
