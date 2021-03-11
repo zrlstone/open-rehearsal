@@ -1,0 +1,16 @@
+.progress-outer {
+  background-color: $or-pale-grey;
+  height: 10px;
+  width: 100%;
+  margin-top: 0;
+}
+
+.progress-outer.finished {
+  background-color: $or-orange;
+}
+
+#progress-inner {
+  height: 100%;
+  width: 16.7%;
+  background-color: $or-orange;
+}
