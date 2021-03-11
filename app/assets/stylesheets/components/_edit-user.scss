@@ -7,10 +7,14 @@
   margin-bottom: 20px;
 }
 
-.user-list {
+
+.skill-list {
   list-style-type: none;
   margin-left: 0;
   padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
   .skill-item {
     border: 3px solid transparent;
     background-color: rgb(229,230,232);
@@ -19,38 +23,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    a {
+      display: none;
+      color: grey;
+    }
     &:hover {
-    border: 3px solid black;
+      border: 3px solid $or-almost-black;
+      a {
+        display: inline;
+      }
     }
   }
 }
-
-.skill-list .skill-item:hover {
-  a {
-    display: inline;
-  }
-}
-
-.instrument-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 8px;
-  a {
-    text-decoration: none;
-    color: black;
-  }
-  p {
-    margin-bottom: 0;
-    color: $light-blue;
-  }
-}
-
-.skill-list .skill-item {
-  margin-bottom: 8px;
-  width: 50%;
-  a {
-    display: none;
-    color: grey;
-  }
-}
-

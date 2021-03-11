@@ -29,8 +29,8 @@
                       required: true,
                       input_html: { autocomplete: "current-password" } %>
 
-          <div class="form-actions">
-            <%= f.button :submit, "Update", class: "btn btn-search" %>
+          <div class="form-actions text-center mt-5">
+            <%= f.button :submit, "Update", class: "btn btn-openrehearsal" %>
 
           </div>
       <% end %>
@@ -42,7 +42,7 @@
 
             <h2>Your instruments</h2>
 
-            <ul class="user-list skill-list">
+            <ul class="skill-list mt-3">
               <% current_user.skills.each do |skill| %>
                 <li>
                   <div class="skill-item">
@@ -60,20 +60,20 @@
             </ul>
           </div>
           <div class="mt-5">
-            <h2>Add instruments</h2>
-            <ul class="user-list instrument-list">
+            <h4>Add more:</h4>
+            <ul class="skill-list mt-3">
               <% Instrument.all.each do |instrument| %>
                 <% if !current_user.instruments.include?(instrument) %>
                   <li>
-                    <%= link_to skills_path(instrument: instrument), method: :post, remote: true do %>
-                      <div class="skill-item">
-                        <div>
-                          <%= cl_image_tag instrument.photo.key, class: "mini-icon mr-2" %>
-                          <%= instrument.name %>
-                        </div>
-                        <p>add!</p>
+                    <div class="skill-item">
+                      <div>
+                        <%= cl_image_tag instrument.photo.key, class: "mini-icon mr-2" %>
+                        <%= instrument.name %>
                       </div>
-                    <% end %>
+                      <%= link_to skills_path(instrument: instrument), method: :post, remote: true do %>
+                        <i class="fas fa-plus"></i>
+                      <% end %>
+                    </div>
                   </li>
                 <% end %>
               <% end %>
@@ -81,8 +81,7 @@
           </div>
         </div>
       <hr>
-      <%= link_to "Back", :back, class: "btn btn-primary" %>
-      <p><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+      <p><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
     </div>
   </div>
