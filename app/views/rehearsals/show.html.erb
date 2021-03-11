@@ -25,26 +25,19 @@
 
       <h3>Attendees</h3>
       <% @filled.each do |role| %>
-        <p>
-          <%= role.instrument.name %>: <%= role.user.username %>
-          <% if (role.user_id == current_user.id) %>
-            <strong>(you)</strong>
-          <% end %>
-        </p>
+        <%= render "shared/spaces_card", role: role %>
       <% end %>
 
       <% if @spaces.length.positive? %>
         <h3>Spaces</h3>
         <% @spaces.each do |role| %>
           <div class="d-flex">
-            <p><%= role.instrument.name %></p>
-            <% if current_user.instruments.include?(role.instrument) && !@rehearsal.attendees.include?(current_user) %>
-              <%= link_to "Request to join", role_requests_path(role), method: :post%>
-            <% end %>
+            <%= render "shared/spaces_card", role: role %>
           </div>
-
         <% end %>
       <% end %>
+
+
 
       <%= link_to "Back", rehearsals_path %>
       <% if (@rehearsal.user_id == current_user.id) %>

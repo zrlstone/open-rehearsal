@@ -1,0 +1,43 @@
+
+
+.request-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 3px rgba(0, 54, 85, 0.2);
+  height: 120px;
+}
+
+.spaces-instrument {
+  height: 64px;
+  text-align: center;
+
+  i {
+    margin: auto 0px;
+  }
+
+  img {
+    height: 60px;
+    width: 40px;
+  }
+}
+
+
+
+.request-card .request-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.request-card p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.request-card small {
+  color: #999999;
+  font-weight: bold;
+}

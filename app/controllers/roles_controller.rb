@@ -39,9 +39,10 @@ class RolesController < ApplicationController
     @request = Request.find(params[:id])
     role = @request.role
     user = @request.user
+    rehearsal = role.rehearsal
     role.update(user: user)
 
-    redirect_to requests_path
+    redirect_to rehearsal_path(rehearsal)
   end
 
   def destroy

@@ -5,16 +5,13 @@
   <div class="my-5">
     <div class="row justify-content-center">
       <div class="col-8">
-        <ul>
           <% @incoming_requests.each do |request| %>
-            <li>
+              <%= render "shared/requests_card" %>
               <%= link_to request.role.rehearsal.title, rehearsal_path(request.role.rehearsal) %>
               <%= request.role.instrument.name %>
               <%= request.user.id %>
               <%= link_to "Confirm", accept_request_role_path(request), method: :patch %>
-            </li>
           <% end %>
-        </ul>
       </div>
     </div>
   </div>

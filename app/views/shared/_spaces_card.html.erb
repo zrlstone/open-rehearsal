@@ -1,0 +1,36 @@
+<div class="spaces-card">
+  <div class="spaces-instrument">
+    <i>
+    <%= cl_image_tag role.instrument.photo.key %>
+    </i>
+  </div>
+
+  <div class="spaces-content">
+    <% if role.user  %>
+      <p>
+        <%=  role.user.username %>
+        <% if (role.user_id == current_user.id) %>
+            <strong>(you)</strong>
+        <% end %>
+      </p>
+      <p><small><%=  role.instrument.name %></small></p>
+    <% else %>
+      <p> <%=  role.instrument.name %> </p>
+    <% end %>
+
+  </div>
+
+  <div class="spaces-actions">
+    <% if role.user  %>
+      <% if role.rehearsal.organiser.avatar.attached? %>
+        <%= cl_image_tag role.rehearsal.organiser.avatar.key, transformation: {gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-large" %>
+      <% else %>
+        <%= image_tag "blank_avatar.jpg", class: "avatar-large" %>
+      <% end %>
+    <% elsif @roles_requested_by_user.include?(role) %>
+        <small>Pending confirmation</small>
+    <% elsif current_user.instruments.include?(role.instrument) && !@rehearsal.attendees.include?(current_user) %>
+      <%= link_to "Join", role_requests_path(role), class:"btn btn-request", method: :post, remote: true%>
+    <% end %>
+  </div>
+</div>
