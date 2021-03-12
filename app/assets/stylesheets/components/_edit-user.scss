@@ -36,3 +36,22 @@
     }
   }
 }
+
+.nav-link:not(.active) {
+  color: $light-blue;
+}
+
+.nav-link.active {
+  color: black !important;
+  background-color: $light-blue;
+  border-color: black;
+  border-width: 3px;
+  border-radius: 6px;
+  padding: 2px 16px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  h3 {
+    margin-top: 4px;
+  }
+}

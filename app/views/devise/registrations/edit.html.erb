@@ -1,85 +1,106 @@
 <div class="container pt-5">
   <div class="row justify-content-center">
     <div class="form-box col-6">
+
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link btn <%= 'active' if params[:tab] != "tab_skills" %>" href="#tab-general" data-toggle="pill"><h3>General</h3></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn <%= 'active' if params[:tab] == "tab_skills" %>" href="#tab-skills" data-toggle="pill"><h3>Instruments</h3></a>
+        </li>
+      </ul>
       <!-- <h2>Edit <%#= resource_name.to_s.humanize %></h2>-->
-      <h2>General</h2>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= f.error_notification %>
+      <div class="tab-content">
+          <div id="tab-general" class="tab-pane fade in <%= 'active show' if params[:tab] != "tab_skills" %> mt-5">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= f.error_notification %>
 
-        <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true %>
+              <div class="form-inputs">
+                <%= f.input :email, required: true, autofocus: true %>
 
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-          <% end %>
-
-          <%= f.input :username, required: false%>
-          <%= f.label :avatar, 'Upload new profile picture' %>
-          <%= f.file_field :avatar, direct_upload: true %>
-          <%= f.input :bio, required: false %>
-          <%= f.input :password,
-                      hint: "leave it blank if you don't want to change it",
-                      required: false,
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :password_confirmation,
-                      required: false,
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :current_password,
-                      placeholder: "we need your current password to confirm your changes",
-                      required: true,
-                      input_html: { autocomplete: "current-password" } %>
-
-          <div class="form-actions text-center mt-5">
-            <%= f.button :submit, "Update", class: "btn btn-openrehearsal" %>
-
-          </div>
-      <% end %>
-
-
-
-
-          <div class="mt-5" id="user-skills">
-
-            <h2>Your instruments</h2>
-
-            <ul class="skill-list mt-3">
-              <% current_user.skills.each do |skill| %>
-                <li>
-                  <div class="skill-item">
-                    <div>
-                      <%= cl_image_tag skill.instrument.photo.key, class: "mini-icon mr-2" %>
-                      <%= skill.instrument.name %>
-                    </div>
-
-                    <%= link_to skill_path(skill), remote: true, method: :delete do %>
-                      <i class="fas fa-times"></i>
-                    <% end %>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="mt-5">
-            <h4>Add more:</h4>
-            <ul class="skill-list mt-3">
-              <% Instrument.all.each do |instrument| %>
-                <% if !current_user.instruments.include?(instrument) %>
-                  <li>
-                    <div class="skill-item">
-                      <div>
-                        <%= cl_image_tag instrument.photo.key, class: "mini-icon mr-2" %>
-                        <%= instrument.name %>
-                      </div>
-                      <%= link_to skills_path(instrument: instrument), method: :post, remote: true do %>
-                        <i class="fas fa-plus"></i>
-                      <% end %>
-                    </div>
-                  </li>
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
                 <% end %>
-              <% end %>
-            </ul>
+
+                <%= f.input :username, required: false%>
+                <%= f.label :avatar, 'Upload new profile picture' %>
+                <%= f.file_field :avatar, direct_upload: true %>
+                <%= f.input :bio, required: false %>
+                <%= f.input :password,
+                            hint: "leave it blank if you don't want to change it",
+                            required: false,
+                            input_html: { autocomplete: "new-password" } %>
+                <%= f.input :password_confirmation,
+                            required: false,
+                            input_html: { autocomplete: "new-password" } %>
+                <%= f.input :current_password,
+                            placeholder: "we need your current password to confirm your changes",
+                            required: true,
+                            input_html: { autocomplete: "current-password" } %>
+
+                <div class="form-actions text-center mt-5">
+                  <%= f.button :submit, "Update", class: "btn btn-openrehearsal" %>
+                </div>
+              </div>
+            <% end %>
           </div>
-        </div>
+
+          <div id="tab-skills" class="tab-pane fade <%= 'active show' if params[:tab] == "tab_skills" %>">
+
+              <div class="mt-5" id="user-skills">
+
+                <h4>My instruments</h4>
+
+                <ul class="skill-list mt-3">
+                  <% current_user.skills.each do |skill| %>
+                    <li>
+                      <div class="skill-item">
+                        <div>
+                          <%= cl_image_tag skill.instrument.photo.key, class: "mini-icon mr-2" %>
+                          <%= skill.instrument.name %>
+                        </div>
+
+                        <%= link_to skill_path(skill), remote: true, method: :delete do %>
+                          <i class="fas fa-times"></i>
+                        <% end %>
+                      </div>
+                    </li>
+                  <% end %>
+                </ul>
+
+              </div>
+
+              <div class="mt-5">
+
+                <h5>Add more:</h5>
+
+                <ul class="skill-list mt-3">
+                  <% Instrument.all.each do |instrument| %>
+                    <% if !current_user.instruments.include?(instrument) %>
+                      <li>
+                        <div class="skill-item">
+                          <div>
+                            <%= cl_image_tag instrument.photo.key, class: "mini-icon mr-2" %>
+                            <%= instrument.name %>
+                          </div>
+                          <%= link_to skills_path(instrument: instrument), method: :post, remote: true do %>
+                            <i class="fas fa-plus"></i>
+                          <% end %>
+                        </div>
+                      </li>
+                    <% end %>
+                  <% end %>
+                </ul>
+
+                <div class="text-center mt-5">
+                  <%= link_to "Update", user_path(current_user), class: "btn btn-openrehearsal" %>
+                </div>
+
+              </div>
+          </div>
+      </div>
+
       <hr>
       <p><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
