@@ -8,7 +8,7 @@
   <div class="spaces-content">
     <% if role.user  %>
       <p>
-        <%=  role.user.username %>
+        <%= link_to role.user.username, user_path(role.user) %>
         <% if (role.user_id == current_user.id) %>
             <strong>(you)</strong>
         <% end %>
