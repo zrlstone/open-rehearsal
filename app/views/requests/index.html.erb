@@ -3,7 +3,7 @@
   <div class="row justify-content-center">
     <div class="col-12">
       <h1>My Requests</h1>
-      <h3>There are <%= @incoming_requests.count %> <%= "musician".pluralize(@incoming_requests.count) %> wanting to join your rehearsal</h3>
+      <h3><%= I18n.t('requests_from_others', count: @incoming_requests.count) %></h3>
       <% if @incoming_requests.count.zero? %>
         <div class="col-4">
           <div class="request-card" style="opacity: 0.6">
@@ -21,7 +21,7 @@
               <% end %>
         </div>
       <% end %>
-      <h3>You've requested to join the following:</h3>
+      <h3><%= I18n.t('my_requests', count: @current_user_requests.count) %></h3>
       <div class="my-5">
         <div class="row justify-content-center">
           <div class="col-8">
