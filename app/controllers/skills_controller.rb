@@ -5,12 +5,12 @@ class SkillsController < ApplicationController
 
   def create
     current_user.skills.create(instrument: @instrument)
-    redirect_to edit_user_registration_path(user: current_user, anchor: "user-skills")
+    redirect_to edit_user_registration_path(user: current_user, tab: "tab_skills")
   end
 
   def destroy
     @skill.destroy
-    redirect_to edit_user_registration_path(user: current_user, anchor: "user-skills")
+    redirect_to edit_user_registration_path(user: current_user, tab: "tab_skills")
   end
 
   private
