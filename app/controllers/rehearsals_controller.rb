@@ -15,7 +15,7 @@ class RehearsalsController < ApplicationController
         {
           lat: rehearsal.latitude,
           lng: rehearsal.longitude,
-          # infoWindow: render_to_string(partial: "info_window", locals: { rehearsal: rehearsal }),
+          infoWindow: render_to_string(partial: "info_window", locals: { rehearsal: rehearsal }),
           image_url: helpers.asset_url('music-icon3.png')
         }
       end
@@ -32,7 +32,7 @@ class RehearsalsController < ApplicationController
       [{
         lat: @rehearsal.latitude,
         lng: @rehearsal.longitude,
-        # infoWindow: render_to_string(partial: "info_window", locals: { rehearsal: @rehearsal }),
+        infoWindow: render_to_string(partial: "info_window", locals: { rehearsal: @rehearsal }),
         image_url: helpers.asset_url('music-icon3.png')
       }]
   end

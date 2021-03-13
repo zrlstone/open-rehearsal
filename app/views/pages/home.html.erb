@@ -1,3 +1,22 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
 <%= render "shared/banner" %>
+
+<% if user_signed_in? %>
+  <div id="upcoming-rehearsals">
+    <div class="container pt-5">
+      <h4>You have
+        <%= @my_upcoming_rehearsals.count %> upcoming rehearsal<%= @my_upcoming_rehearsals.count == 1 ? '' : 's' %><%= @my_upcoming_rehearsals.empty? ? " :(" : ":" %>
+      </h4>
+      <% if !@my_upcoming_rehearsals.empty? %>
+        <div class="row mt-4 mb-5">
+          <% @my_upcoming_rehearsals.each do |rehearsal| %>
+            <div class="col-12 col-md-4">
+              <%= render "shared/card_rehearsal", rehearsal: rehearsal %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

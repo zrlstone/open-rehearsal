@@ -23,4 +23,24 @@
   }
 }
 
+.badge, .badge-dropdown {
+  position: absolute;
+  border-radius: 50%;
+  background: $or-yellow;
+  z-index: 1;
+}
 
+.badge {
+  top: 10px;
+  right: 10px;
+  padding: 3px 6px;
+  color: $or-almost-black;
+}
+
+.badge-dropdown {
+  top: 50px;
+  right: 18px;
+  height: 10px;
+  width: 10px;
+  color: transparent;
+}

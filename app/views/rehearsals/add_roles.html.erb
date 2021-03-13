@@ -18,8 +18,9 @@
           <h4>Click to select</h4>
         </div>
         <% @instruments.each do |instrument| %>
-          <%= link_to build_role_rehearsal_path(instrument: instrument), method: :post, remote: true do %>
+          <%= link_to build_role_rehearsal_path(instrument: instrument), method: :post, remote: true, class: "instrument-link" do %>
             <div class="instrument-clickable">
+              <i class="card-plus">+</i>
               <i><%= cl_image_tag instrument.photo.key %></i>
               <p><%= instrument.name.titleize %></p>
             </div>
@@ -32,14 +33,14 @@
           <h4 id="rehearsal-lineup">Lineup</h4>
         </div>
         <% @rehearsal.roles.each do |role| %>
-          <div class="instrument-clickable">
+          <div class="lineup-instrument-clickable">
             <i><%= cl_image_tag role.instrument.photo.key %></i>
             <p><%= role.instrument.name.titleize %></p>
             <% if role.user == current_user %>
               <p class="role-user">🎵</p>
-              <p><%= link_to 'change', edit_role_path(role) %></p>
+              <p class="change-remove"><%= link_to 'change', edit_role_path(role) %></p>
             <% else %>
-              <p><%= link_to 'remove', role_path(role), method: :delete, remote: true %></p>
+              <p class="change-remove"><%= link_to 'remove', role_path(role), method: :delete, remote: true %></p>
             <% end %>
           </div>
         <% end %>
