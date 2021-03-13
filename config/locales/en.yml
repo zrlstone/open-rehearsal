@@ -38,6 +38,6 @@ en:
     other: "There are %{count} musicians wanting to join your rehearsal:"
 
   my_requests:
-    zero: "You haven't requested to join any rehearsals."
+    zero: "You don't have any pending requests to join a rehearsal."
     one: "You've requested to join 1 rehearsal:"
     other: "You've requested to join the following:"
