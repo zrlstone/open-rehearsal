@@ -39,6 +39,12 @@ class RolesController < ApplicationController
     @request = Request.find(params[:id])
     role = @request.role
     user = @request.user
+    rehearsal = role.rehearsal
+
+    @request.accepted = true
+    @request.save
+    reject_users_other_requests(user, rehearsal)
+
     role.update(user: user)
 
     redirect_to requests_path
@@ -62,5 +68,14 @@ class RolesController < ApplicationController
 
   def find_rehearsal
     @rehearsal = Rehearsal.find(params[:rehearsal_id])
+  end
+
+  def reject_users_other_requests(user, rehearsal)
+    user.requests.each do |request|
+      if request.role.rehearsal == rehearsal && !request.accepted
+        request.accepted = false
+        request.save
+      end
+    end
   end
 end
