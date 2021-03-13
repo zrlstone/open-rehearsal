@@ -3,3 +3,28 @@
       max-width: 970px;
   }
 }
+
+.index-image {
+  background-image: asset-url('index-image.png');
+  height: 250px;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  padding-bottom: 40px;
+  padding-top: 0;
+}
+
+.index-create {
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  width: 500px;
+  padding: 32px 16px;
+}
+
+.margin-lh {
+  margin-left: 16px;
+}
+
+
+
