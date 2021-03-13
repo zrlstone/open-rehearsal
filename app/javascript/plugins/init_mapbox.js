@@ -1,5 +1,5 @@
 import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+
 
 const fitMapToMarkers = (map, markers) => {
   const smallMap = document.querySelector(".photo-map")
