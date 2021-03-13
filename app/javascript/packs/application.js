@@ -56,3 +56,5 @@ document.addEventListener('turbolinks:load', () => {
                                 maxTime: "22:30" });
 });
 
+
+import "controllers"
