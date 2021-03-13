@@ -61,14 +61,49 @@
   cursor: pointer;
 }
 
+.lineup-instrument-clickable {
+  padding: 1px;
+  width: 89px;
+  height: 115px;
+  border: 1px solid #dedede;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.instrument-clickable .instrument-link {
+  text-decoration: none;
+}
+
+
+.card-plus {
+  color: transparent;
+  text-shadow: 0 0 0 white;
+  position: absolute;
+  padding-left: 68px;
+}
+
+.card-plus:hover {
+  color: transparent;
+  text-shadow: 0 0 0 green;
+}
+
 .instrument-clickable i {
   margin: auto;
 }
 
 .instrument-clickable p {
+  color: black;
   margin-bottom: 3px;
   font-size: 11px;
   text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .instrument-clickable a:hover {
@@ -90,7 +125,7 @@
 
 .role-user {
   position: absolute;
-  padding-left: 72px;
+  padding-left: 2px;
   margin-bottom: 8px;
 }
 
@@ -98,5 +133,55 @@
   width: 30px;
   height: 30px;
 }
+
+
+
+.lineup-instrument-clickable {
+  padding: 1px;
+  width: 89px;
+  height: 105px;
+  border: 1px solid #dedede;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.change-remove {
+  z-index: 10;
+  position: absolute;
+  padding-left: 40px;
+  a {
+    color: transparent;
+  }
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+
+.lineup-instrument-clickable i {
+  margin: auto;
+}
+
+.lineup-instrument-clickable p {
+  margin-bottom: 3px;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.lineup-instrument-clickable:hover {
+  background-color: grey;
+  opacity: .7;
+  border-color: #52ACF4;
+  a {
+    color: black;
+  }
+}
+
 
 
