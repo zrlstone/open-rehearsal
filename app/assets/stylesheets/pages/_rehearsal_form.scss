@@ -14,9 +14,52 @@
 }
 
 .yellow {
-    outline: 2px solid $yellow;
+    outline: 2px solid $or-yellow;
 }
 
 .datetime-input {
   width: 307px;
+}
+
+// Below: styling for instrument cards as radio buttons
+
+.inline-radio {
+  margin-top: 32px;
+}
+
+.inline-radio .form-check {
+  display: inline;
+  margin-right: 32px;
+}
+
+.inline-radio input[type="radio"] {
+  display: none;
+}
+
+.inline-radio .form-check label {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+label .instrument-clickable {
+  background-color: white;
+  &:hover {
+    filter: none;
+    i {
+      filter: invert(55%) sepia(93%) saturate(560%) hue-rotate(180deg) brightness(98%) contrast(94%);
+    }
+    p {
+      color: #52ACF4;
+    }
+  }
+}
+
+input[type="radio"]:checked + label .instrument-clickable {
+  border-color: #52ACF4;
+  i {
+    filter: invert(55%) sepia(93%) saturate(560%) hue-rotate(180deg) brightness(98%) contrast(94%);
+  }
+  p {
+    color: #52ACF4;
+  }
 }
