@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @upcoming_rehearsals = @user.upcoming_rehearsals
   end
 
   private

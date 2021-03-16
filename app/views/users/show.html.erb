@@ -1,49 +1,44 @@
 <div class="container pt-5 pb-5">
-  <div class="row profile">
-    <div class="col-md-4 avatar">
-      <div class="wrapper">
-        <% if @user.avatar.attached? %>
-          <%= cl_image_tag @user.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max" }, alt: "alttext", class: "avatar-large" %>
-        <% else %>
-          <%= image_tag "blank_avatar.jpg" %>
-        <% end %>
-        <br>
-        <h2 class="profile-username"><%= @user.username %></h2>
-        <p class="user-bio"><%= @user.bio %></p>
-        <div class="profile-button-container">
-          <% if @user == current_user %>
-            <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-openrehearsal" %>
+  <div class="profile">
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="profile-wrapper">
+          <% if @user.avatar.attached? %>
+            <%= cl_image_tag @user.avatar.key, transformation: {width: 140, height: 140, gravity: "face", radius: "max" }, alt: "alttext", class: "avatar-profile" %>
+          <% else %>
+            <%= image_tag "blank_avatar.jpg", class: "avatar-profile" %>
           <% end %>
+          <br>
+          <h2 class="profile-username"><%= @user.username %></h2>
+          <% if @user == current_user %>
+            <%= link_to 'EDIT PROFILE', edit_user_registration_path, class: "btn btn-explore mb-4" %>
+          <% end %>
+          <div class="user-bio">
+            <p><%= @user.bio %></p>
+          </div>
+          <div>
+            <h5 class="profile-instruments-title">My instruments</h5>
+            <div class="profile-instrument-cards">
+              <% @user.instruments.each do |instrument| %>
+                <%= render 'shared/instrument_card', instrument: instrument %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-8 profile-rehearsals">
-      <ul>
-        <li class="profile-list-title">
-          <h4>
-            <% if @user == current_user %>You play <% else %>Plays <% end %>
-            <%= @user.instruments.count %> instruments:
-          </h4>
-        </li>
-          <div class="profile-instruments-container">
-            <% @user.instruments.each do |instrument| %>
-              <div class="instrument-clickable">
-                <i><%= cl_image_tag instrument.photo.key %></i>
-                <p><%= instrument.name.titleize %></p>
-              </div>
+
+      <div class="col-md-6 d-flex flex-column">
+        <div class="profile-rehearsals">
+          <h5 class="mb-3">Upcoming Rehearsals</h5>
+          <div class="rehearsals-scroll">
+            <% @user.upcoming_rehearsals.each do |rehearsal| %>
+              <%= render 'shared/card_rehearsal', rehearsal: rehearsal %>
             <% end %>
           </div>
-        <hr>
-        <li class="profile-list-title">
-          <h4>
-            <% if @user == current_user %>You have <% else %>Has <% end %>
-            <%= @user.rehearsals.count %> upcoming <%= "rehearsal".pluralize(@user.rehearsals.count) %>:
-          </h4>
-        </li>
-          <% @user.rehearsals.each do |rehearsal| %>
-            <li class="profile-list"><%= link_to rehearsal.title, rehearsal_path(rehearsal) %> | <%= rehearsal.address %> | <%= rehearsal.date_time.strftime("%A %d %B %H:%M") %></li>
-        <% end %>
-      </ul>
+        </div>
+        <div class="profile-image mt-auto"></div>
+      </div>
     </div>
   </div>
 </div>

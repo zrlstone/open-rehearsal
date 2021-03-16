@@ -2,55 +2,64 @@
   margin: auto;
   min-height: 400px;
   max-width: 80%;
-  display: flex;
   background: white;
   border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
 }
 
-.profile .avatar {
-  .wrapper {
-    width: 140px;
-    height: 140px;
-    margin: 40px auto;
-  }
-  .wrapper img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 16px;
-  }
-  .wrapper .profile-username {
-    display: flex;
-    justify-content: center;
-  }
-  .wrapper .user-bio {
-    display: flex;
-    text-align: center;
-  }
-  .wrapper .profile-button-container {
-    display: flex;
-    justify-content: center;
-  }
+.profile-wrapper {
+  margin-left: 40px;
+  margin-top: 40px;
+  margin-right: 40px;
 }
 
-.profile-list-title {
-  list-style-type: none;
-  padding-left: 0px;
-}
-
-.profile-list {
-  list-style-type: none;
-  padding-left: 16px;
+.profile-username {
+  margin: 16px auto;
 }
 
 .profile-rehearsals {
   margin-top: 40px;
+  margin-bottom: 40px;
 }
 
-.profile-instruments-container {
-  padding-top: 8px;
-  padding-left: 20px;
-  display: flex;
-  justify-content: flex-start;
+.rehearsals-scroll {
+  overflow-y: auto;
+  max-height: 400px;
 }
+
+.profile-instrument-cards {
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.profile-instruments-title {
+  padding-top: 24px;
+}
+
+.user-bio {
+  width: 100%;
+}
+
+.profile-image {
+  background-image: asset-url('cellist.png');
+  height: 190px;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  padding-top: 0;
+  margin-bottom: 40px;
+}
+
+.profile-instrument-cards .instrument-clickable {
+  &:hover {
+    border: 1px solid #dedede;
+    filter: none;
+    cursor: auto;
+  }
+}
+
+
