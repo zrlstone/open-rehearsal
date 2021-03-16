@@ -38,9 +38,9 @@
             <p><%= role.instrument.name.titleize %></p>
             <% if role.user == current_user %>
               <p class="role-user">🎵</p>
-              <p class="change-remove"><%= link_to 'change', edit_role_path(role) %></p>
+              <p class="change-remove"><%= link_to 'Change', edit_role_path(role) %></p>
             <% else %>
-              <p class="change-remove"><%= link_to 'remove', role_path(role), method: :delete, remote: true %></p>
+              <p class="change-remove"><%= link_to 'Remove', role_path(role), method: :delete, remote: true %></p>
             <% end %>
           </div>
         <% end %>
