@@ -6,7 +6,7 @@
   position: absolute;
   top: 100px;
   left: 500px;
-  width: 100%;
+  width: 50%;
   min-width: 200px;
   height: 200px;
   border: 0px solid #000;
@@ -17,30 +17,30 @@
 .note-3,
 .note-4 {
   position: absolute;
-  animation: notes 3s linear;
+  animation: notes 2s linear;
   font-size: 35px;
   opacity: 0;
 }
 
-.noot-1 {
+.note-1 {
   top: 60px;
   left: 0;
   animation-delay: 0.5s;
 }
 
-.noot-2 {
+.note-2 {
   top: 30px;
   left: 30%;
   animation-delay: 1s;
 }
 
-.noot-3 {
+.note-3 {
   top: 90px;
   left: 60%;
   animation-delay: 1.5s;
 }
 
-.noot-4 {
+.note-4 {
   top: 40px;
   left: 90%;
   animation-delay: 2s;
