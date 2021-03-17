@@ -85,11 +85,11 @@
   text-shadow: 0 0 0 white;
   position: absolute;
   padding-left: 68px;
+  padding-top: -2px
 }
 
 .card-plus:hover {
   color: transparent;
-  text-shadow: 0 0 0 green;
 }
 
 .instrument-clickable i {
@@ -111,16 +111,18 @@
 }
 
 .instrument-clickable:hover {
-  border-color: #52ACF4;
-  filter: invert(55%) sepia(93%) saturate(560%) hue-rotate(180deg) brightness(98%) contrast(94%);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  border-color: #75A1CE;
+  border-width: 1px solid #75A1CE;
+  filter: invert(72%) sepia(11%) saturate(1484%) hue-rotate(173deg) brightness(84%) contrast(90%);
 }
 
 .instrument-clickable.active {
-  border-color: #52ACF4;
+  border-color: #75A1CE;
 }
 
 .instrument-clickable.active i {
-  filter: invert(55%) sepia(93%) saturate(560%) hue-rotate(180deg) brightness(98%) contrast(94%);
+  filter: invert(72%) sepia(11%) saturate(1484%) hue-rotate(173deg) brightness(84%) contrast(90%);
 }
 
 .role-user {
@@ -177,7 +179,7 @@
 .lineup-instrument-clickable:hover {
   background-color: grey;
   opacity: .7;
-  border-color: #52ACF4;
+  border-color: black;
   a {
     color: black;
   }
