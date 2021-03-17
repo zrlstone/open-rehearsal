@@ -10,7 +10,7 @@ const fitMapToMarkers = (map, markers) => {
   if (smallMap) {
     map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 0 }); // maxZoom to set the starting zoom
   } else {
-    map.fitBounds(bounds, { padding: 100, duration: 5000 });
+    map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 2500 });
   }
 };
 
