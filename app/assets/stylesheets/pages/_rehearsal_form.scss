@@ -46,20 +46,20 @@ label .instrument-clickable {
   &:hover {
     filter: none;
     i {
-      filter: invert(55%) sepia(93%) saturate(560%) hue-rotate(180deg) brightness(98%) contrast(94%);
+      filter: invert(72%) sepia(11%) saturate(1484%) hue-rotate(173deg) brightness(84%) contrast(90%);
     }
     p {
-      color: #52ACF4;
+      color: $light-blue;
     }
   }
 }
 
 input[type="radio"]:checked + label .instrument-clickable {
-  border-color: #52ACF4;
+  border-color: $light-blue;
   i {
-    filter: invert(55%) sepia(93%) saturate(560%) hue-rotate(180deg) brightness(98%) contrast(94%);
+    filter: invert(72%) sepia(11%) saturate(1484%) hue-rotate(173deg) brightness(84%) contrast(90%);
   }
   p {
-    color: #52ACF4;
+    color: $light-blue;
   }
 }
