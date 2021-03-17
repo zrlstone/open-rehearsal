@@ -4,16 +4,20 @@
 
       <div class="col-md-6">
         <div class="profile-wrapper">
-          <% if @user.avatar.attached? %>
-            <%= cl_image_tag @user.avatar.key, transformation: {width: 140, height: 140, gravity: "face", radius: "max" }, alt: "alttext", class: "avatar-profile" %>
-          <% else %>
-            <%= image_tag "blank_avatar.jpg", class: "avatar-profile" %>
-          <% end %>
+          <div class="d-flex align-items-center">
+            <% if @user.avatar.attached? %>
+              <%= cl_image_tag @user.avatar.key, transformation: {width: 140, height: 140, gravity: "face", radius: "max" }, alt: "alttext", class: "avatar-profile" %>
+            <% else %>
+              <%= image_tag "blank_avatar.jpg", class: "avatar-profile" %>
+            <% end %>
+            <% if @user == current_user %>
+              <%= link_to 'EDIT PROFILE', edit_user_registration_path, class: "btn btn-explore ml-4" %>
+            <% end %>
+          </div>
+
           <br>
           <h2 class="profile-username"><%= @user.username %></h2>
-          <% if @user == current_user %>
-            <%= link_to 'EDIT PROFILE', edit_user_registration_path, class: "btn btn-explore mb-4" %>
-          <% end %>
+
           <div class="user-bio">
             <p><%= @user.bio %></p>
           </div>

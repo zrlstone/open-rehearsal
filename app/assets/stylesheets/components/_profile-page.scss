@@ -18,6 +18,7 @@
 
 .profile-username {
   margin: 16px auto;
+  margin-top: 0;
 }
 
 .profile-rehearsals {
@@ -43,6 +44,9 @@
 
 .user-bio {
   width: 100%;
+  p {
+    color: $or-dark-grey;
+  }
 }
 
 .profile-image {
