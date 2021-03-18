@@ -1,39 +1,42 @@
-<div class="container pt-5 pb-5">
+<div class="container pt-4 pb-5">
   <div class="row justify-content-center">
     <div class="col-8">
-      <h2><%= @rehearsal.title %></h2>
+      <div class="rehearsal-show-page-banner"></div>
+      <h2 class="rehearsal-title"><%= @rehearsal.title %></h2>
+      <p><%= @rehearsal.date_time.strftime("%A %d %B %H:%M") %></p>
 
       <div class="d-flex">
         <% if @organiser.avatar.attached? %>
-          <%= cl_image_tag @organiser.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max", crop: "thumb" }, alt: "alttext", class: "avatar" %>
+          <%= cl_image_tag @organiser.avatar.key, transformation: {width: 40, height: '100%', gravity: "face", radius: "max", crop: "thumb" }, alt: "alttext", class: "avatar-rehearsal-show" %>
         <% else %>
-          <%= image_tag "blank_avatar.jpg", class: "avatar" %>
+          <%= image_tag "blank_avatar.jpg", class: "avatar-rehearsal-show" %>
         <% end %>
-        <p><strong>
+        <p class="hosted-by">Hosted by:</p>
+        <p class="organiser-title"><strong>
           <% if (@rehearsal.user_id == current_user.id) %>
-            You are the organiser
+            You!
           <% else %>
-            Organised by <%= link_to "#{@organiser.username}", user_path(@organiser) %>
+            <%= link_to "#{@organiser.username}", user_path(@organiser) %>
           <% end %>
         </strong></p>
       </div>
 
-      <div id="map" class="photo-map"
-        style="width: 350px; height: 200px; margin: 0px 0px 20px 0px; position: relative;"
-        data-markers="<%= @marker.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-      <p><%= @rehearsal.address %></p>
-      <p><%= @rehearsal.description %></p>
-      <p><%= @rehearsal.date_time.strftime("%A %d %B %H:%M") %></p>
+      <hr>
 
-      <h3>Attendees</h3>
+      <p><%= @rehearsal.description %></p>
+
+      <br>
+
+      <h4>Attendees</h4>
       <% @filled.each do |role| %>
         <%= render "shared/spaces_card", role: role %>
       <% end %>
 
+      <br>
+      <br>
+
       <% if @spaces.length.positive? %>
-        <h3>Spaces</h3>
+        <h4>Spaces</h4>
         <% @spaces.each do |role| %>
           <div class="d-flex">
             <%= render "shared/spaces_card", role: role %>
@@ -41,16 +44,31 @@
         <% end %>
       <% end %>
 
+      <br>
+      <br>
 
+      <h4>Location</h4>
+      <p><%= @rehearsal.address %></p>
 
-      <%= link_to "Back", rehearsals_path %>
-      <% if (@rehearsal.user_id == current_user.id) %>
-        | <%= link_to "Edit", edit_rehearsal_path(@rehearsal) %> |
-        <%= link_to "Cancel rehearsal",
-                    rehearsal_path(@rehearsal),
-                    method: :delete,
-                    data: { confirm: "Are you sure you want to cancel this rehearsal?" } %>
-      <% end %>
+      <div class="map-box-container">
+        <div id="map" class="photo-map"
+          style="width: 350px; height: 200px; margin: 0px 0px 20px 0px; position: relative;"
+          data-markers="<%= @marker.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+
+      <div class="rehearsal-page-buttons">
+        <% if (@rehearsal.user_id == current_user.id) %>
+          <%= link_to "Edit", edit_rehearsal_path(@rehearsal), class: 'btn btn-openrehearsal ml-3 mr-4' %>
+          <%= link_to "Cancel rehearsal",
+                      rehearsal_path(@rehearsal),
+                      class: 'btn btn-openrehearsal ml-3 mr-4',
+                      method: :delete,
+                      data: { confirm: "Are you sure you want to cancel this rehearsal?" } %>
+        <% end %>
+        <%= link_to "Back", rehearsals_path, class: 'btn btn-explore ml-3 mr-4' %>
+      </div>
     </div>
   </div>
 </div>

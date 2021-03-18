@@ -38,10 +38,13 @@ const initMapbox = () => {
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(map);
+
+    map.on('load', function () {
+      map.resize();
+    });
   });
 
   fitMapToMarkers(map, markers);
-
   }
 };
 
