@@ -10,4 +10,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :bio, :avatar])
   end
 
+  # def default_url_options
+  #   { host: ENV["DOMAIN"] || "localhost:3000" }
+  # end
+
+  # Zak: uncomment the above method and set the production DOMAIN variable:
+  # Type into terminal:
+  # heroku config:set DOMAIN=www.openrehearsal.co.uk
+  # You can check it's properly set by typing:
+  # heroku config:get DOMAIN
 end
