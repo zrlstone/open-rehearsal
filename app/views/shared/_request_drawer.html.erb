@@ -1,0 +1,13 @@
+<div class="card-request request-drawer--onhover">
+  <div class="card-request-top">
+    <div class="card-request-top-left">
+      <p><%= request.role.rehearsal.date_time.strftime("%d %b %H:%M") %></p>
+
+    </div>
+    <div class="card-request-top-right">
+      <h3><%= request.role.rehearsal.title %></h3>
+      <p><%= request.role.rehearsal.address.truncate(20, separator: /,/) %></p>
+    </div>
+  </div>
+</div>
+<hr>

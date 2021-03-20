@@ -1,43 +1,38 @@
-<div class="container mt-5 p-5">
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <h1>My Requests</h1>
-      <h3><%= I18n.t('requests_from_others', count: @incoming_requests.count) %></h3>
-      <% if @incoming_requests.count.zero? %>
-        <div class="col-4">
-          <div class="request-card" style="opacity: 0.6">
-            <div class="request-content">
-              <p> Check back later!</p>
+
+<div class="container mt-2 p-5">
+
+<h3>My Requests</h3>
+<h4><%= I18n.t('requests_from_others', count: @incoming_requests.count) %></h4>
+
+
+  <div class="container requests-container">
+    <div class="row no-gutters">
+      <div class="col-md-4 border-right">
+        <% if @incoming_requests.count.zero? %>
+          <div class="col-4">
+            <div class="request-card" style="opacity: 0.6">
+              <div class="request-content">
+                <p> Check back later!</p>
+              </div>
             </div>
           </div>
-        </div>
-      <% else %>
-        <div class="row">
-              <% @incoming_requests.each do |request| %>
-                <div class="col-4">
-                  <%= render "shared/requests_card", request: request %>
-                </div>
-              <% end %>
-        </div>
-      <% end %>
-      <h3><%= I18n.t('my_requests', count: @current_user_requests.count) %></h3>
-      <div class="my-5">
-        <div class="row justify-content-center">
-          <div class="col-8">
-            <ul>
-              <% @current_user_requests.each do |request| %>
-                <li>
-                  <%= link_to request.role.rehearsal.title, rehearsal_path(request.role.rehearsal) %>
-                  <%= request.role.instrument.name %> |
-                  <%= request.user == request.role.user ? 'Confirmed' : 'Pending' %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
+        <% else %>
+          <% @incoming_requests.each do |request| %>
+            <%= render "shared/request_drawer", request: request %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="request-panel">
+          <% @incoming_requests.each do |request| %>
+            <%= render "shared/requests_card", request: request %>
+          <% end %>
         </div>
       </div>
-
     </div>
   </div>
-
 </div>
+
+
+
+
