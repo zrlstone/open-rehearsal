@@ -46,57 +46,109 @@ puts 'Adding instruments 🎵🎶 ...'
 
 acoustic_guitar = Instrument.create(name: 'acoustic guitar')
 acoustic_guitar.photo.attach(io: URI.open('app/assets/images/acoustic_guitar.svg'), filename: 'acoustic_guitar.svg', content_type: 'image/svg')
+acoustic_guitar.photo_painted.attach(io: URI.open('app/assets/images/acoustic_guitar_c.svg'), filename: 'acoustic_guitar_c.svg', content_type: 'image/svg')
+
 electric_guitar = Instrument.create(name: 'electric guitar')
 electric_guitar.photo.attach(io: URI.open('app/assets/images/electric_guitar.svg'), filename: 'electric_guitar.svg', content_type: 'image/svg')
+electric_guitar.photo_painted.attach(io: URI.open('app/assets/images/electric_guitar_c.svg'), filename: 'electric_guitar_c.svg', content_type: 'image/svg')
+
 bass_guitar = Instrument.create(name: 'bass guitar')
 bass_guitar.photo.attach(io: URI.open('app/assets/images/bass_guitar.svg'), filename: 'bass_guitar.svg', content_type: 'image/svg')
+bass_guitar.photo_painted.attach(io: URI.open('app/assets/images/bass_guitar_c.svg'), filename: 'bass_guitar_c.svg', content_type: 'image/svg')
+
 violin = Instrument.create(name: 'violin')
 violin.photo.attach(io: URI.open('app/assets/images/violin.svg'), filename: 'violin.svg', content_type: 'image/svg')
+violin.photo_painted.attach(io: URI.open('app/assets/images/violin_c.svg'), filename: 'violin_c.svg', content_type: 'image/svg')
+
 viola = Instrument.create(name: 'viola')
 viola.photo.attach(io: URI.open('app/assets/images/viola.svg'), filename: 'viola.svg', content_type: 'image/svg')
+viola.photo_painted.attach(io: URI.open('app/assets/images/viola_c.svg'), filename: 'viola_c.svg', content_type: 'image/svg')
+
 cello = Instrument.create(name: 'cello')
 cello.photo.attach(io: URI.open('app/assets/images/cello.svg'), filename: 'cello.svg', content_type: 'image/svg')
+cello.photo_painted.attach(io: URI.open('app/assets/images/cello_c.svg'), filename: 'cello_c.svg', content_type: 'image/svg')
+
 puts 'Tuning strings'
+
 double_bass = Instrument.create(name: 'double bass')
 double_bass.photo.attach(io: URI.open('app/assets/images/double_bass.svg'), filename: 'double_bass.svg', content_type: 'image/svg')
+double_bass.photo_painted.attach(io: URI.open('app/assets/images/double_bass_c.svg'), filename: 'double_bass_c.svg', content_type: 'image/svg')
+
 banjo = Instrument.create(name: 'banjo')
 banjo.photo.attach(io: URI.open('app/assets/images/banjo.svg'), filename: 'banjo.svg', content_type: 'image/svg')
+banjo.photo_painted.attach(io: URI.open('app/assets/images/banjo_c.svg'), filename: 'banjo_c.svg', content_type: 'image/svg')
+
 mandolin = Instrument.create(name: 'mandolin')
 mandolin.photo.attach(io: URI.open('app/assets/images/mandolin.svg'), filename: 'mandolin.svg', content_type: 'image/svg')
+mandolin.photo_painted.attach(io: URI.open('app/assets/images/mandolin_c.svg'), filename: 'mandolin_c.svg', content_type: 'image/svg')
+
 ukulele = Instrument.create(name: 'ukulele')
 ukulele.photo.attach(io: URI.open('app/assets/images/ukulele.svg'), filename: 'ukulele.svg', content_type: 'image/svg')
+ukulele.photo_painted.attach(io: URI.open('app/assets/images/ukulele_c.svg'), filename: 'ukulele_c.svg', content_type: 'image/svg')
+
 harp = Instrument.create(name: 'harp')
 harp.photo.attach(io: URI.open('app/assets/images/harp.svg'), filename: 'harp.svg', content_type: 'image/svg')
+harp.photo_painted.attach(io: URI.open('app/assets/images/harp_c.svg'), filename: 'harp_c.svg', content_type: 'image/svg')
+
 puts 'Replacing reeds'
+
 piano = Instrument.create(name: 'piano')
 piano.photo.attach(io: URI.open('app/assets/images/piano.svg'), filename: 'piano.svg', content_type: 'image/svg')
+piano.photo_painted.attach(io: URI.open('app/assets/images/piano_c.svg'), filename: 'piano_c.svg', content_type: 'image/svg')
+
 keyboard = Instrument.create(name: 'keyboard')
 keyboard.photo.attach(io: URI.open('app/assets/images/keyboard.svg'), filename: 'keyboard.svg', content_type: 'image/svg')
+keyboard.photo_painted.attach(io: URI.open('app/assets/images/keyboard_c.svg'), filename: 'keyboard_c.svg', content_type: 'image/svg')
+
 flute = Instrument.create(name: 'flute')
 flute.photo.attach(io: URI.open('app/assets/images/flute.svg'), filename: 'flute.svg', content_type: 'image/svg')
+flute.photo_painted.attach(io: URI.open('app/assets/images/flute_c.svg'), filename: 'flute_c.svg', content_type: 'image/svg')
+
 clarinet = Instrument.create(name: 'clarinet')
 clarinet.photo.attach(io: URI.open('app/assets/images/clarinet.svg'), filename: 'clarinet.svg', content_type: 'image/svg')
+clarinet.photo_painted.attach(io: URI.open('app/assets/images/clarinet_c.svg'), filename: 'clarinet_c.svg', content_type: 'image/svg')
+
 puts 'do, re, mi, fa, sol, la, si'
+
 oboe = Instrument.create(name: 'oboe')
 oboe.photo.attach(io: URI.open('app/assets/images/oboe.svg'), filename: 'oboe.svg', content_type: 'image/svg')
+oboe.photo_painted.attach(io: URI.open('app/assets/images/oboe_c.svg'), filename: 'oboe_c.svg', content_type: 'image/svg')
+
 bassoon = Instrument.create(name: 'bassoon')
 bassoon.photo.attach(io: URI.open('app/assets/images/bassoon.svg'), filename: 'bassoon.svg', content_type: 'image/svg')
+bassoon.photo_painted.attach(io: URI.open('app/assets/images/bassoon_c.svg'), filename: 'bassoon_c.svg', content_type: 'image/svg')
+
 trumpet = Instrument.create(name: 'trumpet')
 trumpet.photo.attach(io: URI.open('app/assets/images/trumpet.svg'), filename: 'trumpet.svg', content_type: 'image/svg')
+trumpet.photo_painted.attach(io: URI.open('app/assets/images/trumpet_c.svg'), filename: 'trumpet_c.svg', content_type: 'image/svg')
+
 trombone = Instrument.create(name: 'trombone')
 trombone.photo.attach(io: URI.open('app/assets/images/trombone.svg'), filename: 'trombone.svg', content_type: 'image/svg')
+trombone.photo_painted.attach(io: URI.open('app/assets/images/trombone_c.svg'), filename: 'trombone_c.svg', content_type: 'image/svg')
+
 french_horn = Instrument.create(name: 'french horn')
 french_horn.photo.attach(io: URI.open('app/assets/images/french_horn.svg'), filename: 'french_horn.svg', content_type: 'image/svg')
+french_horn.photo_painted.attach(io: URI.open('app/assets/images/french_horn_c.svg'), filename: 'french_horn_c.svg', content_type: 'image/svg')
+
 tuba = Instrument.create(name: 'tuba')
 tuba.photo.attach(io: URI.open('app/assets/images/tuba.svg'), filename: 'tuba.svg', content_type: 'image/svg')
+tuba.photo_painted.attach(io: URI.open('app/assets/images/tuba_c.svg'), filename: 'tuba_c.svg', content_type: 'image/svg')
+
 saxophone = Instrument.create(name: 'saxophone')
 saxophone.photo.attach(io: URI.open('app/assets/images/saxophone.svg'), filename: 'saxophone.svg', content_type: 'image/svg')
+saxophone.photo_painted.attach(io: URI.open('app/assets/images/saxophone_c.svg'), filename: 'saxophone_c.svg', content_type: 'image/svg')
+
 drum_kit = Instrument.create(name: 'drum kit')
 drum_kit.photo.attach(io: URI.open('app/assets/images/drum_kit.svg'), filename: 'drum_kit.svg', content_type: 'image/svg')
+drum_kit.photo_painted.attach(io: URI.open('app/assets/images/drum_kit_c.svg'), filename: 'drum_kit_c.svg', content_type: 'image/svg')
+
 bongo_drums = Instrument.create(name: 'bongo drums')
 bongo_drums.photo.attach(io: URI.open('app/assets/images/bongo_drums.svg'), filename: 'bongo_drums.svg', content_type: 'image/svg')
+bongo_drums.photo_painted.attach(io: URI.open('app/assets/images/bongo_drums_c.svg'), filename: 'bongo_drums_c.svg', content_type: 'image/svg')
+
 vocals = Instrument.create(name: 'vocals')
 vocals.photo.attach(io: URI.open('app/assets/images/microphone.svg'), filename: 'microphone.svg', content_type: 'image/svg')
+vocals.photo_painted.attach(io: URI.open('app/assets/images/microphone_c.svg'), filename: 'microphone_c.svg', content_type: 'image/svg')
 
 puts 'Adding skills to users ...'
 

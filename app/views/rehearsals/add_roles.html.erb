@@ -7,20 +7,19 @@
 <div class="container wide pt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col-8">
-      <div class="step-container d-flex justify-content-center">
+      <div id="final-step" class="step-container d-flex justify-content-center">
         <p>STEP 6 OF 6</p>
       </div>
       <div class="step-title mb-5">
-        <h1>Choose your lineup</h1>
+        <h1>Choose your lineup</h1><%= render 'shared/animated_musical_notes' %>
       </div>
       <div class="cards-container">
-        <div class="container wide title">
-          <h4>Click to select</h4>
+        <div class="container wide title my-3">
+          <h4>Click to select:</h4>
         </div>
         <% @instruments.each do |instrument| %>
           <%= link_to build_role_rehearsal_path(instrument: instrument), method: :post, remote: true, class: "instrument-link" do %>
             <div class="instrument-clickable">
-              <i class="card-plus">+</i>
               <i><%= cl_image_tag instrument.photo.key %></i>
               <p><%= instrument.name.titleize %></p>
             </div>
@@ -29,28 +28,33 @@
       </div>
 
       <div class="lineup-container">
-        <div class="container wide lineup-title">
-          <h4 id="rehearsal-lineup">Lineup</h4>
+        <div class="container wide lineup-title my-3">
+          <h4>Lineup</h4>
         </div>
         <% @rehearsal.roles.each do |role| %>
-          <div class="lineup-instrument-clickable">
-            <i><%= cl_image_tag role.instrument.photo.key %></i>
-            <p><%= role.instrument.name.titleize %></p>
+          <div class="position-relative hover-opacity">
             <% if role.user == current_user %>
-              <p class="role-user">🎵</p>
-              <p class="change-remove"><%= link_to 'Change', edit_role_path(role) %></p>
+              <%= link_to edit_role_path(role), class: "change-remove" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
             <% else %>
-              <p class="change-remove"><%= link_to 'Remove', role_path(role), method: :delete, remote: true %></p>
+              <%= link_to role_path(role), method: :delete, remote: true, class: "change-remove" do %>
+                <i class="fas fa-times"></i>
+              <% end %>
             <% end %>
+            <div class="lineup-instrument-clickable">
+              <i><%= cl_image_tag role.instrument.photo.key %></i>
+              <p><%= role.instrument.name.titleize %></p>
+              <% if role.user == current_user %>
+                <p class="role-user">🎵</p>
+              <% end %>
+
+            </div>
           </div>
         <% end %>
       </div>
-      <%#= link_to 'Back', edit_rehearsal_path(@rehearsal), class: "btn btn-outline-secondary" %>
 
-
-      <%#= link_to 'cancel', rehearsal_path(@rehearsal), method: :delete, data: { confirm: 'Are you sure you want to cancel this rehearsal?'} %>
-
-      <div class="button-container">
+      <div class="button-container mt-3">
         <%= link_to 'FINISHED!', rehearsal_path(@rehearsal), class: "btn btn-openrehearsal" %>
       </div>
     </div>

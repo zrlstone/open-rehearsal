@@ -47,7 +47,6 @@ class RehearsalsController < ApplicationController
     @rehearsal = Rehearsal.new(rehearsal_params)
     @rehearsal.organiser = current_user
     if @rehearsal.save
-      # redirect_to new_rehearsal_role_path(@rehearsal)
       redirect_to add_roles_rehearsal_path(@rehearsal)
     else
       @instruments = current_user.instruments
@@ -64,7 +63,7 @@ class RehearsalsController < ApplicationController
     @role.instrument_id = params[:instrument]
     @role.rehearsal = @rehearsal
     if @role.save
-      redirect_to add_roles_rehearsal_path(@rehearsal, anchor: "rehearsal-lineup")
+      redirect_to add_roles_rehearsal_path(@rehearsal, anchor: "final-step")
     end
   end
 

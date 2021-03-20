@@ -1,5 +1,11 @@
 <%= link_to rehearsal_path(rehearsal), class:"no-decoration" do %>
-  <div class="card-rehearsal">
+  <% my_role = rehearsal.roles.filled.find { |role| role.user_id == current_user.id }  %>
+  <% if my_role.nil? %>
+    <div class="card-rehearsal">
+  <% else %>
+    <div class="card-rehearsal" style="background-image: url('<%= cl_image_path my_role.instrument.photo_painted.key %>');">
+  <% end %>
+  
     <div class="card-rehearsal-top">
       <div class="card-rehearsal-top-left">
         <p><%= rehearsal.date_time.strftime("%d %b %H:%M") %></p>
@@ -7,19 +13,15 @@
       <div class="card-rehearsal-top-right">
         <h3><%= rehearsal.title %></h3>
         <p><%= rehearsal.address.truncate(20, separator: /,/) %></p>
+
       </div>
     </div>
     <div class="card-rehearsal-footer">
-      <div class="card-rehearsal-footer-left">
-        <% if rehearsal.organiser.avatar.attached? %>
-          <%= cl_image_tag rehearsal.organiser.avatar.key, transformation: {width: 30, height: 30, gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-rehearsal-card" %>
-        <% else %>
-          <%= image_tag "blank_avatar.jpg", class: "avatar-rehearsal-card" %>
-        <% end %>
-      </div>
-      <div class="card-rehearsal-footer-right">
-        [instrument icons]
-      </div>
+      <% if rehearsal.organiser.avatar.attached? %>
+        <%= cl_image_tag rehearsal.organiser.avatar.key, transformation: {width: 30, height: 30, gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-rehearsal-card" %>
+      <% else %>
+        <%= image_tag "blank_avatar.jpg", class: "avatar-rehearsal-card" %>
+      <% end %>
     </div>
   </div>
 <% end %>

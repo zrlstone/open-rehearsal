@@ -44,9 +44,6 @@
 
 .user-bio {
   width: 100%;
-  p {
-    color: $or-dark-grey;
-  }
 }
 
 .profile-image {
@@ -61,10 +58,11 @@
 
 .profile-instrument-cards .instrument-clickable {
   &:hover {
-    border: 1px solid #dedede;
+    border: 2px solid #dedede;
     filter: none;
     cursor: auto;
     box-shadow: none;
+    transform: none;
   }
 }
 
