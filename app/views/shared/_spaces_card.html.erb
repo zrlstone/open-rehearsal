@@ -1,13 +1,13 @@
-<div class="card-rehearsal" style="background-image: url('<%= cl_image_path role.instrument.photo_painted.key %>');">
-  <div class="card-rehearsal-top">
+<div class="spaces-card-rehearsal" style="background-image: url('<%= cl_image_path role.instrument.photo_painted.key %>');">
+  <div class="spaces-card-rehearsal-top">
     <div class="card-rehearsal-top-left">
     </div>
-    <div class="card-rehearsal-top-right2">
+    <div class="spaces-card-rehearsal-top-right2">
       <% if role.user %>
         <p>
           <%= link_to role.user.username, user_path(role.user) %>
           <% if (role.user_id == current_user.id) %>
-              <strong>(you)</strong>
+              <div class="music-icon-attendee-card"><strong>🎵</strong></div>
           <% end %>
         </p>
         <p><small><%=  role.instrument.name.titleize %></small></p>
@@ -16,15 +16,15 @@
       <% end %>
     </div>
   </div>
-  <div class="card-rehearsal-footer">
+  <div class="spaces-card-rehearsal-footer">
     <% if role.user  %>
       <% if role.rehearsal.organiser.avatar.attached? %>
-        <%= cl_image_tag role.rehearsal.organiser.avatar.key, transformation: {gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-rehearsal-spaces-card" %>
+        <%= cl_image_tag role.rehearsal.organiser.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max", crop: "fill" }, alt: "avatar", class: "avatar-rehearsal-spaces-card" %>
       <% else %>
         <%= image_tag "blank_avatar.jpg", class: "avatar-rehearsal-spaces-card" %>
       <% end %>
     <% elsif @roles_requested_by_user.include?(role) %>
-        <small>Pending confirmation</small>
+        <small class="pending-text">Pending confirmation</small>
     <% elsif current_user.instruments.include?(role.instrument) && !@rehearsal.attendees.include?(current_user) %>
       <%= link_to "Join", role_requests_path(role), class:"btn btn-request", method: :post, remote: true%>
     <% end %>
