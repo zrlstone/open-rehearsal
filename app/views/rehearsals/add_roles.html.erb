@@ -11,7 +11,7 @@
         <p>STEP 6 OF 6</p>
       </div>
       <div class="step-title mb-5">
-        <h1>Choose your lineup</h1><%= render 'shared/animated_musical_notes' %>
+        <h1>Choose your lineup</h1>
       </div>
       <div class="cards-container">
         <div class="container wide title my-3">
@@ -55,7 +55,7 @@
       </div>
 
       <div class="button-container mt-3">
-        <%= link_to 'FINISHED!', rehearsal_path(@rehearsal), class: "btn btn-openrehearsal" %>
+        <%= link_to 'FINISHED!', rehearsal_path(@rehearsal), class: "btn btn-openrehearsal", id: "finished-button" %>
       </div>
     </div>
   </div>
