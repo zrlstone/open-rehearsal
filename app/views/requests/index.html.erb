@@ -1,10 +1,6 @@
-
 <div class="container mt-2 p-5">
-
 <h3>My Requests</h3>
 <h4><%= I18n.t('requests_from_others', count: @incoming_requests.count) %></h4>
-
-
   <div class="container requests-container">
     <div class="row no-gutters">
       <div class="col-md-4 border-right">
@@ -28,29 +24,30 @@
           <% @incoming_requests.each do |request| %>
             <%= render "shared/requests_card", request: request %>
           <% end %>
-
-        </div> <!-- check me! -->
-      <h3><%= I18n.t('my_requests', count: @current_user_requests.count) %></h3>
-      <div class="my-5">
-        <div class="row justify-content-center">
-          <div class="col-8">
-            <ul>
-              <% @current_user_requests.each do |request| %>
-                <li>
-                  <%= link_to request.role.rehearsal.title, rehearsal_path(request.role.rehearsal) %>
-                  <%= request.role.instrument.name %> |
-                  <%= request.status %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-
         </div>
       </div>
     </div>
   </div>
-</div>
 
+
+  <h3><%= I18n.t('my_requests', count: @current_user_requests.count) %></h3>
+  <div class="my-5">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <ul>
+          <% @current_user_requests.each do |request| %>
+            <li>
+              <%= link_to request.role.rehearsal.title, rehearsal_path(request.role.rehearsal) %>
+              <%= request.role.instrument.name %> |
+              <%= request.status %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 
 
