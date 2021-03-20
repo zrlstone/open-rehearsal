@@ -5,6 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <div class="rehearsal-show-page-banner"></div>
+      <%= image_tag "rehearsal-show-page-line.png", alt: "alttext", class: "rehearsal-show-page-line" %>
       <h2 class="rehearsal-title"><%= @rehearsal.title %></h2>
       <p><%= @rehearsal.date_time.strftime("%A %d %B %H:%M") %></p>
 
@@ -24,27 +25,29 @@
         </strong></p>
       </div>
 
-      <hr>
+      <br>
 
       <p><%= @rehearsal.description %></p>
 
       <br>
 
       <h4>Attendees</h4>
-      <% @filled.each do |role| %>
-        <%= render "shared/spaces_card", role: role %>
-      <% end %>
+      <div class="attendees-cards">
+        <% @filled.each do |role| %>
+          <%= render "shared/spaces_card", role: role %>
+        <% end %>
+      </div>
 
       <br>
       <br>
 
       <% if @spaces.length.positive? %>
         <h4>Spaces</h4>
-        <% @spaces.each do |role| %>
-          <div class="d-flex">
+        <div class="attendees-cards">
+          <% @spaces.each do |role| %>
             <%= render "shared/spaces_card", role: role %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
 
       <br>
@@ -63,14 +66,20 @@
 
       <div class="rehearsal-page-buttons">
         <% if (@rehearsal.user_id == current_user.id) %>
-          <%= link_to "Edit", edit_rehearsal_path(@rehearsal), class: 'btn btn-openrehearsal ml-3 mr-4' %>
-          <%= link_to "Cancel rehearsal",
-                      rehearsal_path(@rehearsal),
-                      class: 'btn btn-openrehearsal ml-3 mr-4',
-                      method: :delete,
-                      data: { confirm: "Are you sure you want to cancel this rehearsal?" } %>
+          <%= link_to "EDIT", edit_rehearsal_path(@rehearsal), class: 'btn btn-openrehearsal ml-3 mr-4' %>
         <% end %>
-        <%= link_to "Back", rehearsals_path, class: 'btn btn-explore ml-3 mr-4' %>
+      </div>
+      <div class="back-button__show-page">
+         <%= link_to "Back", rehearsals_path, class: '' %>
+      </div>
+      <div class="cancel-button__show-page">
+        <% if (@rehearsal.user_id == current_user.id) %>
+          <%= link_to "Cancel rehearsal",
+              rehearsal_path(@rehearsal),
+              class: '',
+              method: :delete,
+              data: { confirm: "Are you sure you want to cancel this rehearsal?" } %>
+        <% end %>
       </div>
     </div>
   </div>

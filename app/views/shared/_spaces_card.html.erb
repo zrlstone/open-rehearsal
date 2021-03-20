@@ -1,31 +1,27 @@
-<div class="spaces-card">
-  <div class="spaces-instrument">
-    <i>
-    <%= cl_image_tag role.instrument.photo.key %>
-    </i>
+<div class="card-rehearsal" style="background-image: url('<%= cl_image_path role.instrument.photo_painted.key %>');">
+  <div class="card-rehearsal-top">
+    <div class="card-rehearsal-top-left">
+    </div>
+    <div class="card-rehearsal-top-right2">
+      <% if role.user %>
+        <p>
+          <%= link_to role.user.username, user_path(role.user) %>
+          <% if (role.user_id == current_user.id) %>
+              <strong>(you)</strong>
+          <% end %>
+        </p>
+        <p><small><%=  role.instrument.name.titleize %></small></p>
+      <% else %>
+        <p> <%=  role.instrument.name.titleize %> </p>
+      <% end %>
+    </div>
   </div>
-
-  <div class="spaces-content">
-    <% if role.user  %>
-      <p>
-        <%= link_to role.user.username, user_path(role.user) %>
-        <% if (role.user_id == current_user.id) %>
-            <strong>(you)</strong>
-        <% end %>
-      </p>
-      <p><small><%=  role.instrument.name %></small></p>
-    <% else %>
-      <p> <%=  role.instrument.name %> </p>
-    <% end %>
-
-  </div>
-
-  <div class="spaces-actions">
+  <div class="card-rehearsal-footer">
     <% if role.user  %>
       <% if role.rehearsal.organiser.avatar.attached? %>
-        <%= cl_image_tag role.rehearsal.organiser.avatar.key, transformation: {gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar" %>
+        <%= cl_image_tag role.rehearsal.organiser.avatar.key, transformation: {gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-rehearsal-spaces-card" %>
       <% else %>
-        <%= image_tag "blank_avatar.jpg", class: "avatar" %>
+        <%= image_tag "blank_avatar.jpg", class: "avatar-rehearsal-spaces-card" %>
       <% end %>
     <% elsif @roles_requested_by_user.include?(role) %>
         <small>Pending confirmation</small>

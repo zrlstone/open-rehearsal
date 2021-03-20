@@ -8,6 +8,13 @@
   margin-bottom: -205px;
 }
 
+.rehearsal-show-page-line {
+  position: absolute;
+  height: 6px;
+  width: 418px;
+  margin-top: 151px;
+}
+
 .rehearsal-title {
   padding-bottom: 2px;
 }
@@ -24,16 +31,38 @@
 
 .rehearsal-page-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   padding-top: 40px;
+  margin-left: -20px;
 }
 
-.rehearsal-page-button-cancel {
+.cancel-button__show-page {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .mapboxgl-canvas-container {
   height: 200px;
   width: 100%;
+}
+
+.back-button__show-page {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.attendees-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .attendees-cards { grid-template-columns: repeat(1, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .attendees-cards { grid-template-columns: repeat(2, 1fr); }
 }
