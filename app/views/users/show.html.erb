@@ -36,8 +36,8 @@
         <div class="profile-rehearsals">
           <h5 class="mb-3">Upcoming Rehearsals</h5>
           <div class="rehearsals-scroll">
-            <% @user.upcoming_rehearsals.each do |rehearsal| %>
-              <%= render 'shared/card_rehearsal', rehearsal: rehearsal %>
+            <% @upcoming_rehearsals.each do |rehearsal| %>
+              <%= render 'shared/card_rehearsal', rehearsal: rehearsal, user: @user %>
             <% end %>
           </div>
         </div>
