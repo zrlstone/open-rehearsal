@@ -1,0 +1,39 @@
+.rehearsal-show-page-banner {
+  background-image: asset-url('rehearsal-show-page.png');
+  height: 221px;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-top: 0;
+  margin-bottom: -205px;
+}
+
+.rehearsal-title {
+  padding-bottom: 2px;
+}
+
+.hosted-by {
+  padding-left: 52px;
+  padding-top: 9px;
+}
+
+.organiser-title {
+  padding-left: 8px;
+  padding-top: 9px;
+}
+
+.rehearsal-page-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 40px;
+}
+
+.rehearsal-page-button-cancel {
+  display: flex;
+  justify-content: center;
+}
+
+.mapboxgl-canvas-container {
+  height: 200px;
+  width: 100%;
+}

@@ -8,7 +8,7 @@ const fitMapToMarkers = (map, markers) => {
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
 
   if (smallMap) {
-    map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 0 }); // maxZoom to set the starting zoom
+    map.fitBounds(bounds, { padding: 70, maxZoom: 12, duration: 0 }); // maxZoom to set the starting zoom
   } else {
     map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 2500 });
   }
@@ -40,8 +40,11 @@ const initMapbox = () => {
         .addTo(map);
   });
 
-  fitMapToMarkers(map, markers);
+  map.once('load', () => {
+    map.resize()
+  });
 
+  fitMapToMarkers(map, markers);
   }
 };
 
