@@ -39,6 +39,7 @@
 }
 
 .instrument-clickable {
+  background-color: white;
   padding: 1px;
   width: 91px;
   height: 105px;
@@ -74,16 +75,21 @@
   transform: scale(1.05);
   border-color: $light-blue;
   border-width: 1px solid $light-blue;
-  filter: invert(72%) sepia(11%) saturate(1484%) hue-rotate(173deg) brightness(84%) contrast(90%);
+  i {
+    filter: invert(72%) sepia(11%) saturate(1484%) hue-rotate(173deg) brightness(84%) contrast(90%);
+  }
+  p {
+    color: $light-blue;
+  }
 }
 
-.instrument-clickable.active {
-  border-color: $light-blue;
-}
+// .instrument-clickable.active {
+//   border-color: $light-blue;
+// }
 
-.instrument-clickable.active i {
-  filter: invert(72%) sepia(11%) saturate(1484%) hue-rotate(173deg) brightness(84%) contrast(90%);
-}
+// .instrument-clickable.active i {
+//   filter: invert(72%) sepia(11%) saturate(1484%) hue-rotate(173deg) brightness(84%) contrast(90%);
+// }
 
 .role-user {
   position: absolute;

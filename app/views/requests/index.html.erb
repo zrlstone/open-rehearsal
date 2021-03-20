@@ -16,6 +16,7 @@
               </div>
             </div>
           </div>
+
         <% else %>
           <% @incoming_requests.each do |request| %>
             <%= render "shared/request_drawer", request: request %>
@@ -27,6 +28,23 @@
           <% @incoming_requests.each do |request| %>
             <%= render "shared/requests_card", request: request %>
           <% end %>
+
+        </div> <!-- check me! -->
+      <h3><%= I18n.t('my_requests', count: @current_user_requests.count) %></h3>
+      <div class="my-5">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <ul>
+              <% @current_user_requests.each do |request| %>
+                <li>
+                  <%= link_to request.role.rehearsal.title, rehearsal_path(request.role.rehearsal) %>
+                  <%= request.role.instrument.name %> |
+                  <%= request.status %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>

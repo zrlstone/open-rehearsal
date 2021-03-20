@@ -25,9 +25,10 @@ class RolesController < ApplicationController
 
     @request.accepted = true
     @request.save
-    reject_users_other_requests(user, rehearsal)
-
     role.update(user: user)
+
+    delete_users_other_requests(user, rehearsal)
+    reject_other_users(role)
 
     redirect_to requests_path
   end
@@ -52,9 +53,17 @@ class RolesController < ApplicationController
     @rehearsal = Rehearsal.find(params[:rehearsal_id])
   end
 
-  def reject_users_other_requests(user, rehearsal)
+  def delete_users_other_requests(user, rehearsal)
     user.requests.each do |request|
       if request.role.rehearsal == rehearsal && !request.accepted
+        request.destroy
+      end
+    end
+  end
+
+  def reject_other_users(role)
+    role.requests.each do |request|
+      if !request.accepted
         request.accepted = false
         request.save
       end

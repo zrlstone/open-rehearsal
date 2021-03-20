@@ -8,7 +8,8 @@
   background-repeat: no-repeat;
   background-position: -25px 45px;
   transition: background-position 0.3s;
-  /* background-image: asset-url('banjo_c.svg'); */
+  background-size: 120px 120px;
+  /*background-image: asset-url('drum_kit_c.svg');*/
 
   h3 {
     font-family: "Poppins", "Helvetica", "sans-serif";
@@ -47,5 +48,9 @@
 }
 
 .card-rehearsal-top-left {
-  width: 135px;
+  width: 120px;
+}
+
+.card-rehearsal-top-left p {
+  font-size: 14px;
 }

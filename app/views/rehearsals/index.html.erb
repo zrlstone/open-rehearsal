@@ -1,3 +1,5 @@
+<% content_for :meta_description, "Find rehearsal opportunities with availability for your instruments." %>
+
 <!-- <div class="container-rehearsals"> -->
 <div class="container mt-5 pb-5">
   <div class="row align-items-center">
@@ -21,7 +23,7 @@
       <% else %>
         <div class="row">
           <% @suggested_rehearsals.each do |rehearsal| %>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-xl-6">
               <%= render "shared/card_rehearsal", rehearsal: rehearsal %>
             </div>
           <% end %>
@@ -50,7 +52,7 @@
   <div class="index-create">
     <h4 class="mb-3">Can't find what you're looking for?</h4>
     <p>Make your own event!</p>
-    <%= link_to "CREATE A REHEARSAL", new_rehearsal_path, class: "btn btn-openrehearsal ml-3 mr-4" %>
+    <%= link_to "CREATE REHEARSAL", new_rehearsal_path, class: "btn btn-openrehearsal ml-3 mr-4" %>
   </div>
 
 </div>

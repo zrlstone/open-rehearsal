@@ -8,9 +8,9 @@ class Rehearsal < ApplicationRecord
 
   validates :date_time, :address, :title, presence: true
 
-  validates :title, length: { maximum: 30, too_long: "30 characters is the maximum allowed" }
+  validates :title, length: { maximum: 25, too_long: "25 characters is the maximum allowed" }
 
-  # validate :start_in_future # TODO: Uncomment when have done JS validations in create form
+  validate :start_in_future
 
   # Pass this scope an ARRAY of instrument IDs and it returns all the rehearsals which
   # have a vacancy for one of those instruments. Use on index page.
@@ -32,14 +32,14 @@ class Rehearsal < ApplicationRecord
   pg_search_scope :search_by_title_and_address,
     against: [:title, :description, :address],
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      tsearch: { prefix: true }
     }
 
   private
 
-  # def start_in_future # TODO: Uncomment when have done JS validations in create form
-  #   if date_time < DateTime.now
-  #     errors.add(:date_time, "Your rehearsal cannot take place in the past!")
-  #   end
-  # end
+  def start_in_future
+    if date_time < DateTime.now
+      errors.add(:date_time, "Your rehearsal cannot take place in the past!")
+    end
+  end
 end
