@@ -187,7 +187,7 @@ lydias_rehearsal = Rehearsal.create!(organiser: lydia, address: 'Stoke Newington
 Role.create(rehearsal: lydias_rehearsal, instrument: piano, user: lydia)
 Role.create(rehearsal: lydias_rehearsal, instrument: piano)
 
-zaks_rehearsal = Rehearsal.create!(organiser: zak, address: 'Farringdon, London', title: "Mandolin and ukulele ensemble", description: 'Hoping to see lots of strummers there!', date_time: may_first)
+zaks_rehearsal = Rehearsal.create!(organiser: zak, address: 'Farringdon, London', title: "Mandolin and uke ensemble", description: 'Hoping to see lots of strummers there!', date_time: may_first)
 Role.create(rehearsal: zaks_rehearsal, instrument: mandolin, user: zak)
 Role.create(rehearsal: zaks_rehearsal, instrument: ukulele)
 
