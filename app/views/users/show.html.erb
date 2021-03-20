@@ -6,7 +6,7 @@
         <div class="profile-wrapper">
           <div class="d-flex align-items-center">
             <% if @user.avatar.attached? %>
-              <%= cl_image_tag @user.avatar.key, transformation: {width: 140, height: 140, gravity: "face", radius: "max" }, alt: "alttext", class: "avatar-profile" %>
+              <%= cl_image_tag @user.avatar.key, transformation: { width: 140, height: 140, gravity: "face", radius: "max", crop: "fill" }, alt: "alttext", class: "avatar-profile" %>
             <% else %>
               <%= image_tag "blank_avatar.jpg", class: "avatar-profile" %>
             <% end %>
