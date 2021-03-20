@@ -29,7 +29,7 @@
                 <li>
                   <%= link_to request.role.rehearsal.title, rehearsal_path(request.role.rehearsal) %>
                   <%= request.role.instrument.name %> |
-                  <%= request.user == request.role.user ? 'Confirmed' : 'Pending' %>
+                  <%= request.status %>
                 </li>
               <% end %>
             </ul>
