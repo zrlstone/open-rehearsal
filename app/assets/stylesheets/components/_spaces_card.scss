@@ -1,54 +1,9 @@
-.spaces-card {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-  background: white;
-  padding: 8px 16px;
-  border-radius: 8px;
-  box-shadow: 0px 3px 3px rgba(0, 54, 85, 0.2);
-  height: 64px;
-  width: 400px;
-
-}
-
-.spaces-instrument {
-  height: 64px;
-  text-align: center;
-
-  i {
-    margin: auto 0px;
-  }
-
-  img {
-    height: 60px;
-    width: 40px;
-  }
-}
-
-
-
-.spaces-card .spaces-content {
-  flex-grow: 1;
-  padding: 0 24px;
-}
-
-.spaces-card p {
-  margin: 0;
-  line-height: 1.4;
-}
-
-.spaces-card small {
-  color: #999999;
-  font-weight: bold;
-}
-
-
 .spaces-card-rehearsal {
   padding: 14px;
   background-color: white;
   margin: 15px 0;
   width: 350px;
-  color: black;
+  color: gr;
   border-left: 5px solid black;
   background-repeat: no-repeat;
   background-position: -25px 14px;
@@ -66,10 +21,41 @@
   p {
     font-size: 16px;
     line-height: 20px;
-    color: grey;
+    color: $or-dark-grey;
   }
   &:hover {
     background-position: -15px 9px;
   }
 }
 
+.spaces-card-rehearsal-top {
+  height: 70px;
+}
+
+.spaces-card-rehearsal-top, .spaces-card-rehearsal-footer {
+  display: flex;
+}
+
+.spaces-card-rehearsal-footer {
+  width: 100%;
+  justify-content: flex-end;
+  margin-left: 8px;
+}
+
+.spaces-card-rehearsal-top-left {
+  width: 100px;
+}
+
+.spaces-card-rehearsal-top-left p {
+  font-size: 14px;
+}
+
+.pending-text {
+  color: $or-pale-grey;
+}
+
+.music-icon-attendee-card {
+  position: absolute;
+  padding-left: 188px;
+  margin-top: -45px;
+}

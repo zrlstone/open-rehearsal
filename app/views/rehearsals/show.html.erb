@@ -11,7 +11,7 @@
 
       <div class="d-flex">
         <% if @organiser.avatar.attached? %>
-          <%= cl_image_tag @organiser.avatar.key, transformation: {width: 40, height: '100%', gravity: "face", radius: "max", crop: "thumb" }, alt: "alttext", class: "avatar-rehearsal-show" %>
+          <%= cl_image_tag @organiser.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max", crop: "fill" }, alt: "alttext", class: "avatar-rehearsal-show" %>
         <% else %>
           <%= image_tag "blank_avatar.jpg", class: "avatar-rehearsal-show" %>
         <% end %>
