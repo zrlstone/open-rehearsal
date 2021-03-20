@@ -4,11 +4,11 @@ class Request < ApplicationRecord
 
   def status
     if accepted == true
-      'Confirmed'
+      'confirmed'
     elsif accepted == false
-      'Rejected'
+      'rejected'
     elsif role.user == nil
-      'Pending'
+      'pending'
     end
   end
 

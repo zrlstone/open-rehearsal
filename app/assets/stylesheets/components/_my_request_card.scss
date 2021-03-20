@@ -1,0 +1,31 @@
+.my-requests-container .card-rehearsal {
+  .card-rehearsal-footer {
+    align-items: center;
+    justify-content: space-between;
+  }
+  .request-status {
+    border-radius: 2px;
+    padding: 0px 2px;
+    color: grey;
+    font-size: 12px;
+    margin-left: 120px;
+    p {
+      margin-bottom: 0;
+      font-size: 12px;
+    }
+  }
+}
+
+.status-pending {
+  border-bottom: 2px solid $yellow;
+}
+
+.status-confirmed {
+  border-bottom: 2px solid $green;
+}
+
+.status-rejected {
+  border-bottom: 2px solid $red;
+}
+
+
