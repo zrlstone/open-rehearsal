@@ -42,3 +42,34 @@
   font-weight: bold;
 }
 
+
+.spaces-card-rehearsal {
+  padding: 14px;
+  background-color: white;
+  margin: 15px 0;
+  width: 350px;
+  color: black;
+  border-left: 5px solid black;
+  background-repeat: no-repeat;
+  background-position: -25px 14px;
+  transition: background-position 0.3s;
+  background-size: 115px 115px;
+  /*background-image: asset-url('drum_kit_c.svg');*/
+
+  h3 {
+    font-family: "Poppins", "Helvetica", "sans-serif";
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 20px;
+    color: grey;
+  }
+  &:hover {
+    background-position: -15px 9px;
+  }
+}
+
