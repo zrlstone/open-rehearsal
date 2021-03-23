@@ -61,18 +61,4 @@
   </div>
 </div>
 
-<%= javascript_tag do %>
-
-  const instruments = document.querySelectorAll('.instrument-clickable');
-
-  const toggleActiveClass = (event) => {
-    event.currentTarget.classList.toggle('active');
-  };
-
-  const toggleActiveOnClick = (instrument) => {
-    instrument.addEventListener('click', toggleActiveClass);
-  };
-
-  instruments.forEach(toggleActiveOnClick);
-
-<% end %>
+<%= javascript_tag("var url = '#{rehearsal_path(@rehearsal)}';") %>

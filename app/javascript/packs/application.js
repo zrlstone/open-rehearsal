@@ -31,7 +31,7 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import "../plugins/init_flatpickr";
-import "../plugins/init_finished_button";
+import { initFinishedButton } from "../plugins/init_finished_button";
 
 
 // Internal imports, e.g:
@@ -43,6 +43,7 @@ document.addEventListener('turbolinks:load', () => {
 
   initMapbox();
   initAutocomplete();
+  initFinishedButton();
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
