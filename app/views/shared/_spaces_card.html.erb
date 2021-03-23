@@ -19,12 +19,14 @@
   <div class="spaces-card-rehearsal-footer">
     <% if role.user  %>
       <% if role.user.avatar.attached? %>
-        <%= cl_image_tag role.user.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max", crop: "fill" }, alt: "avatar", class: "avatar-rehearsal-spaces-card" %>
+        <%= cl_image_tag role.user.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-rehearsal-spaces-card" %>
       <% else %>
         <%= image_tag "blank_avatar.jpg", class: "avatar-rehearsal-spaces-card" %>
       <% end %>
     <% elsif @roles_requested_by_user.include?(role) %>
-        <small class="pending-text">Pending confirmation</small>
+        <div class="request-status status-pending %>">
+          <i>pending confirmation</i>
+        </div>
     <% elsif current_user.instruments.include?(role.instrument) && !@rehearsal.attendees.include?(current_user) %>
       <%= link_to "Join", role_requests_path(role), class:"btn btn-request", method: :post, remote: true%>
     <% end %>
