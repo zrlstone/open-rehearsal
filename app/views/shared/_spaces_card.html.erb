@@ -6,9 +6,6 @@
       <% if role.user %>
         <p>
           <%= link_to role.user.username, user_path(role.user) %>
-          <% if (role.user_id == current_user.id) %>
-              <div class="music-icon-attendee-card"><strong>🎵</strong></div>
-          <% end %>
         </p>
         <p><small><%=  role.instrument.name.titleize %></small></p>
       <% else %>
