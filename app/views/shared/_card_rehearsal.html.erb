@@ -5,7 +5,7 @@
     <% if vacant_role %>
       <div class="card-rehearsal" align="left" style="background-image: url('<%= cl_image_path vacant_role.instrument.photo_painted.key %>');">
     <% else %>
-      <div class="card-rehearsal" align="left"></div>
+      <div class="card-rehearsal" align="left">
     <% end %>
   <% else %>
     <div class="card-rehearsal" align="left" style="background-image: url('<%= cl_image_path my_role.instrument.photo_painted.key %>');">
