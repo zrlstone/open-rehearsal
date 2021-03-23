@@ -3,17 +3,6 @@
     align-items: center;
     justify-content: space-between;
   }
-  .request-status {
-    border-radius: 2px;
-    padding: 0px 2px;
-    color: grey;
-    font-size: 12px;
-    margin-left: 120px;
-    p {
-      margin-bottom: 0;
-      font-size: 12px;
-    }
-  }
 }
 
 .status-pending {
@@ -29,3 +18,14 @@
 }
 
 
+.request-status {
+  border-radius: 2px;
+  padding: 0px 2px;
+  color: grey;
+  font-size: 12px;
+  margin-left: 120px;
+  p {
+    margin-bottom: 0;
+    font-size: 12px;
+  }
+}
