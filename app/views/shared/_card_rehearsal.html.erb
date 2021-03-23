@@ -1,7 +1,7 @@
 <%= link_to rehearsal_path(rehearsal), class:"no-decoration" do %>
-  <% my_role = rehearsal.roles.filled.find { |role| role.user_id == current_user.id }  %>
+  <% my_role = rehearsal.roles.filled.find { |role| role.user_id == user.id }  %>
   <% if my_role.nil? %>
-    <% vacant_role =  rehearsal.roles.vacant.find { |role| current_user.instruments.include?(role.instrument) } %>
+    <% vacant_role =  rehearsal.roles.vacant.find { |role| user.instruments.include?(role.instrument) } %>
     <div class="card-rehearsal" align="left" style="background-image: url('<%= cl_image_path vacant_role.instrument.photo_painted.key %>');">
   <% else %>
     <div class="card-rehearsal" align="left" style="background-image: url('<%= cl_image_path my_role.instrument.photo_painted.key %>');">
