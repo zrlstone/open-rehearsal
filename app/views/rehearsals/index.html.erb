@@ -24,7 +24,7 @@
         <div class="row">
           <% @suggested_rehearsals.each do |rehearsal| %>
             <div class="col-12 col-xl-6">
-              <%= render "shared/card_rehearsal", rehearsal: rehearsal %>
+              <%= render "shared/card_rehearsal", rehearsal: rehearsal, user: current_user %>
             </div>
           <% end %>
         </div>

@@ -12,7 +12,7 @@
         <div class="row mt-4 mb-5">
           <% @my_upcoming_rehearsals.each do |rehearsal| %>
             <div class="col-12 col-md-6 col-xl-4" align="center">
-              <%= render "shared/card_rehearsal", rehearsal: rehearsal %>
+              <%= render "shared/card_rehearsal", rehearsal: rehearsal, user: current_user %>
             </div>
           <% end %>
         </div>

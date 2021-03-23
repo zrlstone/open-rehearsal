@@ -63,6 +63,12 @@
     cursor: auto;
     box-shadow: none;
     transform: none;
+    i {
+      filter: none;
+    }
+    p {
+      color: $or-almost-black;
+    }
   }
 }
 

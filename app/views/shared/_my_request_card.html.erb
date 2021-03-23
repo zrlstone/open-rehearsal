@@ -1,25 +1,26 @@
+<%= link_to rehearsal_path(request.role.rehearsal), class:"no-decoration" do %>
+  <div class="card-rehearsal" align="left" style="background-image: url('<%= cl_image_path request.role.instrument.photo_painted.key %>');">
 
-<div class="card-rehearsal" align="left" style="background-image: url('<%= cl_image_path request.role.instrument.photo_painted.key %>');">
+    <div class="card-rehearsal-top">
+      <div class="card-rehearsal-top-left">
+        <p><%= request.role.rehearsal.date_time.strftime("%d %b %H:%M") %></p>
+      </div>
+      <div class="card-rehearsal-top-right">
+        <h3><%= request.role.rehearsal.title %></h3>
+        <p><%= request.role.rehearsal.address.truncate(20, separator: /,/) %></p>
 
-  <div class="card-rehearsal-top">
-    <div class="card-rehearsal-top-left">
-      <p><%= request.role.rehearsal.date_time.strftime("%d %b %H:%M") %></p>
+      </div>
     </div>
-    <div class="card-rehearsal-top-right">
-      <h3><%= request.role.rehearsal.title %></h3>
-      <p><%= request.role.rehearsal.address.truncate(20, separator: /,/) %></p>
-
+    <div class="card-rehearsal-footer">
+      <div class="request-status status-<%= request.status %>">
+        <i><%= request.status %></i>
+      </div>
+      <% if request.role.rehearsal.organiser.avatar.attached? %>
+        <%= cl_image_tag request.role.rehearsal.organiser.avatar.key, transformation: {width: 30, height: 30, gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-rehearsal-card" %>
+      <% else %>
+        <%= image_tag "blank_avatar.jpg", class: "avatar-rehearsal-card" %>
+      <% end %>
     </div>
   </div>
-  <div class="card-rehearsal-footer">
-    <div class="request-status status-<%= request.status %>">
-      <i><%= request.status %></i>
-    </div>
-    <% if request.role.rehearsal.organiser.avatar.attached? %>
-      <%= cl_image_tag request.role.rehearsal.organiser.avatar.key, transformation: {width: 30, height: 30, gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-rehearsal-card" %>
-    <% else %>
-      <%= image_tag "blank_avatar.jpg", class: "avatar-rehearsal-card" %>
-    <% end %>
-  </div>
-</div>
+<% end %>
 
