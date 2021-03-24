@@ -17,7 +17,7 @@
         <div class="container wide title my-3">
           <h4>Click to select:</h4>
         </div>
-        <% @instruments.each do |instrument| %>
+        <% @instruments.order(:name).each do |instrument| %>
           <%= link_to build_role_rehearsal_path(instrument: instrument), method: :post, remote: true, class: "instrument-link" do %>
             <div class="instrument-clickable">
               <i><%= cl_image_tag instrument.photo.key %></i>
