@@ -1,6 +1,13 @@
 <%= link_to rehearsal_path(request.role.rehearsal), class:"no-decoration" do %>
-  <div class="card-rehearsal" align="left" style="background-image: url('<%= cl_image_path request.role.instrument.photo_painted.key %>');">
-
+  <div class="card-rehearsal position-relative" align="left" style="background-image: url('<%= cl_image_path request.role.instrument.photo_painted.key %>');">
+    <% if request.status == 'pending' %>
+      <%= link_to request_path(request),
+                  method: :delete,
+                  remote: :true,
+                  data: { confirm: "Are you sure you want to cancel this request?" } do %>
+        <i class="fas fa-sm fa-times cancel-request"></i>
+      <% end %>
+    <% end %>
     <div class="card-rehearsal-top">
       <div class="card-rehearsal-top-left">
         <p><%= request.role.rehearsal.date_time.strftime("%d %b %H:%M") %></p>
@@ -8,7 +15,6 @@
       <div class="card-rehearsal-top-right">
         <h3><%= request.role.rehearsal.title %></h3>
         <p><%= request.role.rehearsal.address.truncate(20, separator: /,/) %></p>
-
       </div>
     </div>
     <div class="card-rehearsal-footer">

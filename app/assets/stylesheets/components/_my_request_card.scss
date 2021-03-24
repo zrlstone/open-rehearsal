@@ -3,6 +3,11 @@
     align-items: center;
     justify-content: space-between;
   }
+  &:hover {
+    .cancel-request {
+      display: inline;
+    }
+  }
 }
 
 .status-pending {
@@ -28,4 +33,15 @@
     margin-bottom: 0;
     font-size: 12px;
   }
+}
+
+.cancel-request {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    color: rgba(150, 150, 150, 0.5);
+    display: none;
+    &:hover {
+      color: gray;
+    }
 }

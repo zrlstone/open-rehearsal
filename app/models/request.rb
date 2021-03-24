@@ -7,7 +7,7 @@ class Request < ApplicationRecord
       'confirmed'
     elsif accepted == false
       'rejected'
-    elsif role.user == nil
+    elsif role.user.nil?
       'pending'
     end
   end
