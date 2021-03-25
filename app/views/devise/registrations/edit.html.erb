@@ -76,7 +76,7 @@
                 <h5>Add more:</h5>
 
                 <ul class="skill-list mt-3">
-                  <% Instrument.all.each do |instrument| %>
+                  <% Instrument.order(:name).each do |instrument| %>
                     <% if !current_user.instruments.include?(instrument) %>
                       <li>
                         <div class="skill-item">
