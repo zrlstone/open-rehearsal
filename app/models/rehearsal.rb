@@ -12,14 +12,11 @@ class Rehearsal < ApplicationRecord
 
   validate :start_in_future
 
-  # Pass this scope an ARRAY of instrument IDs and it returns all the rehearsals which
-  # have a vacancy for one of those instruments. Use on index page.
   scope :has_space_for, ->(instrument_arr) { joins(:roles).merge(Role.vacancy_for(instrument_arr)) }
-
   scope :upcoming, -> { where("date_time > ?", DateTime.now) }
   scope :past, -> { where("date_time < ?", DateTime.now) }
+  scope :order_by_pending, -> { left_outer_joins(:requests).merge(Request.pending).group(:id).order('COUNT(requests.id) DESC') }
 
-  # Add geocoding functionality to model
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -27,7 +24,10 @@ class Rehearsal < ApplicationRecord
     roles.where(user: organiser).first
   end
 
-  # Adding search function to the model
+  def pending_count
+    requests.pending.count
+  end
+
   include PgSearch::Model
   pg_search_scope :search_by_title_and_address,
     against: [:title, :description, :address],

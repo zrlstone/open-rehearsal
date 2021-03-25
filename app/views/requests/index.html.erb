@@ -1,6 +1,6 @@
-<div class="container mt-2">
-<h3>My Requests</h3>
-<h4><%= I18n.t('requests_from_others', count: @incoming_requests.count) %></h4>
+<div class="container mt-5">
+<h3 class="my-3">My Requests</h3>
+<!-- <h4><%#= I18n.t('requests_from_others', count: @incoming_requests.count) %></h4> -->
 
   <div class="container requests-container">
     <div class="row no-gutters">
@@ -23,10 +23,9 @@
     </div>
   </div>
 
+  <h4 class="my-5"><%= I18n.t('my_requests', count: @current_user_requests.count) %></h4>
 
-  <h4><%= I18n.t('my_requests', count: @current_user_requests.count) %></h4>
-
-    <div class="my-requests-container row mb-5 mt-4" id="requests-made">
+    <div class="my-requests-container row my-5" id="requests-made">
       <% @current_user_requests.each do |request| %>
         <div class="col-12 col-md-6 col-xl-4" align="center">
           <%= render "shared/my_request_card", request: request %>

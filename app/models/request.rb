@@ -14,4 +14,5 @@ class Request < ApplicationRecord
 
   scope :accepted, -> { where(accepted: true) }
   scope :rejected, -> { where(accepted: false) }
+  scope :pending, -> { where(accepted: nil) }
 end
