@@ -10,7 +10,7 @@
     </div>
     <%= f.input :title, label: false, placeholder: 'e.g. Composer name, genre, piece' %>
     <div class="form-buttons d-flex justify-content-end">
-      <button class="next btn btn-outline-secondary" type="button">Next</button>
+      <button class="next btn btn-openrehearsal" type="button">NEXT</button>
     </div>
 
   </div>
@@ -20,8 +20,8 @@
     </div>
     <%= f.input :address, label: false, placeholder: 'Enter address...', id: "rehearsal_address" %>
     <div class="form-buttons d-flex justify-content-between">
-      <button class="back btn btn-outline-secondary" type="button">Back</button>
-      <button class="next btn btn-outline-secondary" type="button">Next</button>
+      <button class="back btn btn-openrehearsal" type="button">BACK</button>
+      <button class="next btn btn-openrehearsal" type="button">NEXT</button>
     </div>
   </div>
 
@@ -31,8 +31,8 @@
     </div>
     <%= f.input :description, label: false, placeholder: 'Tell other players what your rehearsal is all about!' %>
     <div class="form-buttons d-flex justify-content-between">
-      <button class="back btn btn-outline-secondary" type="button">Back</button>
-      <button class="next btn btn-outline-secondary" type="button">Next</button>
+      <button class="back btn btn-openrehearsal" type="button">BACK</button>
+      <button class="next btn btn-openrehearsal" type="button">NEXT</button>
     </div>
   </div>
 
@@ -44,8 +44,8 @@
       <%= f.input :date_time, as: :string, label: false, placeholder: 'Enter date', input_html: { class: "datetime-input" } %>
     </div>
     <div class="form-buttons d-flex justify-content-between">
-      <button class="back btn btn-outline-secondary" type="button">Back</button>
-      <button class="next btn btn-outline-secondary" type="button">Next</button>
+      <button class="back btn btn-openrehearsal" type="button">BACK</button>
+      <button class="next btn btn-openrehearsal" type="button">NEXT</button>
     </div>
   </div>
 
@@ -67,8 +67,8 @@
     <% end %>
 
     <div class="form-buttons d-flex justify-content-between">
-      <button class="back btn btn-outline-secondary" type="button">Back</button>
-      <%= f.submit "Next", class: "btn btn-outline-secondary" %>
+      <button class="back btn btn-openrehearsal" type="button">BACK</button>
+      <%= f.submit "NEXT", class: "btn btn-openrehearsal" %>
     </div>
   </div>
 
