@@ -19,4 +19,11 @@ class RequestsController < ApplicationController
     @request.role = @role
     redirect_to rehearsal_path(@rehearsal) if @request.save
   end
+
+  def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
+
+    redirect_to requests_path(anchor: "requests-made")
+  end
 end
