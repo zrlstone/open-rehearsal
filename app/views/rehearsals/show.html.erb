@@ -31,8 +31,8 @@
 
       <br>
 
-      <h4>Attendees</h4>
-      <div class="attendees-cards">
+      <h4 id="attendees-section">Attendees</h4>
+      <div class="attendees-cards" >
         <% @filled.each do |role| %>
           <%= render "shared/spaces_card", role: role %>
         <% end %>
