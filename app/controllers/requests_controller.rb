@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
     @role = Role.find(params[:role_id])
     @rehearsal = @role.rehearsal
     @request.role = @role
-    redirect_to rehearsal_path(@rehearsal) if @request.save
+    redirect_to rehearsal_path(@rehearsal, anchor: "attendees-section") if @request.save
   end
 
   def destroy
