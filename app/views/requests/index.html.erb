@@ -1,23 +1,17 @@
 <div class="container mt-2">
 <h3>My Requests</h3>
 <h4><%= I18n.t('requests_from_others', count: @incoming_requests.count) %></h4>
+
   <div class="container requests-container">
     <div class="row no-gutters">
       <div class="col-md-4 border-right">
-        <% if @incoming_requests.count.zero? %>
-          <div class="col-4">
-            <div class="request-card" style="opacity: 0.6">
-              <div class="request-content">
-                <p> Check back later!</p>
-              </div>
-            </div>
-          </div>
+        <div class="rehearsal-panel">
 
-        <% else %>
-          <% @incoming_requests.each do |request| %>
-            <%= render "shared/request_drawer", request: request %>
-          <% end %>
-        <% end %>
+            <% @current_user_rehearsals.each do |rehearsal| %>
+              <%= render "shared/request_drawer", rehearsal: rehearsal %>
+            <% end %>
+
+        </div>
       </div>
       <div class="col-md-8">
         <div class="request-panel">
@@ -32,19 +26,12 @@
 
   <h4><%= I18n.t('my_requests', count: @current_user_requests.count) %></h4>
 
-
-        <div class="my-requests-container row mb-5 mt-4" id="requests-made">
-          <% @current_user_requests.each do |request| %>
-            <div class="col-12 col-md-6 col-xl-4" align="center">
-              <%= render "shared/my_request_card", request: request %>
-            </div>
-          <% end %>
+    <div class="my-requests-container row mb-5 mt-4" id="requests-made">
+      <% @current_user_requests.each do |request| %>
+        <div class="col-12 col-md-6 col-xl-4" align="center">
+          <%= render "shared/my_request_card", request: request %>
         </div>
-
-
-
+      <% end %>
+    </div>
 
 </div>
-
-
-

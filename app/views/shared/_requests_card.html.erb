@@ -1,4 +1,4 @@
-<div class="row no-gutters">
+<div class="incoming-requests <%= request.role.rehearsal.id %>">
   <div class="confirm-card">
     <% if request.user.avatar.attached? %>
       <%= link_to (cl_image_tag request.user.avatar.key, transformation: {width: 40, height: 40, gravity: "face", radius: "max", crop: "thumb" }, alt: "avatar", class: "avatar-large"), user_path(request.user) %>
@@ -10,8 +10,9 @@
       <p><%= request.role.instrument.name %></p>
     </div>
     <div class="confirm-card-actions">
-      <%= link_to "Confirm", accept_request_role_path(request), method: :patch, class:"btn btn-request"%>
+      <%= link_to "Confirm", accept_request_role_path(request), method: :patch, class:"btn btn-request", remote: true%>
     </div>
+
   </div>
-</div>
 <hr>
+</div>

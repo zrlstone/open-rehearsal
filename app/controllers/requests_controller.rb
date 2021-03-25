@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   def index
     @current_user_requests = current_user.requests
-    @current_user_rehearsals = current_user.rehearsals
+    @current_user_rehearsals = current_user.rehearsals.includes(:requests).order('requests.accepted asc')
 
     @incoming_requests = Request.joins(role: :rehearsal).where(requests: { accepted: nil }, roles: { user_id: nil }, rehearsals: { user_id: current_user.id })
 
@@ -9,6 +9,8 @@ class RequestsController < ApplicationController
       format.html
       format.json { render json: { incoming_requests: @incoming_requests } }
     end
+
+
   end
 
   def create

@@ -1,12 +1,21 @@
-<div class="card-request request-drawer--onhover">
+<div class="card-request" rel="<%= rehearsal.id %>">
   <div class="card-request-top">
     <div class="card-request-top-left">
-      <p><%= request.role.rehearsal.date_time.strftime("%d %b %H:%M") %></p>
+      <p><%= rehearsal.date_time.strftime("%d %b %H:%M") %></p>
+
+      <% pending = rehearsal.requests.select { |r| r.accepted.nil? } %>
+      <% unless pending.empty? %>
+        <div data-controller="counter">
+          <div class="counter">
+            <span data-counter-target="count" class="badge-request-inbox"></span>
+          </div>
+        </div>
+      <% end %>
 
     </div>
     <div class="card-request-top-right">
-      <h3><%= request.role.rehearsal.title %></h3>
-      <p><%= request.role.rehearsal.address.truncate(20, separator: /,/) %></p>
+      <h3><%= rehearsal.title %></h3>
+      <p><%= rehearsal.address.truncate(20, separator: /,/) %></p>
     </div>
   </div>
 </div>
