@@ -3,11 +3,6 @@
     align-items: center;
     justify-content: space-between;
   }
-  &:hover {
-    .cancel-request {
-      display: inline;
-    }
-  }
 }
 
 .status-pending {
@@ -44,4 +39,13 @@
     &:hover {
       color: gray;
     }
+}
+
+.div-relative {
+  position: relative;
+  &:hover {
+    .cancel-request {
+      display: inline;
+    }
+  }
 }
