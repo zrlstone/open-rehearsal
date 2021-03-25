@@ -9,6 +9,7 @@
   background-position: -25px 14px;
   transition: background-position 0.3s;
   background-size: 115px 115px;
+  height: 98px;
   /*background-image: asset-url('drum_kit_c.svg');*/
 
   h3 {
@@ -20,7 +21,7 @@
 
   p {
     font-size: 16px;
-    line-height: 20px;
+    margin-bottom: 0px;
     color: $or-dark-grey;
   }
   &:hover {
@@ -29,7 +30,7 @@
 }
 
 .spaces-card-rehearsal-top {
-  height: 70px;
+  height: 40px;
 }
 
 .spaces-card-rehearsal-top, .spaces-card-rehearsal-footer {
@@ -40,6 +41,14 @@
   width: 100%;
   justify-content: flex-end;
   margin-left: 8px;
+  .request-status {
+    margin-top: 14px;
+    margin-right: 5px;
+  }
+  .btn-request {
+    margin-top: 6px;
+    margin-right: 3px;
+  }
 }
 
 .spaces-card-rehearsal-top-left {
