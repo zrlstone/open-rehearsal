@@ -6,20 +6,29 @@
   padding: 2px 16px;
   box-shadow: 3px 5px 0px black;
   letter-spacing: 0.08em;
+  position: relative;
+  top: 0;
+  left: 0;
+  
+  transition: all 100ms ease-in-out;
+
+  &:hover {
+    background-color: #FFC800;
+    top: 2px;
+    left: 2px;
+    box-shadow: 1px 3px 0px black;
+  }
 }
 
 .btn-request {
   background-color: $yellow;
-
   border-radius: 6px;
   padding: 2px 16px;
   transition: all 200ms ease-in-out;
+
   &:hover {
     background-color: #FFC800;
     color: $gray;
-
-
-
   }
 }
 
@@ -32,4 +41,16 @@
   padding: 2px 16px;
   box-shadow: 3px 5px 0px black;
   letter-spacing: 0.08em;
+  position: relative;
+  top: 0;
+  left: 0;
+
+  transition: all 100ms ease-in-out;
+
+  &:hover {
+    background-color: #84b6e8;
+    top: 2px;
+    left: 2px;
+    box-shadow: 1px 3px 0px black;
+  }
 }
