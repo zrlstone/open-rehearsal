@@ -27,35 +27,36 @@
         <% end %>
       </div>
 
-      <div class="lineup-container">
-        <div class="container wide lineup-title my-3">
-          <h4>Lineup</h4>
-        </div>
-        <% @rehearsal.roles.each do |role| %>
-          <div class="position-relative hover-opacity">
-            <% if role.user == current_user %>
-              <%= link_to edit_role_path(role), class: "change-remove" do %>
-                <i class="fas fa-edit"></i>
-              <% end %>
-            <% else %>
-              <%= link_to role_path(role), method: :delete, remote: true, class: "change-remove" do %>
-                <i class="fas fa-times"></i>
-              <% end %>
-            <% end %>
-            <div class="lineup-instrument-clickable">
-              <i><%= cl_image_tag role.instrument.photo.key %></i>
-              <p><%= role.instrument.name.titleize %></p>
-              <% if role.user == current_user %>
-                <p class="role-user">🎵</p>
-              <% end %>
-
-            </div>
+      <div class="lineup-outer">
+        <div class="lineup-container">
+          <div class="container wide lineup-title my-3">
+            <h4>Lineup</h4>
           </div>
-        <% end %>
-      </div>
+          <% @rehearsal.roles.each do |role| %>
+            <div class="position-relative hover-opacity">
+              <% if role.user == current_user %>
+                <%= link_to edit_role_path(role), class: "change-remove" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              <% else %>
+                <%= link_to role_path(role), method: :delete, remote: true, class: "change-remove" do %>
+                  <i class="fas fa-times"></i>
+                <% end %>
+              <% end %>
+              <div class="lineup-instrument-clickable">
+                <i><%= cl_image_tag role.instrument.photo.key %></i>
+                <p><%= role.instrument.name.titleize %></p>
+                <% if role.user == current_user %>
+                  <p class="role-user">🎵</p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
 
-      <div class="button-container mt-3">
-        <%= link_to 'FINISHED!', rehearsal_path(@rehearsal), class: "btn btn-openrehearsal", id: "finished-button" %>
+        <div class="button-container mt-3">
+          <%= link_to 'FINISHED!', rehearsal_path(@rehearsal), class: "btn btn-openrehearsal", id: "finished-button" %>
+        </div>
       </div>
     </div>
   </div>
