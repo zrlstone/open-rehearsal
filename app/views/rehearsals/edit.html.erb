@@ -1,36 +1,57 @@
 <div class="container pt-5 pb-5">
   <div class="row justify-content-center">
-    <div class="col-8">
-      <h2>Edit rehearsal details</h2>
-      <%#= render "form", rehearsal: @rehearsal %>
-      <%= simple_form_for(@rehearsal) do |f| %>
-        <%= f.input :title %>
-        <%= f.input :address %>
-        <%= f.input :description %>
-        <%= f.input :date_time %>
+    <div class="form-box col-6">
 
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link btn active" href="#tab-details" data-toggle="pill"><h3>Details</h3></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn" href="#tab-lineup" data-toggle="pill"><h3>Lineup</h3></a>
+        </li>
+      </ul>
 
-        <div class="mt-5">
-          <h3>Current lineup<%= link_to "Edit", add_roles_rehearsal_path(@rehearsal) %></h3>
+      <div class="tab-content">
+        <div id="tab-details" class="tab-pane fade in active show mt-5">
 
-          <ul>
-            <% @rehearsal.roles.each do |role| %>
-              <li>
-                <%= role.instrument.name %>
-                <% if role.user == current_user %>
-                  <span>(you!)</span>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
+          <%= simple_form_for(@rehearsal) do |f| %>
+
+            <div class="form-inputs">
+              <%= f.input :title %>
+              <%= f.input :address %>
+              <%= f.input :description %>
+              <%= f.input :date_time, label: "Date and time" %>
+              <div class="form-actions text-center my-4">
+                <%= f.submit "UPDATE", class: 'btn btn-openrehearsal' %>
+              </div>
+            </div>
+
+          <% end %>
 
         </div>
-        <div class="text-center mt-5">
-          <%= f.submit "Save changes" %>
-        </div>
-      <% end %>
 
-      <%= link_to "cancel", rehearsal_path(@rehearsal) %>
+        <div id="tab-lineup" class="tab-pane fade">
+          <div class="mt-5">
+            <div class="d-flex justify-content-center lineup-edit">
+              <% @rehearsal.roles.each do |role| %>
+                <%= render 'shared/instrument_card', instrument: role.instrument %>
+              <% end %>
+            </div>
+          </div>
+          <div class="form-actions text-center my-4">
+              <%= link_to "EDIT", add_roles_rehearsal_path(@rehearsal), class: 'btn btn-openrehearsal' %>
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <hr>
+      <%= link_to "Back", :back %>
     </div>
   </div>
 </div>

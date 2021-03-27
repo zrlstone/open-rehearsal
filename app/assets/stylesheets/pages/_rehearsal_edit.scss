@@ -1,0 +1,19 @@
+.lineup-edit .instrument-clickable {
+  &:hover {
+    border: 2px solid #dedede;
+    filter: none;
+    cursor: auto;
+    box-shadow: none;
+    transform: none;
+    i {
+      filter: none;
+    }
+    p {
+      color: $or-almost-black;
+    }
+  }
+}
+
+.lineup-edit {
+  flex-wrap: wrap;
+}
