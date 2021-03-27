@@ -64,9 +64,9 @@
         </div>
       </div>
 
-      <div class="rehearsal-page-buttons">
+      <div class="rehearsal-page-buttons my-3">
         <% if (@rehearsal.user_id == current_user.id) %>
-          <%= link_to "EDIT", edit_rehearsal_path(@rehearsal), class: 'btn btn-openrehearsal ml-3 mr-4' %>
+          <%= link_to "EDIT REHEARSAL", edit_rehearsal_path(@rehearsal), class: 'btn btn-explore ml-3 mr-4' %>
         <% end %>
       </div>
       <div class="back-button__show-page">
