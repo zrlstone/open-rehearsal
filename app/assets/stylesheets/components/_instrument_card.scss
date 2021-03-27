@@ -17,8 +17,7 @@
 }
 
 .lineup-container {
-  width: 40%;
-  float: right;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: normal;
@@ -30,9 +29,14 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
+.lineup-outer {
+  width: 40%;
+  float: right;
+}
+
 .button-container {
   padding-top: 10px;
-  width: 40%;
+  width: 100%;
   float: right;
   display: flex;
   justify-content: center;
@@ -82,14 +86,6 @@
     color: $light-blue;
   }
 }
-
-// .instrument-clickable.active {
-//   border-color: $light-blue;
-// }
-
-// .instrument-clickable.active i {
-//   filter: invert(72%) sepia(11%) saturate(1484%) hue-rotate(173deg) brightness(84%) contrast(90%);
-// }
 
 .role-user {
   position: absolute;
