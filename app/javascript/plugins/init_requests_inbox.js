@@ -1,6 +1,5 @@
 const initRequestsInbox = () => {
 
-
     $(".rehearsal-panel .card-request:first").addClass("active-request");
     $(".incoming-requests").hide();
     var activeTab = $(".rehearsal-panel .card-request:first").attr("rel");
