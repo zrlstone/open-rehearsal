@@ -6,7 +6,7 @@ An exciting platform that allows a user to find like-minded musicians, connect w
 
 http://www.openrehearsal.co.uk
 
-![Screenshot (49)](https://user-images.githubusercontent.com/62878600/114369328-2d192180-9b76-11eb-9a6d-e1504fc0eeff.jpg)
+![Screenshot (39)](https://user-images.githubusercontent.com/62878600/114369782-a6187900-9b76-11eb-8703-d3668e1f0552.png)
 
 
 # To run locally
